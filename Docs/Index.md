@@ -40,7 +40,7 @@
 | 14  | - Фабрика  (Factory)                                                                                           |
 | 15  | - Фабричный метод (Factory Method)                                                                             |
 | 16  | - Абстрактная фабрика (Abstract factory)                                                                       |
-| 17  | - Одиночка (Singletone)                                                                                        |
+| 17  | - [Одиночка (Singletone)](../Step1/readme.md]                                                                  |
 | 18  | - Строитель (Builder)                                                                                          |
 | 19  | - Мост (Dridge)                                                                                                |
 | 20  | - Декоратор (Decorator)                                                                                        |
