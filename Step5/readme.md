@@ -18,6 +18,7 @@ CREATE TABLE "history" (
 ```
 3. Выполнить SQL запрос:
 ```sql
+-- 9f1fed2c-926d-11ee-b9d1-0242ac120002
 insert into history(nomenclature_code, turn,  comments,  period)
 values('9f1fed2c-926d-11ee-b9d1-0242ac120002', 10, 'Начальный остаток','2023-10-01 00:00');
 
@@ -27,16 +28,14 @@ values('9f1fed2c-926d-11ee-b9d1-0242ac120002', 5, 'Поступление','2023
 insert into history(nomenclature_code, turn,  comments,  period)
 values('9f1fed2c-926d-11ee-b9d1-0242ac120002', -2, 'Списание','2023-10-03 10:00');
 
-
-
+-- 203be59a-926f-11ee-b9d1-0242ac120002
 insert into history(nomenclature_code, turn,  comments,  period)
 values('203be59a-926f-11ee-b9d1-0242ac120002', 0, 'Начальный остаток','2023-10-01 00:00');
 
 insert into history(nomenclature_code, turn,  comments,  period)
 values('203be59a-926f-11ee-b9d1-0242ac120002', 20, 'Поступление','2023-11-02 15:00');
 
-
-
+-- 53728856-926f-11ee-b9d1-0242ac120002
 insert into history(nomenclature_code, turn,  comments,  period)
 values('53728856-926f-11ee-b9d1-0242ac120002', 0, 'Начальный остаток','2023-10-01 00:00');
 
@@ -46,8 +45,7 @@ values('53728856-926f-11ee-b9d1-0242ac120002', -5, 'Списание','2023-11-0
 insert into history(nomenclature_code, turn,  comments,  period)
 values('53728856-926f-11ee-b9d1-0242ac120002', 5, 'Поступление','2023-11-02 15:00');
 
-
-
+-- 79c9f71e-926f-11ee-b9d1-0242ac120002
 insert into history(nomenclature_code, turn,  comments,  period)
 values('79c9f71e-926f-11ee-b9d1-0242ac120002', 0, 'Начальный остаток','2023-10-01 00:00');
 
