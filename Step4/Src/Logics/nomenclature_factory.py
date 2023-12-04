@@ -6,52 +6,70 @@ from Src.Models.nomenclature import nomenclature
 # Класс для создания различных элемиентов номенклатуры
 #
 class nomenclature_factory:
-
-    @property
-    def elements(self):
-        " Получить набор элементов "
-        return {}
+    " Структура для хранения данных "
+    _storage = {}
+    " Ключ для агрегации номенклатурных групп "
+    _group_key = "group_nomenclature"
+    " Ключ для агрегации единиц измерения "
+    _unit_key = "unit_nomenclature"
+    " Ключ для агрегации номенклатуры "
+    _nomenclature_key = "nomenclature"
 
     @staticmethod
-    def create_default_nomenclature():
-        " Фабричный метод: Создать номенкалутуру по умолчанию"
-        elements = {}
+    def create_default_nomenclature(storage):
+        " Фабричный метод: Создать номенкалутуру по умолчанию "
         
-        # 1. Определяем группу по умолчанию
-        group_key = "group_nomenclature"
-        groups = elements.get[group_key]
-        if groups is None:
-            elements[group_key] = {}
-            group =  nomenclature_factory.create_default_group()
-            elements[group_key][group.id] = group
-
-        # 2. Единицу измерения
-        unit_key = "unit_nomenclature"
-        units = elements.get[unit_key]    
-        if units is None:
-            elements[unit_key] = {}
-            unit = nomenclature_factory.create_default_unit()
-            elements[unit_key][unit.id] = unit
-
-        if units is None or groups is None:
-            nomenclature_factory.create_default_nomenclature()
-
-        nomenclature_factory.elements = elements
+        if storage is None:
+            raise Exception("Некорректно паредан параметр storage!")
+        
+        range_unit = nomenclature_factory.create_default_unit(storage)
+        range_group = nomenclature_factory.create_default_group(storage)
 
         item = nomenclature("Новый")
-        item.group = groups[0]
-        item.unit = units[0]
-        return item
+        item.group = range_group[1]
+        item.unit = range_unit[1]
+        result = (item.id, item)
+        
+        # Определяем группу по умолчанию
+        items = storage.get(nomenclature_factory._nomenclature_key)
+        if items is None:
+            storage[nomenclature_factory._nomenclature_key] = []
+            storage[nomenclature_factory._nomenclature_key].append(result)
+            
+        return result
 
     @staticmethod
-    def create_default_group():
+    def create_default_group(storage):
         " Фабричный метод: Создать группу номенклатуры по умолчанию"
+        
+        if storage is None:
+            raise Exception("Некорректно паредан параметр storage!")
+        
         group =   group_nomenclature("Ингредиенты")
-        return group      
+        result =  (group.id, group)   
+        
+        # Определяем группу по умолчанию
+        groups = storage.get(nomenclature_factory._group_key)
+        if groups is None:
+            storage[nomenclature_factory._group_key] = []
+            storage[nomenclature_factory._group_key].append(result)
+            
+        return result   
     
     @staticmethod
-    def create_default_unit():
+    def create_default_unit(storage):
         " Фабричный метод: Создать единицу измерения по умолчанию"
+        if storage is None:
+            raise Exception("Некорректно паредан параметр storage!")
+        
         unit = unit_nomenclature("кг")
         unit.description = "1 Кг (1000 грамм)"
-        return unit
+        result = (unit.id, unit)
+        
+        # Единицу измерения
+        units = storage.get(nomenclature_factory._unit_key)    
+        if units is None:
+            storage[nomenclature_factory._unit_key] = []
+            storage[nomenclature_factory._unit_key].append(result)
+            
+        return result

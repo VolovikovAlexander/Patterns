@@ -13,7 +13,7 @@ class reference(ABC):
     _error = error_proxy()
     
     def __init__(self, name):
-        _id = uuid.uuid4()
+        self._id = uuid.uuid4()
         self.name = name
     
     @property
