@@ -6,7 +6,7 @@
 #### Инструменты
 1. Установить [SQLBrowser](https://sqlitebrowser.org/)
 2. Создать пустую базу данных. В ней таблицу:
-```
+```sql
 CREATE TABLE "history" (
 	"id"	INTEGER NOT NULL  ,
 	"nomenclature_code"	TEXT NOT NULL,
@@ -17,7 +17,7 @@ CREATE TABLE "history" (
 )
 ```
 3. Выполнить SQL запрос:
-```
+```sql
 insert into history(nomenclature_code, turn,  comments,  period)
 values('9f1fed2c-926d-11ee-b9d1-0242ac120002', 10, 'Начальный остаток','2023-10-01 00:00');
 
