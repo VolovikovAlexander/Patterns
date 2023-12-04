@@ -38,7 +38,7 @@
 | 12  | **Введение. Классификация. Область применения.**                                                               |
 | 13  | - Прототип (Prototype)                                                                                         |
 | 14  | - Фабрика  (Factory)                                                                                           |
-| 15  | - Фабричный метод (Factory Method)                                                                             |
+| 15  | - [Фабричный метод (Factory Method)](../Step4/readme.md)                                                       |
 | 16  | - Абстрактная фабрика (Abstract factory)                                                                       |
 | 17  | - [Одиночка (Singletone)](../Step1/readme.md)                                                                  |
 | 18  | - Строитель (Builder)                                                                                          |
