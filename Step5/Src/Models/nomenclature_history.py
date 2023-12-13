@@ -6,9 +6,13 @@ from Src.reference import reference
 # Модель для представления информации о балансе номенклатуры
 #
 class nomenclature_hostory:
+    # Код номенклатуры
     _nomenclature_code = None
+    # Сумма
     _turn  = 0
+    # Период
     _period = None
+    # Комментарий
     _comments = ""
     
     @property
@@ -42,6 +46,24 @@ class nomenclature_hostory:
             raise Exception("Некорректно передан период выполнения операции!")
         
         self._period = value
+    
+    @property    
+    def turn(self):
+        "Сумма движения"
+        return self._turn
+    
+    @turn.setter
+    def turn(self, value: float):
+        "Сумма движения"
+        if value is None:
+            raise Exception("Некорректно передана сумма операции!")
         
+        if not isinstance(value, float):
+            raise Exception("Некорректно передана сумма операции!")
+        
+        if value == 0:
+            raise Exception("Некорректно передана сумма операции!")
+            
+            
         
         
