@@ -21,12 +21,12 @@ class nomenclature_hostory:
         return self._nomenclature_code
     
     @nomenclature_code.setter
-    def nomenclature_code(self, value: uuid):
+    def nomenclature_code(self, value: uuid.UUID):
         "Уникальный код номенклатуры"
         if value is None:
             raise Exception("Некорректно передан код номенклатуры!")
         
-        if not isinstance(value, uuid):
+        if not isinstance(value, uuid.UUID):
             raise Exception("Некорректно передан код номенклатуры!")
         
         self._nomenclature_code = value
@@ -37,12 +37,12 @@ class nomenclature_hostory:
         return self._period
     
     @period.setter
-    def period(self, value: datetime):
+    def period(self, value: datetime.datetime):
         "Период совершения операции"
         if value is None:
             raise Exception("Некорректно передан период выполнения операции!")
         
-        if not isinstance(value, datetime):
+        if not isinstance(value, datetime.datetime):
             raise Exception("Некорректно передан период выполнения операции!")
         
         self._period = value
@@ -63,6 +63,8 @@ class nomenclature_hostory:
         
         if value == 0:
             raise Exception("Некорректно передана сумма операции!")
+        
+        self._turn = value
             
             
         
