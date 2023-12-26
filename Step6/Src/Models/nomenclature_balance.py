@@ -4,14 +4,13 @@ from Src import reference
 #
 # Модель для представления информации о балансе номенклатуры
 #
-class nomenclature_balance(reference):
+class nomenclature_balance:
     # Расходы
     _debit = 0
     # Приходы
     _credit = 0
     # Остаток
     _balance = 0
-    
     
     @property
     def debit(self):

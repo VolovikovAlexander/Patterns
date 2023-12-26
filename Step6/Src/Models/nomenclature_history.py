@@ -5,7 +5,7 @@ from Src.reference import reference
 #
 # Модель для представления информации о балансе номенклатуры
 #
-class nomenclature_hostory(reference):
+class nomenclature_history:
     # Код номенклатуры
     _nomenclature_code = None
     # Сумма

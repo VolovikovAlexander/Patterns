@@ -47,6 +47,9 @@ class convertor_factory:
             raise Exception("Конвертор не определен!")
         
         result = convertor_match.convertor.convert(sourceObject)
+        if  convertor_match.convertor.is_error:
+            raise Exception( convertor_match.convertor.error)
+        
         return result
         
                                

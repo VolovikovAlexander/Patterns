@@ -17,7 +17,7 @@ class convertor_to_reference(convertor):
             reference: Возвращает объект типа reference
         """
         if not isinstance(source, reference):
-            self.error = "Некорректный тип назначения для конвертиации данных!"
+            self.error = "Некорректный исходный тип для конвертиации данных!"
             return None
         
         result = reference(source.name)

@@ -26,6 +26,18 @@ class error_proxy(ABC):
             
         self._error_text += value
         
+    @property    
+    def is_error(self):
+        """
+            Флаг. Есть ошибка
+        Returns:
+            Boolean: True - есть  ошибка, False -  нет ошибки
+        """
+        if self._error_text == "":
+            return False
+        else:
+            return True    
+        
     @classmethod
     def set_error(self, exception: Exception):
         " Записать текстовое описание ошибки по исключению"
