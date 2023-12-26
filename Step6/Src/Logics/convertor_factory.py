@@ -39,7 +39,7 @@ class convertor_factory:
         
         convertor_match = None
         for item in _convertors:
-            if (item.source_type == None or type(sourceObject) == item.source_type ) and type(toType) ==  item.dest_type:
+            if (item.source_type == None or type(sourceObject) == item.source_type ) and toType ==  item.dest_type:
                 convertor_match = item
                 
                 
@@ -47,9 +47,6 @@ class convertor_factory:
             raise Exception("Конвертор не определен!")
         
         result = convertor_match.convertor.convert(sourceObject)
-        if convertor_match.is_error:
-            raise Exception("Ошибка конвертации данных! % {s}" % {convertor_match.erroe_text})
-        
         return result
         
                                

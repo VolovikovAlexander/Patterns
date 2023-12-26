@@ -13,13 +13,13 @@ class history_test(unittest.TestCase):
     def test_convert_reference(self):
         #  Подготовка
         source = reference("source")
-        dest = reference("dest")
+        dest =  type(reference("convertor"))
         
         # Действие(
-        result = convertor_factory.convert(source, type(dest))
+        result = convertor_factory.convert(source, dest)
  
         # Проверки
-        assert result.name == dest.name
+        assert result.name == source.name
         
         
     
