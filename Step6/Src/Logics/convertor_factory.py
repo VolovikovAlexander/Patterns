@@ -29,7 +29,8 @@ class convertor_factory:
 
         Raises:
             - Не найден подходящий конвертор
-            - Нет  коверторов
+            - Нет коверторов
+            - Ошибка конвертиации данных
         """
         
         _convertors = convertor_factory.prepare()
@@ -46,6 +47,9 @@ class convertor_factory:
             raise Exception("Конвертор не определен!")
         
         result = convertor_match.convertor.convert(sourceObject)
+        if convertor_match.is_error:
+            raise Exception("Ошибка конвертации данных! % {s}" % {convertor_match.erroe_text})
+        
         return result
         
                                
