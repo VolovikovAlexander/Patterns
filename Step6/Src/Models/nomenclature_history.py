@@ -12,7 +12,7 @@ class nomenclature_history:
     _turn  = 0
     # Период
     _period = None
-    # Комментарий
+    # Коментарий
     _comments = ""
     
     @property
