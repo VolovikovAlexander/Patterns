@@ -19,7 +19,7 @@ class history_test(unittest.TestCase):
         result = convertor_factory.convert(source, dest)
  
         # Проверки
-        assert source.name == dest.name
+        assert result.name == dest.name
         
         
     
