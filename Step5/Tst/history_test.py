@@ -44,3 +44,5 @@ class history_test(unittest.TestCase):
         # Проверки
         assert len(items) > 0    
     
+if __name__ == '__main__':
+    unittest.main()       
