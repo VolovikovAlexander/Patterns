@@ -20,11 +20,11 @@ class convertor_factory:
         
     
     @staticmethod
-    def convert( fromtype, toType):
+    def convert(sourceObject, toType):
         """
-            Провести конвертацию данных из типа fromtype в тип toType
+            Провести конвертацию данных из sourceObject в объект типа toType
         Args:
-            fromtype (reference): Исходный объект для конвертиции
+            sourceObject (reference): Исходный объект для конвертиции
             toType (reference): Тип данных для конвертиации
 
         Raises:
@@ -38,12 +38,15 @@ class convertor_factory:
         
         convertor_match = None
         for item in _convertors:
-            if (item.source_type == None or isinstance(fromtype,item.source_type )) and isinstance(toType,  item.dest_type):
+            if (item.source_type == None or type(sourceObject) == item.source_type ) and type(toType) ==  item.dest_type:
                 convertor_match = item
                 
                 
         if convertor_match == None:
             raise Exception("Конвертор не определен!")
+        
+        result = convertor_match.convertor.convert(sourceObject)
+        return result
         
                                
         

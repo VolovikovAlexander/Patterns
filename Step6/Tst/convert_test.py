@@ -15,8 +15,8 @@ class history_test(unittest.TestCase):
         source = reference("source")
         dest = reference("dest")
         
-        # Действие
-        result = convertor_factory.convert(source, dest)
+        # Действие(
+        result = convertor_factory.convert(source, type(dest))
  
         # Проверки
         assert result.name == dest.name

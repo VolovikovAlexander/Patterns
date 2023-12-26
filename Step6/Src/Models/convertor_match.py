@@ -46,8 +46,8 @@ class convertor_match:
         Raises:
             Exception: Некорректный тип данных
         """
-        if not isinstance(value, reference.reference):
-            raise Exception("Некорректно передан тип данных!")
+        if(value is None):
+            raise Exception("Некорректно переданы параметры!")
         
         self._dest_type = value
     
@@ -61,13 +61,10 @@ class convertor_match:
         return self._convertor
     
     @convertor.setter
-    def convertor(self, value:reference.reference):
+    def convertor(self, value):
         """
             Объект, который будет заниматься конвертацией        
         """
-    def convertor(self, value: reference.reference ):
-        if not  isinstance(value, reference.reference):
-            raise Exception("Некорректно передан тип данных!")
-        
         self._convertor = value
+        
         
