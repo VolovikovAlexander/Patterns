@@ -58,19 +58,20 @@ class data_factory:
             Exception: Количество указано не верно    
         """
         items = []
-        if len(nomenclature_factory._storage.get(nomenclature_factory._nomenclature_key)):
+        if len(nomenclature_factory._storage.get(nomenclature_factory._nomenclature_key)) == 0:
             raise Exception("Исходный список номенклатуры пуст!")
         
         if length <= 0:
             raise Exception("Некорректно указано количество записей для генерации истории!")
         
-        for nomenclature in nomenclature_factory._storage[nomenclature_factory._nomenclature_key]:
+        for nomenclature_pair in nomenclature_factory._storage[nomenclature_factory._nomenclature_key]:
             for number in range(length):
                 item = nomenclature_history()
-                item.nomenclature_code = uuid.UUID(nomenclature.id)
+                item.nomenclature_code = nomenclature_pair[0]
                 item.period = data_factory.random_date(datetime.strptime("2023-12-01", "%Y-%m-%d"),
                                                         datetime.strptime("2024-01-01", "%Y-%m-%d"))
                 item.turn = random.uniform(-50, 50)
+                item._comments = f"Номер записи: {number}"
                 items.append(item)
             
         return items    
