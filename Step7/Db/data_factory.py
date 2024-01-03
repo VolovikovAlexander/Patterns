@@ -1,4 +1,3 @@
-
 from Src.Logics.nomenclature_factory import nomenclature_factory
 from Src.Models.nomenclature_history import nomenclature_history
 

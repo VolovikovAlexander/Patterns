@@ -2,6 +2,7 @@ from unittest.case import _AssertRaisesContext
 from Src.Logics.convertor_factory import convertor_factory
 from Src.reference import reference
 from Src.Models.nomenclature_balance import nomenclature_balance
+from Src.Models.nomenclature import nomenclature
 import unittest
 
 #
@@ -34,6 +35,19 @@ class convert_test(unittest.TestCase):
         # Действие
         with self.assertRaises(Exception):
             result = convertor_factory.convert(source, dest)
+            
+    #
+    # Попробовать сконвертировать в Json номенклатуру
+    #        
+    def test_convert_nomenctature_to_json(self):
+        # Подготовка
+        source = nomenclature("test")
+        
+        # Действие
+        result =  convertor_factory.convert(source, str)
+        
+        assert result is not None
+               
       
         
     

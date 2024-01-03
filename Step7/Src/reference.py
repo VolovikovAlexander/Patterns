@@ -1,4 +1,5 @@
 import uuid
+import json
 from abc import ABC
 from Src.error_proxy import error_proxy
 
@@ -55,6 +56,8 @@ class reference(ABC):
     def is_error(self):
         " Флаг. Есть ошибка "
         return self._error.error != ""     
+    
+  
     
     
                 

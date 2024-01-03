@@ -1,10 +1,11 @@
 from Src.Logics.convertor_to_reference import convertor_to_reference
-
+from Src.Logics.convertor_to_json import convertor_to_json
 
 #
 # Класс для конвертирования данных из одной структуры в другую
 #
 class convertor_factory:
+    
     @staticmethod
     def prepare():
         """
@@ -13,7 +14,13 @@ class convertor_factory:
             list: Список конверторов
         """
         _convertors = []
+        
+        # Конвертор любого объекта в reference
         convertor = convertor_to_reference()
+        _convertors.append(convertor.get_convertor_matсh())
+        
+        # Конвертор любого объекта в json
+        convertor = convertor_to_json()
         _convertors.append(convertor.get_convertor_matсh())
         
         return _convertors
