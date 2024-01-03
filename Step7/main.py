@@ -1,19 +1,19 @@
 from flask import Flask
 
 from Db.data_factory import data_factory
-from Src.Logics.nomenclature_factory import nomenclature_factory
 from Src.Logics.convertor_factory import convertor_factory
+from Src.Logics.nomenclature_factory import nomenclature_factory
 
 app = Flask(__name__)
 
 @app.route('/nomenclature')
 def get_nomenclature():
-    result =  nomenclature_factory._storage.get(nomenclature_factory._nomenclature_key)
-    items = []
+    result = []
+    nomenclature  =  nomenclature_factory._storage.get(nomenclature_factory._nomenclature_key)
     for key, item in result:
-        items.append(item.to_json())
+        result.append(item)
         
-    return items
+    return convertor_factory.convert(result, str)
 
 
 

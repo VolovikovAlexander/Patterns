@@ -3,6 +3,7 @@ from Src.Logics.convertor_factory import convertor_factory
 from Src.reference import reference
 from Src.Models.nomenclature_balance import nomenclature_balance
 from Src.Models.nomenclature import nomenclature
+from Src.Models.group_nomenclature import group_nomenclature
 import unittest
 
 #
@@ -42,10 +43,13 @@ class convert_test(unittest.TestCase):
     def test_convert_nomenctature_to_json(self):
         # Подготовка
         source = nomenclature("test")
+        source.group = group_nomenclature("test")
         
         # Действие
         result =  convertor_factory.convert(source, str)
         
+        # Проверка
+        print(result)
         assert result is not None
                
       

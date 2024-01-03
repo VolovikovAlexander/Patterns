@@ -1,5 +1,4 @@
 import uuid
-import json
 from abc import ABC
 from Src.error_proxy import error_proxy
 
