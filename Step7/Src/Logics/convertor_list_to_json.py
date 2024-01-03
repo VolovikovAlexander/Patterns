@@ -9,15 +9,16 @@ class convertor_list_to_json(convertor):
         if source is None:
             raise Exception("Некорректно передан параметр!")
         
-        if isinstance(source, list):
+        if not isinstance(source, list):
             raise Exception("Некорректно передан параметр!")
         
         if len(source) == 0:
             raise Exception("Исходный список пуст!")
         
         result = []
+        convertor = convertor_to_json()
         for item in source:
-            result.append(convertor_to_json.convert(item))
+            result.append(convertor.convert(item))
             
         return  json.dumps(result, sort_keys = True, indent = 4)          
             
@@ -29,7 +30,7 @@ class convertor_list_to_json(convertor):
         """
         result = convertor_match()
         # Исходный тип
-        result.source_type = type(list)
+        result.source_type = type([])
         # Тип преобразования
         result.dest_type  = type("")
         result.convertor = self
