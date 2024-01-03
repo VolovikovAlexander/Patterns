@@ -6,6 +6,17 @@ import json
 class convertor_list_to_json(convertor):
     
     def convert(self, source):
+        """
+            Конвертиация данных
+        Args:
+            source (list): Любой список объектов
+
+        Raises:
+            Exception: Некорректно передан параметр!
+
+        Returns:
+            str: Json
+        """
         if source is None:
             raise Exception("Некорректно передан параметр!")
         
@@ -15,12 +26,11 @@ class convertor_list_to_json(convertor):
         if len(source) == 0:
             raise Exception("Исходный список пуст!")
         
-        result = []
-        convertor = convertor_to_json()
+        items = []
         for item in source:
-            result.append(convertor.convert(item))
-            
-        return  json.dumps(result, sort_keys = True, indent = 4)          
+            items.append(convertor_to_json.to_dict(item))
+      
+        return  json.dumps(items, indent = 4)          
             
             
           

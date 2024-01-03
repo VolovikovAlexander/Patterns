@@ -13,13 +13,24 @@ def get_nomenclature():
     Returns:
         Json: 
     """
+    
+    # Формируем входящий набор данных
     result = []
     nomenclature  =  nomenclature_factory._storage.get(nomenclature_factory._nomenclature_key)
     for key, item in nomenclature:
         result.append(item)
         
-    return convertor_factory.convert(result, str)
-
+    # Формируем Json данные    
+    result = convertor_factory.convert(result, str)
+    
+    # Формируем структуру ответа
+    response = app.response_class(
+        response=result,
+        status=200,
+        mimetype='application/json'
+    )
+    
+    return response
 
 
 if __name__ == "__main__":

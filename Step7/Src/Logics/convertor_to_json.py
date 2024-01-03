@@ -8,7 +8,17 @@ class  convertor_to_json(convertor):
     
     @staticmethod     
     def to_dict(source):
-       
+        """_summary_
+
+        Args:
+            source (_type_): Любой объект любого типа
+
+        Raises:
+            Exception: Передан пустой объект
+
+        Returns:
+            dict: Возвращает словарь в качестве ключа используется наименование поля объекта
+        """
         if source is None:
             raise Exception("ОШИБКА! Параметр source - пустой!")
         
