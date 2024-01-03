@@ -8,9 +8,14 @@ app = Flask(__name__)
 
 @app.route('/nomenclature')
 def get_nomenclature():
+    """
+        Получить список номенклатуры
+    Returns:
+        Json: 
+    """
     result = []
     nomenclature  =  nomenclature_factory._storage.get(nomenclature_factory._nomenclature_key)
-    for key, item in result:
+    for key, item in nomenclature:
         result.append(item)
         
     return convertor_factory.convert(result, str)

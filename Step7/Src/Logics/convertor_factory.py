@@ -1,5 +1,6 @@
 from Src.Logics.convertor_to_reference import convertor_to_reference
 from Src.Logics.convertor_to_json import convertor_to_json
+from Src.Logics.convertor_list_to_json import convertor_list_to_json
 
 #
 # Класс для конвертирования данных из одной структуры в другую
@@ -21,6 +22,10 @@ class convertor_factory:
         
         # Конвертор любого объекта в json
         convertor = convertor_to_json()
+        _convertors.append(convertor.get_convertor_matсh())
+        
+        # Конвертор массива в json
+        convertor = convertor_list_to_json()
         _convertors.append(convertor.get_convertor_matсh())
         
         return _convertors
@@ -45,6 +50,7 @@ class convertor_factory:
             raise Exception("Список конверторов пуст!")
         
         convertor_match = None
+        sort_convertors =  sorted(_convertors, key=lambda x: x.source_type ) 
         for item in _convertors:
             if (item.source_type == None or type(sourceObject) == item.source_type ) and toType ==  item.dest_type:
                 convertor_match = item

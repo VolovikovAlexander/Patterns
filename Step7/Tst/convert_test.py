@@ -51,6 +51,24 @@ class convert_test(unittest.TestCase):
         # Проверка
         print(result)
         assert result is not None
+        
+    #
+    # Попробовать сконвертировать в Json список
+    #    
+    def test_convert_list_to_json(self):
+        # Подготовка
+        source = nomenclature("test")
+        source.group = group_nomenclature("test")
+        items = []
+        items.append(source)
+        
+        # Действие
+        result =  convertor_factory.convert(items, str)
+        
+        # Проверка
+        print(result)
+        assert result is not None      
+            
                
       
         
