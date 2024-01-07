@@ -18,7 +18,22 @@ def get_nomenclature():
 
 @app.route('/groups')
 def get_nomenclature_groups():
+    """
+        Получить  список номенклатурных групп
+    Returns:
+        Json
+    """
     response = data_rest.response(nomenclature_factory._group_key, app)
+    return response
+
+@app.route('/units')
+def get_nomenclature_groups():
+    """
+        Получить  список единиц измерения
+    Returns:
+        Json
+    """
+    response = data_rest.response(nomenclature_factory._unit_key, app)
     return response
     
 
