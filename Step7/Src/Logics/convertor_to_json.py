@@ -32,23 +32,23 @@ class  convertor_to_json(convertor):
                 # Тип данных UUID
                 if isinstance(value, uuid.UUID):
                     attributes[field] = str(value.hex)
-                    break
+                    
                 
                 # Тип данных list
-                if isinstance(value, list):
+                elif isinstance(value, list):
                     items = []
                     for item in value:
                         items.append(convertor_to_json.to_dict(item))
 
                     attributes[field] = items
-                    break
                 
-                # Прочий тип данных
-                result = convertor_to_json.to_dict(value)  
-                if len(result) == 0:
-                    attributes[field] = value  
-                else:
-                    attributes[field] = result      
+                else:              
+                    # Прочий тип данных
+                    result = convertor_to_json.to_dict(value)  
+                    if len(result) == 0:
+                        attributes[field] = value  
+                    else:
+                        attributes[field] = result      
 
         return attributes    
     
