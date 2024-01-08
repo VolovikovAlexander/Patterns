@@ -1,0 +1,27 @@
+swagger: '2.0'
+info:
+  description: Набор сервисов для работы с системой финансового, складского и оперативного учета организации ООО "Ромашка"
+  version: "1.0.0"
+  title: RestAPI
+consumes:
+  - application/json
+produces:
+  - application/json  
+basePath: "/api"  
+paths:
+    /nomenclature:
+      get:
+        summary: Получить список номерклатуры
+        operationId: main.get_nomenclature
+        responses:
+          200:
+            description: OK
+            schema:
+              type: object
+              properties:
+                nomenclature:
+                  type: array
+                  items:
+                    type: string
+
+    

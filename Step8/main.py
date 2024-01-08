@@ -1,12 +1,12 @@
-from flask import Flask
 
 from Db.data_factory import data_factory
 from Src.Logics.nomenclature_factory import nomenclature_factory
 from Src.Logics.data_rest import data_rest
 from Src.settings import app_settings
-from Db.endpoints import blueprint as endpoints
 
-app = Flask(__name__)
+import connexion
+
+app = connexion.FlaskApp(__name__, specification_dir='./')
 settings = app_settings()
  
 
@@ -43,5 +43,5 @@ def get_nomenclature_units():
 if __name__ == "__main__":
     # Сформировать произвольный набор данных
     data_factory.create_nomenclature(settings.data["nomenclature_count"])
-    app.register_blueprint(endpoints, url_prefix='/swagger-ui')
-    app.run(debug=True)
+    app.add_api("swagger.yaml")
+    app.run()
