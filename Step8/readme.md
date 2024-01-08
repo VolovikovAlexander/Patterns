@@ -21,6 +21,8 @@ pip3 install flask-restplus
 pip3 install -U Flask
 ```
 
+3. Запуск: http://127.0.0.1:8000/api/ui/
+
 
 
 
