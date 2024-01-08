@@ -1,8 +1,8 @@
 
-from Db.data_factory import data_factory
 from Src.Logics.nomenclature_factory import nomenclature_factory
-from Src.Logics.data_rest import data_rest
+from Db.data_factory import data_factory
 from Src.settings import app_settings
+from Src.Logics.convertor_response import convertor_response
 
 import connexion
 
@@ -17,7 +17,7 @@ def get_nomenclature():
     Returns:
         Json: 
     """
-    response = data_rest.response(nomenclature_factory._nomenclature_key, app)
+    response = convertor_response.response(nomenclature_factory._nomenclature_key)
     return response
 
 @app.route('/nomenclature/groups', methods=['GET'])
@@ -27,7 +27,7 @@ def get_nomenclature_groups():
     Returns:
         Json
     """
-    response = data_rest.response(nomenclature_factory._group_key, app)
+    response = convertor_response.response(nomenclature_factory._group_key)
     return response
 
 @app.route('/nomenclature/units', methods=['GET'])
@@ -37,7 +37,7 @@ def get_nomenclature_units():
     Returns:
         Json
     """
-    response = data_rest.response(nomenclature_factory._unit_key, app)
+    response = convertor_response.response(nomenclature_factory._unit_key)
     return response
     
 if __name__ == "__main__":

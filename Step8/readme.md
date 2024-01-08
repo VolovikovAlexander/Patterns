@@ -23,6 +23,19 @@ pip3 install -U Flask
 
 3. Запуск: http://127.0.0.1:8000/api/ui/
 
+### Задания
+1. Добавить в swagger остальные методы: `get_nomenclature_groups`, `get_nomenclature_units`
+2. Добавить в swagger новые методы: [`получить историю операций`](https://github.com/VolovikovAlexander/Patterns/blob/main/Step8/Src/Models/nomenclature_history.py), [`получить баланс`](https://github.com/VolovikovAlexander/Patterns/blob/main/Step8/Src/Models/nomenclature_balance.py). 
+Метод должен работать с конкретным кодом номенклатуры.
+Пример: 
+https://github.com/VolovikovAlexander/Studies/blob/main/Yandex.Cloud/Main.py#L15
+
+
+
+#### Опционально
+- Создать документ с техническим описанием в формате `Markdown`. 
+В документе описать примеры. Дать краткое описание данной части проекта. 
+
 
 
 

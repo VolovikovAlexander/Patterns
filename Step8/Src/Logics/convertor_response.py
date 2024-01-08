@@ -1,5 +1,6 @@
 from Src.Logics.nomenclature_factory import nomenclature_factory
 from Src.Logics.convertor_factory import convertor_factory
+from connexion.lifecycle import ConnexionResponse
 
 
 #
@@ -8,7 +9,7 @@ from Src.Logics.convertor_factory import convertor_factory
 class data_rest:
     
     @staticmethod
-    def response( key : str, app):
+    def response( key : str):
         """
             Сформировать Json из набора данных содержащихся в объекте типа nomenclature_factory
         Args:
@@ -26,9 +27,6 @@ class data_rest:
         if key == "":
             raise Exception("Некорректно передан параметр!")
         
-        if app is None:
-            raise Exception("Некорректно передан параметр!")
-        
         # Формируем входящий набор данных
         result = []
         items  =  nomenclature_factory._storage.get(key)
@@ -43,10 +41,10 @@ class data_rest:
         result = convertor_factory.convert(result, str)
     
         # Формируем структуру ответа
-        response = app.response_class(
-            response=result,
-            status=200,
-            mimetype='application/json'
+        response = ConnexionResponse(
+            body=result,
+            status_code=200,
+            content_type='application/json'
         )
     
         return response
