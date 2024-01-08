@@ -29,7 +29,17 @@ pip3 install -U Flask
 Метод должен работать с конкретным кодом номенклатуры.
 Пример: 
 https://github.com/VolovikovAlexander/Studies/blob/main/Yandex.Cloud/Main.py#L15
-
+3. Добавить новую модель данных:  `Тип номенклатуры`. Варианты: 
+	- Ингредиент
+	- Товар
+	- Продукт
+4. Исправить классы: `nomenclature`,  `nomenclature_factory`. Добавить свойство `type`. Доработать метод:
+```
+  @staticmethod
+    def create_default_nomenclature(storage, name = "Новый"):
+```
+5. Доработать основной файл main.py. Добавить в swagger метод получения списка типов номенклатуры.
+ 
 
 
 #### Опционально

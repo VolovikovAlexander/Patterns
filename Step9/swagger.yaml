@@ -11,6 +11,8 @@ basePath: "/api"
 paths:
     /nomenclature:
       get:
+        tags:
+          - nomenclature
         summary: Получить список номерклатуры
         operationId: main.get_nomenclature
         responses:
@@ -23,5 +25,39 @@ paths:
                   type: array
                   items:
                     type: string
+
+    /nomenclature/groups:
+      get:
+        tags:
+          - nomenclature
+        summary: Получить список групп номерклатуры
+        operationId: main.get_nomenclature_groups
+        responses:
+          200:
+            description: OK
+            schema:
+              type: object
+              properties:
+                nomenclature:
+                  type: array
+                  items:
+                    type: string
+
+    /nomenclature/units:
+      get:
+        tags:
+          - nomenclature      
+        summary: Получить список единиц измерения
+        operationId: main.get_nomenclature_units
+        responses:
+          200:
+            description: OK
+            schema:
+              type: object
+              properties:
+                nomenclature:
+                  type: array
+                  items:
+                    type: string                    
 
     
