@@ -6,7 +6,7 @@ from connexion.lifecycle import ConnexionResponse
 #
 # Класс для формирования Json данных из исходного  набора содержащего в объекте типа nomenclature_factory
 #
-class data_rest:
+class convertor_response:
     
     @staticmethod
     def response( key : str):
