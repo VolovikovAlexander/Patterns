@@ -9,6 +9,16 @@ from datetime import timedelta, datetime
 # Фабрика для генерации набора данных
 #
 class data_factory:
+    
+    @staticmethod
+    def nomenclature():
+        """
+            Получить текущий список номенклатуры
+        Returns:
+            _type_: list
+        """
+        return nomenclature_factory._storage.get(nomenclature_factory._nomenclature_key)
+    
     @staticmethod
     def random_date(start, end):
         """
