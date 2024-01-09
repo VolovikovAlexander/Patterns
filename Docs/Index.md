@@ -52,7 +52,7 @@
 | 17  | - [Одиночка (Singletone)](../Step1/readme.md)                                                                  |
 | 18  | - Строитель (Builder)                                                                                          |
 | 19  | - Мост (Dridge)                                                                                                |
-| 20  | - Декоратор (Decorator)                                                                                        |
+| 20  | - [Декоратор (Decorator)](../Step9/readme.md)                                                                  |
 | 21  | - Адаптер (Adapter)                                                                                            |
 | 22  | - Заместитель (Proxy)                                                                                          |
 | 23  | - Итератор (Iterator)                                                                                          |
