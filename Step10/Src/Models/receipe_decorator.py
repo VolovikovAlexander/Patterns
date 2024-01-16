@@ -1,9 +1,9 @@
 from Src.reference import reference
 
 #
-# Модель рецепта
+# Модель рецепта - decorator
 #
-class receipe(reference):
+class receipe_decorator(reference):
     # Основная номенклатура   
     _nomenclature = None
     # Состав
