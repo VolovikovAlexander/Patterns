@@ -21,7 +21,9 @@
         items = list(filter(lambda x: x == nomenclature.id, self._ingrediens.keys()))
         if len(items) != 0:
             raise Exception("Указанная номенклатура уже включена в состав!") 
-```	
+```
+Пример: https://github.com/VolovikovAlexander/Patterns/blob/main/Step7/Tst/convert_test.py#L37
+	
 3. Добавить модульный тест с эмитацией включение одного рецепта в другой. При выполнении данного модульного теста добавить
 текстовое описание. Пример:
 ```
