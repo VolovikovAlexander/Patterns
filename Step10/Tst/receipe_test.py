@@ -1,4 +1,5 @@
 from Src.Models.receipe_decorator import receipe_decorator
+from Src.Models.receipe_item import receipe_item
 from Db.data_factory import data_factory
 
 
@@ -29,7 +30,12 @@ class receipe_test(unittest.TestCase):
         # Действие
         for number in range(2,6):
             ingredient = data_factory.nomenclature()[number]
-            item.add(ingredient[1])
+            row = receipe_item()
+            row.gross = 10
+            row.net = 8
+            row.nomenclature = ingredient[1]
+            
+            item.add(row)
             
         # Проверки
         assert item.is_empty == False            

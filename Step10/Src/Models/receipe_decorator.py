@@ -1,4 +1,5 @@
 from Src.reference import reference
+from Src.Models.receipe_item import receipe_item
 
 #
 # Модель рецепта - decorator
@@ -8,6 +9,11 @@ class receipe_decorator(reference):
     _nomenclature = None
     # Состав
     _ingrediens = {}
+    # Вес брутто
+    _gross = 0
+    # Вет нетто
+    _net = 0
+    
     
     def __init__(self, nomenclature):
         """
@@ -17,6 +23,46 @@ class receipe_decorator(reference):
         """
         self.nomenclature = nomenclature
         super().__init__(nomenclature.name)
+        
+    @property
+    def gross(self):
+        """
+            Вес брутто
+        Returns:
+            int : 
+        """
+        return self._gross
+    
+    @gross.setter
+    def gross(self, value: int):
+        if not isinstance(value, int):
+            raise Exception("Некорректно передан параметр!")
+        
+        if value < 0:
+            raise Exception("Некорректно передан параметр!")
+        
+        self._gross = value
+        
+    @property
+    def net(self):
+        """
+            Вет нетто
+        Returns:
+            int : 
+        """
+        return self._net
+    
+    @net.setter
+    def net(self, value: int):
+        if not isinstance(value, int):
+            raise Exception("Некорректно передан параметр!")
+        
+        if value < 0:
+            raise Exception("Некорректно передан параметр!")
+        
+        self._net = value
+            
+            
     
     @property
     def nomenclature(self):
@@ -56,28 +102,29 @@ class receipe_decorator(reference):
         
         return False    
         
-    def add(self, nomenclature: reference):
+    def add(self, value: receipe_item):
         """
-            Добавить в состав ингредиент
+            Добавить в состав ингредиент и его вес
         Args:
             nomenclature (reference): Новая номенклатура
 
         """
-        if nomenclature is None:
+        if value is None:
             raise Exception("Некорректно переданы параметры!")
         
-        if not isinstance(nomenclature,  reference):
+        if not isinstance(value,  receipe_item):
             raise Exception("Некорректный тип данных!")
         
-        if self._nomenclature.id == nomenclature.id:
+        if self._nomenclature.id == value.nomenclature.id:
             raise Exception("Невозможно добавить в состав номенклатуру совпадающую с основной номенклатурой!")
         
-        items = list(filter(lambda x: x == nomenclature.id, self._ingrediens.keys()))
+        items = list(filter(lambda x: x == value.nomenclature.id, self._ingrediens.keys()))
+
+        # TODO: В случае, если указанный ингредиент есть, то необходимо заменить брутто / нетто!
         if len(items) != 0:
             raise Exception("Указанная номенклатура уже включена в состав!") 
         
-        
-        self._ingrediens[nomenclature.id]  = nomenclature     
+        self._ingrediens[value.nomenclature.id]  = value     
         
     def delete(self, nomenclature: reference):
         """
