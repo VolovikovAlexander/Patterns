@@ -49,12 +49,21 @@ class reference(ABC):
     @property
     def id(self):
         " Уникальный код записи "
-        return self._id  
+        return self._id
+    
+    @id.setter
+    def id(self, value: uuid.UUID):
+        if value is None:
+            raise Exception("Некорректно указан уникальный код!")
+        
+        self._id = value 
 
     @property
     def is_error(self):
         " Флаг. Есть ошибка "
         return self._error.error != ""     
+    
+   
     
   
     

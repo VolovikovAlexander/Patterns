@@ -4,12 +4,15 @@ from Src.Models.convertor_match import convertor_match
 import json
 import uuid
 
+#
+# Конвертация любого объекта в словарь
+#
 class  convertor_to_json(convertor):
     
     @staticmethod     
     def to_dict(source):
-        """_summary_
-
+        """
+            Преобразовать любой объект в словарь
         Args:
             source (_type_): Любой объект любого типа
 
@@ -54,13 +57,13 @@ class  convertor_to_json(convertor):
     
     def convert(self, source):
         """
-        Производим конвертианию любого типа в указанный
+        Производим конвертианию любого типа в словарь (dict)
 
         Args:
-            dest (reference): Тип данных от класса reference
+            source (reference): Тип данных от класса reference
 
         Returns:
-            reference: Возвращает объект типа reference
+            Возвращает словарь (dict)
         """
         if not isinstance(source, reference):
             self.error = "Некорректный исходный тип для конвертиации данных!"

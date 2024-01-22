@@ -1,7 +1,9 @@
 from Src.Logics.nomenclature_factory import nomenclature_factory
 from Src.Models.nomenclature_history import nomenclature_history
+from Src.settings import app_settings
 
 import random
+import json
 from random import randrange
 from datetime import timedelta, datetime
 
@@ -9,7 +11,6 @@ from datetime import timedelta, datetime
 # Фабрика для генерации набора данных
 #
 class data_factory:
-    
     @staticmethod
     def nomenclature():
         """
@@ -36,22 +37,29 @@ class data_factory:
         return start + timedelta(seconds=random_second)
     
     @staticmethod
-    def create_nomenclature(length):
+    def create_nomenclature(settings: app_settings):
         """
             Сформировать список номенклатуры
         Args:
-            length (int): Количество записей    
-
-        Raises:
-            Exception: Количество указано не верно
+            settings (app_settings): Текущие настройки    
         """
-        if length <= 0:
-            raise Exception("Некорректно указано количество записей для генерации номенклатуры!")
+        
+        if settings is None:
+            raise Exception("Некорректно переданы параметры!")
+        
+        # Сериализуем номенклатуру
+        
         
         nomenclature_factory._storage = {}
-        for number in range(length):
-            name = f"Номенклатура {number + 1}"
-            nomenclature_factory.create_default_nomenclature(nomenclature_factory._storage, name)
+        list =  settings.data["nomenclature"]
+        if list is None:
+            raise Exception("Некорректно выполнены настройки. В файле settings.json нет данных по номенклатуре!")
+        
+        for item in list:
+            group = item["group"]
+            data  = json.loads(item)
+            
+            #nomenclature_factory.create_default_nomenclature(nomenclature_factory._storage, name)
             
     @staticmethod
     def create_history(length):

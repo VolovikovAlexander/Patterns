@@ -1,11 +1,15 @@
 import abc
 from Src.error_proxy import error_proxy
+from Src.Models.convertor_match import convertor_match
 
 
 #
 # Абстрактный класс для работы с конвертацией данных
 #
 class convertor(error_proxy):
+    # Внутренняя структура в которой храняться параметры конвертации
+    _convertor_math = None
+    
     @abc.abstractmethod
     def convert(self, dest):
         """
