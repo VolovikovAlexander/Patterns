@@ -1,6 +1,9 @@
 from Src.Logics.nomenclature_factory import nomenclature_factory
 from Src.Models.nomenclature_history import nomenclature_history
 from Src.settings import app_settings
+from Src.Logics.convertor_factory import convertor_factory
+from Src.reference import reference
+from Src.Models.nomenclature import nomenclature
 
 import random
 import json
@@ -47,19 +50,36 @@ class data_factory:
         if settings is None:
             raise Exception("Некорректно переданы параметры!")
         
-        # Сериализуем номенклатуру
-        
-        
+        # Очищаем старую структуру
         nomenclature_factory._storage = {}
+        
+        # Загружаем настройки
         list =  settings.data["nomenclature"]
         if list is None:
             raise Exception("Некорректно выполнены настройки. В файле settings.json нет данных по номенклатуре!")
         
-        for item in list:
-            group = item["group"]
-            data  = json.loads(item)
+        factory = convertor_factory()
+        
+        # Формируем объекты номенклатуры
+        for row in list:
+            # Обычные свойства
+            item = factory.convert(row, reference)
+            # Группа номенклатуры
+            group = factory.convert(row["group"],  reference)
+            # Единица измерения
+            unit = factory.convert(row["unit"], reference)
             
-            #nomenclature_factory.create_default_nomenclature(nomenclature_factory._storage, name)
+            element = nomenclature()
+            element.name = item.name
+            element.description = item.description
+            element.id = item.id
+            
+            element.group = group
+            element.unit = unit
+            
+            # Добавим элемент в хранилище
+            items = nomenclature_factory.add_nomenclature(element)
+            
             
     @staticmethod
     def create_history(length):

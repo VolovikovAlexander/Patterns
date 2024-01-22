@@ -20,40 +20,37 @@ class nomenclature_factory:
     " Ключ для агрегации номенклатуры "
     
     @staticmethod
-    def create_default_nomenclature(storage, name = "Новый"):
+    def add_nomenclature( item: nomenclature, storage = None):
         """
-            Сформировать карточку номенклатуры
+            Добавить в хранилище элемент номенклатуры
         Args:
-            storage (массив): nomenclature_factory._storage
-            name (str, optional): Наименование короткое номенклатуры . Defaults to "Новый".
-
-        Raises:
-            Exception: Некорректно параметры переданы
-
-        Returns:
-            Tuple(uuid, nomenclature)
+            storage (dict): Словарь_
+            item (nomenclature): Объект типа nomenclature
         """
+        if item is None:
+            raise Exception("Некорректно переданы параметры!")
         
-        if storage is None:
-            raise Exception("Некорректно паредан параметр storage!")
+        if not isinstance(item, nomenclature):
+            raise Exception("Некорректно переданы параметры!")
         
-        range_unit = nomenclature_factory.create_default_unit(storage)
-        range_group = nomenclature_factory.create_default_group(storage)
-
-        item = nomenclature(name)
-        item.group = range_group[1]
-        item.unit = range_unit[1]
-        result = (item.id, item)
-        
-        # Определяем группу по умолчанию
-        items = storage.get(nomenclature_factory._nomenclature_key)
-        if items is None:
-            storage[nomenclature_factory._nomenclature_key] = []
-           
-        storage[nomenclature_factory._nomenclature_key].append(result)     
+        # Определяем хранилище
+        _storage = None
+        if storage is not None:
+            _storage = storage
+        else:
+            _storage = nomenclature_factory._storage 
             
-        return result
-
+        if _storage is None:
+            raise Exception("Хранилище номенклатуры не определено!")
+        
+        items = _storage.get(nomenclature_factory._nomenclature_key)
+        if items is None:
+            _storage[nomenclature_factory._nomenclature_key] = []
+           
+        result = (item.id, item)    
+        _storage[nomenclature_factory._nomenclature_key].append(result)   
+        
+              
     @staticmethod
     def create_default_group(storage):
         " Фабричный метод: Создать группу номенклатуры по умолчанию"

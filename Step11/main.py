@@ -42,6 +42,6 @@ def get_nomenclature_units():
     
 if __name__ == "__main__":
     # Сформировать произвольный набор данных
-    data_factory.create_nomenclature(settings.data["nomenclature_count"])
+    data_factory.create_nomenclature(settings)
     app.add_api("swagger.yaml")
     app.run()

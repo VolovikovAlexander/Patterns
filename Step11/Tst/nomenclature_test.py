@@ -62,7 +62,7 @@ class nomenclature_test(unittest.TestCase):
         data_factory.create_nomenclature(self._settings)
         
         # Проверки%
-        assert len(data_factory.nomenclature) >  0    
+        assert len(data_factory.nomenclature()) >  0    
        
     
     

@@ -38,7 +38,10 @@ class  convertor_dict_to_reference(convertor):
             keys = list(filter(lambda x: x == field, source.keys()))
             if len(keys) != 0:
                 value = source[field]
-                setattr(item, field, value)
+                
+                # Если обычное свойство - заполняем.
+                if not isinstance(value, list) and not isinstance(value, dict):
+                    setattr(item, field, value)
                 
         return item        
         
