@@ -12,9 +12,10 @@ class reference(ABC):
     " Информация об ошибке "
     _error = error_proxy()
     
-    def __init__(self, name):
+    def __init__(self, name: str  = ""):
         self._id = uuid.uuid4()
-        self.name = name
+        if name != "":
+            self.name = name
     
     @property
     def name(self):

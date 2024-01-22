@@ -1,6 +1,7 @@
 from Src.Logics.convertor_to_reference import convertor_to_reference
 from Src.Logics.convertor_to_json import convertor_to_json
 from Src.Logics.convertor_list_to_json import convertor_list_to_json
+from Src.Logics.convertor_dict_to_reference import convertor_dict_to_reference
 from Src.Models.convertor_match  import convertor_match
 
 #
@@ -27,6 +28,10 @@ class convertor_factory:
         
         # Конвертор массива в json
         convertor = convertor_list_to_json()
+        _convertors.append(convertor.get_convertor_matсh())
+        
+        # Конвертор словарь в объект
+        convertor = convertor_dict_to_reference()
         _convertors.append(convertor.get_convertor_matсh())
         
         return _convertors
