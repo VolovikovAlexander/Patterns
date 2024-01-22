@@ -1,6 +1,5 @@
-from Src.Models.group_nomenclature import group_nomenclature
-from Src.Models.unit_nomenclature import unit_nomenclature
 from Src.Models.nomenclature import nomenclature
+from Src.reference import reference
 
 # 
 # Класс для создания различных элемиентов номенклатуры
@@ -19,6 +18,9 @@ class nomenclature_factory:
     _nomenclature_key = "nomenclature"
     " Ключ для агрегации номенклатуры "
     
+    #
+    # Добавить номенклутуру в хранилище
+    #
     @staticmethod
     def add_nomenclature( item: nomenclature, storage = None):
         """
@@ -46,43 +48,54 @@ class nomenclature_factory:
         items = _storage.get(nomenclature_factory._nomenclature_key)
         if items is None:
             _storage[nomenclature_factory._nomenclature_key] = []
-           
+            
+        # Добавляем   
         result = (item.id, item)    
-        _storage[nomenclature_factory._nomenclature_key].append(result)   
+        _storage[nomenclature_factory._nomenclature_key].append(result)  
+        
+        # Добавляем группу
+        nomenclature_factory.add_nomenclature_group(item.group, _storage)  
+        
+    #
+    # Добавить группу номенклатуры в хранилище
+    #    
+    @staticmethod    
+    def add_nomenclature_group(item: reference, storage = None):
+        """
+            Добавить в хранилище элемент группы номенклатуры
+        Args:
+            storage (dict): Словарь_
+            item (reference): Объект типа reference
+        """
+        if item is None:
+            raise Exception("Некорректно переданы параметры!")
+        
+        if not isinstance(item, reference):
+            raise Exception("Некорректно переданы параметры!")
+        
+        # Определяем хранилище
+        _storage = None
+        if storage is not None:
+            _storage = storage
+        else:
+            _storage = nomenclature_factory._storage 
+            
+        if _storage is None:
+            raise Exception("Хранилище номенклатуры не определено!")
+        
+        items = _storage.get(nomenclature_factory._group_key)
+        if items is None:
+            _storage[nomenclature_factory._group_key] = []
+            
+        
+        # Ищем элемент
+        found =  list(filter(lambda x: x == item.id, _storage[nomenclature_factory._group_key]))
+        if len(found) > 0:
+            _storage[nomenclature_factory._group_key].remove(found[0])
+            
+        # Добавляем   
+        result = (item.id, item)    
+        _storage[nomenclature_factory._group_key].append(result)   
+                
         
               
-    @staticmethod
-    def create_default_group(storage):
-        " Фабричный метод: Создать группу номенклатуры по умолчанию"
-        
-        if storage is None:
-            raise Exception("Некорректно паредан параметр storage!")
-        
-        group =   group_nomenclature("Ингредиенты")
-        result =  (group.id, group)   
-        
-        # Определяем группу по умолчанию
-        groups = storage.get(nomenclature_factory._group_key)
-        if groups is None:
-            storage[nomenclature_factory._group_key] = []
-            storage[nomenclature_factory._group_key].append(result)
-            
-        return result   
-    
-    @staticmethod
-    def create_default_unit(storage):
-        " Фабричный метод: Создать единицу измерения по умолчанию"
-        if storage is None:
-            raise Exception("Некорректно паредан параметр storage!")
-        
-        unit = unit_nomenclature("кг")
-        unit.description = "1 Кг (1000 грамм)"
-        result = (unit.id, unit)
-        
-        # Единицу измерения
-        units = storage.get(nomenclature_factory._unit_key)    
-        if units is None:
-            storage[nomenclature_factory._unit_key] = []
-            storage[nomenclature_factory._unit_key].append(result)
-            
-        return result
