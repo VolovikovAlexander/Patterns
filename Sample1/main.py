@@ -1,5 +1,5 @@
-
 import time, math
+
 
 cal_ID = 0
 
@@ -124,7 +124,7 @@ class MonthlyCalendar:
         if content != '&nbsp;' and cls.lower().find('day') != -1:
             link = self.link
 
-            if self.specDays.has_key(content):
+            if len(self.specDays) > 0:
                 if self.specDays[content][0]:
                     style += 'background-color:' + self.specDays[content][0] + ';'
                 if self.specDays[content][1]:
@@ -238,3 +238,14 @@ class MonthlyCalendar:
                 html += '</tr>'
             html += '</table></td></tr></table>'
         return html
+
+
+if __name__ == "__main__":
+    filepath = "calendar.html"
+    calendar = MonthlyCalendar()
+    body = calendar.create()
+    html = f"<!DOCTYPE html><html><body>{body}</body></html>"
+    file = open(filepath, "w")
+    file.write(html)
+    file.close()
+    
