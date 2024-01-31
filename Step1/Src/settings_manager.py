@@ -4,16 +4,16 @@ import uuid
 
 
 #
-# Класс для работы с настройками
+# Класс для работы загрузки настроек
 #
-class app_settings(object):
+class settings_manager(object):
     settings_file_name = "settings.json"
     _data = None
     _uniqueNumber = None
     
     def __new__(cls):
         if not hasattr(cls, 'instance'):
-            cls.instance = super(app_settings, cls).__new__(cls)
+            cls.instance = super(settings_manager, cls).__new__(cls)
         return cls.instance  
       
 

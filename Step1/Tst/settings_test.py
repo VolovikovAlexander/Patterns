@@ -1,4 +1,4 @@
-from Src.settings import app_settings 
+from Src.settings_manager import settings_manager 
 import unittest
 
 
@@ -12,12 +12,14 @@ class settings_test(unittest.TestCase):
     #
     def test_create_app_settings(self):
         # Подготовка
-        settings = app_settings()
+        settings = settings_manager()
 
         # Действие
         result = settings.data
 
         # Проверки
+        print( settings.data)
+        print(type(settings.data))
         assert result is not None
         
     #
@@ -25,8 +27,8 @@ class settings_test(unittest.TestCase):
     #    
     def test_double_create_app_setting(self):
         # Подготовка
-        settings1 = app_settings()
-        settings2 = app_settings()
+        settings1 = settings_manager()
+        settings2 = settings_manager()
         
         # Действие
         
