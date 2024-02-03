@@ -9,7 +9,7 @@ from Src.settings import settings
 # Менеджер настроек
 #   
 class settings_manager(object):
-    # Найименование файла по умолчанию
+    # Наименование файла по умолчанию
     _settings_file_name = "settings.json"
     # Словарь с исходными данными
     _data = None
