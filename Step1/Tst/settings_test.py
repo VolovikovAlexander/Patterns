@@ -12,30 +12,32 @@ class settings_test(unittest.TestCase):
     #
     def test_create_app_settings(self):
         # Подготовка
-        settings = settings_manager()
+        manager = settings_manager()
 
         # Действие
-        result = settings.data
+        result = manager.data
 
         # Проверки
-        print( settings.data)
-        print(type(settings.data))
+        print(manager.data)
+        print(type(manager.data))
         assert result is not None
+        assert manager.settings.inn > 0
+        assert manager.settings.short_name != ""
         
     #
     # Проверить тип создания объекта как singletone
     #    
     def test_double_create_app_setting(self):
         # Подготовка
-        settings1 = settings_manager()
-        settings2 = settings_manager()
+        manager1 = settings_manager()
+        manager2 = settings_manager()
         
         # Действие
         
         # Проверки
-        print(settings1._uniqueNumber)
-        print(settings2._uniqueNumber)
-        assert settings1._uniqueNumber == settings2._uniqueNumber
+        print(manager1._uniqueNumber)
+        print(manager2._uniqueNumber)
+        assert manager1._uniqueNumber == manager2._uniqueNumber
         
         
             
