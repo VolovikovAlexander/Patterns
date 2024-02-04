@@ -1,25 +1,25 @@
-from abc import ABC
-
 #
 # Класс для обработки и хранения текстовой информации об ошибке
 #
-class error_proxy(ABC):
+class error_proxy:
     " Текст с описание ошибки "
     _error_text = ""
     
     def __init__(self, exception: Exception = None):
-        super().__init__()
         if exception is not None:
             self.set_error(exception)
     
     @property
     def error(self):
-        " Получить текстовое описание ошибки "
+        """
+            Получить текстовое описание ошибки
+        Returns:
+            str: _description_
+        """
         return self._error_text
     
     @error.setter
     def error(self, value: str):
-        " Записать текстовое описание ошибки "
         if value == "":
             raise Exception("Некорректно переданы параметры!")
             
@@ -27,11 +27,27 @@ class error_proxy(ABC):
         
     @classmethod
     def set_error(self, exception: Exception):
-        " Записать текстовое описание ошибки по исключению"
+        """
+            Сохранить текстовое описание ошибки из исключения
+        Args:
+            exception (Exception): входящее исключение
+        """
+        
         if exception  is None:
             self._error_text = ""
+            return
             
         self._error_text = "Ошибка! " + str(exception)    
             
-            
+    @property        
+    def is_empty(self) -> bool:
+        """
+            Флаг. Есть ошибка
+        Returns:
+            bool: _description_
+        """
+        if len(self._error_text) != 0:
+            return False
+        else:
+            return True         
             
