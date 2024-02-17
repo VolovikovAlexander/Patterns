@@ -1,5 +1,4 @@
-from Src.error_proxy import error_proxy 
-from Src.operation_exception import operation_exception
+from Src.errors import error_proxy 
 import unittest
 
 #
