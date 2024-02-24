@@ -7,7 +7,7 @@ import unittest
 
 #
 # Набор автотестов для проверки работы фабричного метода
-# #
+# 
 class factory_test(unittest.TestCase):
 
     #
@@ -25,14 +25,39 @@ class factory_test(unittest.TestCase):
     # 
     # Проверка создание начальной номенклатуры
     #    
-    def test_check_create_nomenclature(self):
+    def test_check_create_nomenclatures(self):
         # Подготовка
-        items = start_factory.create_nomenclature()
+        items = start_factory.create_nomenclatures()
         
         # действие
         
         # Прверки
         assert len(items) > 0 
+        
+        
+    #
+    # Проверка создание списка единиц измерения
+    #    
+    def test_check_create_units(self):
+        # Подготовка
+        items = start_factory.create_units()
+        
+        # Действие
+        
+        # Проверки
+        assert len(items) > 0    
+     
+    #
+    # Проверка создания списка групп
+    # 
+    def test_check_create_groups(self):
+        # Подготовка
+        items = start_factory.create_groups()
+        
+        # Действие
+        
+        # Проверки    
+        assert len(items) > 0
         
         
     #      
@@ -50,11 +75,10 @@ class factory_test(unittest.TestCase):
         
         # Проверка
         if manager.settings.is_first_start == True:
-            assert len(result) > 0
+            assert result == True
             assert not factory.storage is None
             assert storage.nomenclature_key in factory.storage.data
         
-        assert len(result) == 0   
                      
         
        

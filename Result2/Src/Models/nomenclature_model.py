@@ -8,6 +8,22 @@ class nomenclature_model(reference):
     " Единица измерения "
     _unit = None
     
+    
+    def __init__(self, name:str, group: reference = None, unit: reference = None):
+        """_summary_
+
+        Args:
+            name (str): Наименование
+            group (reference): Группа
+            unit (reference): Единица измерения
+        """
+        exception_proxy.validate(group, reference)
+        exception_proxy.validate(unit, reference)
+        
+        self._group = group
+        self._unit = unit
+        super().__init__(name)
+    
     @property
     def group(self):
         " Группа номенклатуры "

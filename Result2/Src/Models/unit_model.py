@@ -57,10 +57,12 @@ class unit_model(reference):
         self.__coefficient = value  
         
         
+    # Фабричные методы    
+        
     @staticmethod    
     def create_gram():
         """
-            Создать единицу измерения грамм
+            Создать единицу измерения - грамм
 
         Returns:
             _type_: _description_
@@ -71,13 +73,43 @@ class unit_model(reference):
     @staticmethod
     def create_killogram():
         """
-            Создать единицу килограмм
+            Создать единицу измерения - киллограмм
         Returns:
             _type_: _description_
         """
         base = unit_model.create_gram()
         item = unit_model("киллограмм", base, 1000)
         return item
+    
+    @staticmethod
+    def create_ting():
+        """
+            Создать единицу изменения - штуки
+        Returns:
+            _type_: _description_
+        """
+        return unit_model("штука")
+    
+    def create_milliliter():
+        """
+            Создать единицу измерения - миллилитр
+        Returns:
+            _type_: _description_
+        """
+        return unit_model("миллилитр")
+    
+    def create_liter():
+        """
+            Создать единицу измерения - литр
+        Returns:
+            _type_: _description_
+        """
+        base = unit_model.create_milliliter()
+        item = unit_model("литр", base, 1000)
+        return item
+    
+    
+
         
         
         
