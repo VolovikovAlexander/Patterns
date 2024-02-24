@@ -93,8 +93,9 @@ class start_factory:
         result = []
         
         for position in items:
-            name   = next(position.keys().__iter__())
-            unit_name = next(position.values().__iter__() )
+            tuple = list(position.items())[0]
+            name   = tuple[0]
+            unit_name = tuple[1]
             
             if not unit_name in units.keys():
                 raise operation_exception(f"Невозможно найти в списке указанную единицу измерения {unit_name}!")
