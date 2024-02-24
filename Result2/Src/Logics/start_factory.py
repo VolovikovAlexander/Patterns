@@ -9,7 +9,7 @@ from Src.Models.receipe_row_model import receipe_row_model
 # Системное
 from Src.settings import settings
 from Src.Storage.storage import storage
-from Src.exceptions import exception_proxy, operation_exception
+from Src.exceptions import exception_proxy, operation_exception, argument_exception
 
 #
 # Класс для обработки данных. Начало работы приложения
@@ -130,72 +130,17 @@ class start_factory:
         items.append( group_model.create_default_group())
         return items         
     
-    @staticmethod
-    def create_receipt(name: str, comments: str, items: list) -> receipe_model:
-        """
-
-        Args:
-            name (str): Наименование рецепта
-            comments (str): Приготовление
-            items (list): Состав
-
-        Raises:
-            operation_exception: _description_
-            operation_exception: _description_
-
-        Returns:
-            receipe_model: _description_
-        """
-        exception_proxy.validate(name, str)
-        
-        
-        # Подготовим словарь со списком номенклатуры
-        data = start_factory.create_nomenclatures()
-        nomenclatures = reference.create_dictionary(data)    
-                
-        receipt = receipe_model(name)
-        
-        for position in items:
-            # Получаем список кортежей и берем первое значение
-            _list =  list(position.items())
-            if len(_list) < 1:
-                raise operation_exception("Невозможно сформировать элементы рецепта! Некорректный список исходных элементов!")
-            
-            tuple = list(_list)[0]
-            if len(tuple) < 2:
-                raise operation_exception("Невозможно сформировать элемент рецепта. Длина кортежа не корректна!")
-            
-            nomenclature_name = tuple[0]
-            size = tuple[1]
-            
-            # Определеяем номенклатура
-            keys = list(filter(lambda x: x == nomenclature_name, nomenclatures.keys() ))
-            if len(keys) == 0:
-                raise operation_exception(f"Некоректно передан список. Не найдена номенклатура {nomenclature_name}!")
-            
-            nomenclature = nomenclatures[nomenclature_name]
-            
-            # Определяем единицу измерения
-            if nomenclature.unit.base_unit is None:
-                unit = nomenclature.unit
-            else:
-                unit = nomenclature.unit.base_unit    
-            
-            # Создаем запись в рецепте
-            row = receipe_row_model(nomenclature, size, unit)
-            receipt.add(row)
-        
-        return receipt
     
     @staticmethod
     def create_receipts():
         result = []
+        data = start_factory.create_nomenclatures()
         
         # ВАФЛИ ХРУСТЯЩИЕ В ВАФЕЛЬНИЦЕ
         items = [ {"Мука пшеничная": 100}, {"Сахар": 80}, {"Сливочное масло": 70},
                   {"Яйца": 1} , {"Ванилин": 5 }
                 ]
-        result.append( start_factory.create_receipt("ВАФЛИ ХРУСТЯЩИЕ В ВАФЕЛЬНИЦЕ", "", items))
+        result.append( receipe_model.create_receipt("ВАФЛИ ХРУСТЯЩИЕ В ВАФЕЛЬНИЦЕ", "", items, data))
         
         # Цезарь с курицей
         items = [ {"Куриное филе": 200}, {"Салат Романо": 50}, {"Сыр Пармезан": 50},
@@ -203,16 +148,15 @@ class start_factory:
                   {"Оливковое масло": 10}, {"Лимонный сок": 5}, {"Горчица дижонская": 5},
                   {"Яйца": 2}
                 ]
-        result.append( start_factory.create_receipt("Цезарь с курицей", "", items))
+        result.append( receipe_model.create_receipt("Цезарь с курицей", "", items, data))
         
         # Безе
         items = [ {"Яйца": 3}, {"Сахарная пудра":180}, {"Ванилиин" : 5}, {"Корица": 5} ,{"Какао": 20} ]
-        result.append( start_factory.create_receipt("Безе", "", items))
+        result.append( receipe_model.create_receipt("Безе", "", items, data))
         return result
         
     
     # Основной метод
-    
     def create(self) -> bool:
         """
            В зависимости от настроек, сформировать или загрузить набор данных
