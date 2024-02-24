@@ -22,6 +22,18 @@ class factory_test(unittest.TestCase):
         # Проверки
         assert unit is not None
         
+    #
+    # Проверка создания начальных рецептов
+    #    
+    def test_check_create_receipts(self):
+        # Подготовка
+        items = start_factory.create_receipts()
+        
+        # Действие
+        
+        # Проверки
+        assert len(items) > 0     
+        
     # 
     # Проверка создание начальной номенклатуры
     #    

@@ -42,7 +42,6 @@ class reference(ABC):
         exception_proxy.validate( value.strip(), str)
         self._description = value.strip()
         
-        
     @property
     def id(self):
         " Уникальный код записи "
@@ -51,7 +50,22 @@ class reference(ABC):
     @property
     def is_error(self):
         " Флаг. Есть ошибка "
-        return self._error.error != ""     
+        return self._error.error != ""  
+    
+    @staticmethod
+    def create_dictionary(items: list):
+        """
+            Сформировать словарь из списка элементов reference 
+        Args:
+            items (list): _description_
+        """
+        exception_proxy.validate(items, list)
+        
+        result = {}
+        for position in items:
+            result[ position.name ] = position
+           
+        return result   
     
     
                 

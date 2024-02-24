@@ -2,6 +2,9 @@
 from Src.Models.group_model import group_model
 from Src.Models.unit_model import unit_model
 from Src.Models.nomenclature_model import nomenclature_model
+from Src.reference import reference
+from Src.Models.receipe_model import receipe_model
+from Src.Models.receipe_row_model import receipe_row_model
 
 # Системное
 from Src.settings import settings
@@ -89,12 +92,9 @@ class start_factory:
                   {"Какао": "киллограмм"}]
         
         # Подготовим словарь со список единиц измерения
-        units = {}
-        for position in start_factory.create_units():
-            units[ position.name ] = position
+        units = reference.create_dictionary(start_factory.create_units())
         
         result = []
-        
         for position in items:
             # Получаем список кортежей и берем первое значение
             _list =  list(position.items())
@@ -131,12 +131,76 @@ class start_factory:
         return items         
     
     @staticmethod
+    def create_receipt(name: str, comments: str, items: list) -> receipe_model:
+        """
+
+        Args:
+            name (str): Наименование рецепта
+            comments (str): Приготовление
+            items (list): Состав
+
+        Raises:
+            operation_exception: _description_
+            operation_exception: _description_
+
+        Returns:
+            receipe_model: _description_
+        """
+        exception_proxy.validate(name, str)
+        
+        
+        # Подготовим словарь со списком номенклатуры
+        data = start_factory.create_nomenclatures()
+        nomenclatures = reference.create_dictionary(data)    
+                
+        receipt = receipe_model(name)
+        
+        for position in items:
+            # Получаем список кортежей и берем первое значение
+            _list =  list(position.items())
+            if len(_list) < 1:
+                raise operation_exception("Невозможно сформировать элементы рецепта! Некорректный список исходных элементов!")
+            
+            tuple = list(_list)[0]
+            if len(tuple) < 2:
+                raise operation_exception("Невозможно сформировать элемент рецепта. Длина кортежа не корректна!")
+            
+            nomenclature_name = tuple[0]
+            size = tuple[1]
+            
+            # Определеяем номенклатура
+            keys = list(filter(lambda x: x == nomenclature_name, nomenclatures.keys() ))
+            if len(keys) == 0:
+                raise operation_exception(f"Некоректно передан список. Не найдена номенклатура {nomenclature_name}!")
+            
+            nomenclature = nomenclatures[nomenclature_name]
+            
+            # Определяем единицу измерения
+            if nomenclature.unit.base_unit is None:
+                unit = nomenclature.unit
+            else:
+                unit = nomenclature.unit.base_unit    
+            
+            # Создаем запись в рецепте
+            row = receipe_row_model(nomenclature, size, unit)
+            receipt.add(row)
+        
+        return receipt
+    
+    @staticmethod
     def create_receipts():
-        pass
+        items = [ {"Мука пшеничная": 100}, {"Сахар": 80}, {"Сливочное масло": 70},
+                  {"Яйца": 1} , {"Ванилин": 5 }
+                ]
+        result = []
+        
+        result.append( start_factory.create_receipt("ВАФЛИ ХРУСТЯЩИЕ В ВАФЕЛЬНИЦЕ", "", items))
+        return result
+        
     
     # Основной метод
     
-    def create(self):
+    def create(self) -> bool:
         """
            В зависимости от настроек, сформировать или загрузить набор данных
         Returns:
