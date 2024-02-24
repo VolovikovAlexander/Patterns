@@ -93,13 +93,24 @@ class start_factory:
         result = []
         
         for position in items:
-            tuple = list(position.items())[0]
+            # Получаем список кортежей и берем первое значение
+            _list =  list(position.items())
+            if len(_list) < 1:
+                raise operation_exception("Невозможно сформировать элементы номенклатуры! Некорректный список исходных элементов!")
+            
+            tuple = list(_list)[0]
+            
+            # Получаем неименование номенклатуры и единицы измерения
+            if len(tuple) < 2:
+                raise operation_exception("Невозможно сформировать элемент номенклатуры. Длина кортежа не корректна!")
+            
             name   = tuple[0]
             unit_name = tuple[1]
             
             if not unit_name in units.keys():
                 raise operation_exception(f"Невозможно найти в списке указанную единицу измерения {unit_name}!")
             
+            # Создаем объект - номенклатура
             item = nomenclature_model( name, group, units[unit_name])
             result.append(item)
           
