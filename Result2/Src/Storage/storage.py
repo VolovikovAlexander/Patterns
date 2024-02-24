@@ -28,7 +28,7 @@ class storage:
         Returns:
             _type_: _description_
         """
-        return "nomenclature"
+        return "nomenclatures"
 
   
     @staticmethod
@@ -38,7 +38,7 @@ class storage:
         Returns:
             _type_: _description_
         """
-        return "group"
+        return "groups"
       
       
 
@@ -49,5 +49,14 @@ class storage:
         Returns:
             _type_: _description_
         """
-        return "unit"
+        return "units"
+    
+    @staticmethod
+    def receipt_key():
+        """
+            Список рецептов
+        Returns:
+            _type_: _description_
+        """
+        return "receipts"
     

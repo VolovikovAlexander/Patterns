@@ -1,6 +1,9 @@
+# Модели
 from Src.Models.group_model import group_model
 from Src.Models.unit_model import unit_model
 from Src.Models.nomenclature_model import nomenclature_model
+
+# Системное
 from Src.settings import settings
 from Src.Storage.storage import storage
 from Src.exceptions import exception_proxy, operation_exception
@@ -127,6 +130,12 @@ class start_factory:
         items.append( group_model.create_default_group())
         return items         
     
+    @staticmethod
+    def create_receipts():
+        pass
+    
+    # Основной метод
+    
     def create(self):
         """
            В зависимости от настроек, сформировать или загрузить набор данных
@@ -147,6 +156,10 @@ class start_factory:
             # 3. Формируем и запоминаем группы номенклатуры
             items = start_factory.create_groups()
             self.__save( storage.group_key(), items)
+            
+            # 4. Формируем и запоминаем рецепты
+            items = start_factory.create_receipts()
+            self.__save( storage.receipt_key(), items)
            
         else:
             # Другой вариант. Загрузка из источника данных    
