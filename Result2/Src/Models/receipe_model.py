@@ -13,8 +13,13 @@ class receipe_model(reference):
     _netto: int = 0
 
     # Состав рецепта
-    _rows = {}    
+    _rows = list()
     
+    # Инструкции
+    _instructions = list()
+    
+    # Описание
+    _comments: str = ""
     
     def add(self, row: receipe_row_model):
         """
@@ -62,6 +67,30 @@ class receipe_model(reference):
         exception_proxy.validate(value, int)
         
         self._netto = value
+        
+    @property    
+    def instructions(self):
+        """
+           Инструкции для приготовления
+        Returns:
+            _type_: _description_
+        """
+        return self._instructions  
+    
+    @property
+    def comments(self):
+        return self._comments
+    
+      
+    @comments.setter
+    def comments(self, value: str):
+        """
+            Описание блюда
+        Args:
+            value (str): _description_
+        """
+        exception_proxy.validate(value, str)
+        self._comments = value   
     
     
     @staticmethod
