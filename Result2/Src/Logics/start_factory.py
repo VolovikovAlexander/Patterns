@@ -130,7 +130,6 @@ class start_factory:
         items.append( group_model.create_default_group())
         return items         
     
-    
     @staticmethod
     def create_receipts():
         result = []
