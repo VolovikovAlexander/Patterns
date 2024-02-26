@@ -220,13 +220,14 @@ class start_factory:
             # 4. Формируем и запоминаем группы номенклатуры
             items = start_factory.create_groups()
             self.__save( storage.group_key(), items)
+            return True
            
            
         else:
             # Другой вариант. Загрузка из источника данных    
-
+            return False
         
-         return True
+        
     
         
         
