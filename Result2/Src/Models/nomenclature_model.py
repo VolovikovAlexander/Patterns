@@ -17,11 +17,15 @@ class nomenclature_model(reference):
             group (reference): Группа
             unit (reference): Единица измерения
         """
-        exception_proxy.validate(group, reference)
-        exception_proxy.validate(unit, reference)
         
-        self._group = group
-        self._unit = unit
+        if not group is None:
+            exception_proxy.validate(group, reference)
+            self._group = group
+            
+        if not unit is None:  
+            exception_proxy.validate(unit, reference)  
+            self._unit = unit
+            
         super().__init__(name)
     
     @property

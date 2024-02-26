@@ -13,7 +13,7 @@ class receipe_model(reference):
     _netto: int = 0
 
     # Состав рецепта
-    _rows = list()
+    _rows = {}
     
     # Инструкции
     _instructions = list()

@@ -11,18 +11,6 @@ import unittest
 class factory_test(unittest.TestCase):
 
     #
-    # Проверка создания ед. измерения
-    #
-    def test_check_factory(self):
-        # Подготовка
-        unit = unit_model.create_killogram()
-        
-        # Действие
-        
-        # Проверки
-        assert unit is not None
-        
-    #
     # Проверка создания начальных рецептов
     #    
     def test_check_create_receipts(self):
@@ -73,9 +61,9 @@ class factory_test(unittest.TestCase):
         
         
     #      
-    # Проверка работы класса start_factory
+    # Проверка работы класса start_factory. Метод create
     #
-    def test_check_start_factor(self):
+    def test_check_factory_create(self):
         # Подготовка
         manager = settings_manager()
         factory = start_factory( manager.settings )
@@ -90,6 +78,9 @@ class factory_test(unittest.TestCase):
             assert result == True
             assert not factory.storage is None
             assert storage.nomenclature_key in factory.storage.data
+            assert storage.receipt_key in factory.storage.data
+            assert storage.group_key in factory.storage.data
+            assert storage.unit_key in factory.storage.data
         
                      
         
