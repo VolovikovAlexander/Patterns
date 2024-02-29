@@ -49,7 +49,7 @@ class storage:
         Returns:
             _type_: _description_
         """
-        return "units"
+        return "unit_model"
     
     @staticmethod
     def receipt_key():

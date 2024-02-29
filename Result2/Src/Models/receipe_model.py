@@ -21,6 +21,11 @@ class receipe_model(reference):
     # Описание
     _comments: str = ""
     
+    def  rows_ids(self):
+        result = []
+        for item in self._rows:
+            result.append(item.value.id)
+    
     def add(self, row: receipe_row_model):
         """
             Добавить/ изменить состав блюда
