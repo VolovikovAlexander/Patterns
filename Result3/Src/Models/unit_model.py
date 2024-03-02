@@ -23,13 +23,14 @@ class unit_model(reference):
         
     
     @property
-    def base_unit(self):
+    def base_unit(self) -> reference:
         """
             Базовая единица измерения
         Returns:
             _type_: _description_
         """
         return self.__base_unit
+    
     
     
     @base_unit.setter

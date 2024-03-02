@@ -1,6 +1,7 @@
 from abc import ABC
 from Src.settings import settings
 from Src.exceptions import exception_proxy, operation_exception
+from Src.reference import reference
 
 
 #
@@ -64,7 +65,7 @@ class reporting(ABC):
             raise operation_exception("Набор данных пуст!")
         
         item = data[typeKey][0]
-        result = list(filter(lambda x: not x.startswith("_") and not x.startswith("create_")  , dir(item)))
+        result = list(filter(lambda x: not x.startswith("_") and not x.startswith("create_") , dir(item)))
        
         return result    
     
