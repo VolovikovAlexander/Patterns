@@ -1,28 +1,33 @@
 from Src.Logics.reporting import reporting
 from Src.exceptions import operation_exception
 
-
-#
-# Класс - реализация построение данных в формате csv
-#
-class csv_reporting(reporting):
+class markdown_reporting(reporting):
     
-    def create(self, typeKey: str):
+      def create(self, typeKey: str):
         super().create(typeKey)
-        result = ""
-        delimetr = ";"
+        result = []
 
         # Исходные данные
         items = self.data[ typeKey ]
         if items == None:
             raise operation_exception("Невозможно сформировать данные. Данные не заполнены!")
         
+        
         if len(items) == 0:
             raise operation_exception("Невозможно сформировать данные. Нет данных!")
         
-        # Заголовок 
-        header = delimetr.join(self.fields)
-        result += f"{header}\n"
+        # Заголовок
+        result.append(f"# {typeKey}")
+        
+        # Шапка таблицы
+        header = ""
+        line = ""
+        for field in self.fields:
+            header += f"|{field}"
+            line += "|--"
+        
+        result.append(f"{header}|")
+        result.append(f"{line}|")
         
         # Данные
         for item in items:
@@ -32,13 +37,7 @@ class csv_reporting(reporting):
                 if value is None:
                     value = ""
                     
-                row +=f"{value}{delimetr}"
-                
-            result += f"{row[:-1]}\n"
+                row +=f"|{value}"    
+            result.append(f"{row}|")
             
-        
-        # Результат csv
-        return result
-        
-        
-        
+        return "\n".join(result)        
