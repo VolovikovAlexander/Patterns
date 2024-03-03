@@ -1,2 +1,0 @@
-description;group;id;is_error;name;unit
-Ингредиент для салата;89caa9e9cc1a4e099a639e3a93850446;a10b9129297045398f7b662b9de20464;True;Тушка бройлера;4869a595b78a4f6fa26726078a860a22

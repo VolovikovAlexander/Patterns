@@ -79,7 +79,7 @@ class reporting_test(unittest.TestCase):
         assert result is not None
         assert len(result) > 0
            
-        file = open("csv_report.md", "w")
+        file = open("csv_report.csv", "w")
         file.write(result)
         file.close()
         
