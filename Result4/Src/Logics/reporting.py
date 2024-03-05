@@ -18,7 +18,6 @@ class reporting(ABC):
         """
 
         Args:
-            _setting (settings): Настройки
             _data (_type_): Словарь с данными
         """
         

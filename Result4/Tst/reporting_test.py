@@ -6,8 +6,6 @@ from Src.Logics.csv_reporting import csv_reporting
 from Src.Models.nomenclature_model import nomenclature_model
 from Src.Models.group_model import group_model
 from Src.Logics.markdown_reporting import markdown_reporting
-from Src.settings import settings
-from Src.Logics.report_factory import report_factory
 
 
 class reporting_test(unittest.TestCase):
@@ -108,34 +106,3 @@ class reporting_test(unittest.TestCase):
         file.write(result)
         file.close()
         
-        
-    #
-    # Проверить работу фабрики
-    #    
-    def test_check_report_factory(self):
-        # Подготовка
-        options =  settings()
-        options.report_mode = "csv"
-        factory = report_factory(options)
-       
-       
-        data = {}
-        list = []
-        
-        unit = unit_model.create_killogram()
-        group = group_model.create_default_group()
-        item = nomenclature_model("Тушка бройлера", group, unit )
-        item.description = "Ингредиент для салата"
-        list.append(item)
-        
-        key = storage.nomenclature_key()
-        data[  key  ] = list 
-        
-        # Действие
-        report =  factory.create( data )
-        
-        # Проверка
-        assert report is not None    
-        result = report.create( key )
-        print(result) 
-            

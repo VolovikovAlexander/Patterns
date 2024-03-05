@@ -2,6 +2,7 @@ from Src.Models.unit_model import unit_model
 from Src.Logics.start_factory import start_factory
 from Src.settings_manager import settings_manager
 from Src.Storage.storage import storage
+from Src.Logics.report_factory import report_factory
 
 import unittest
 
@@ -10,6 +11,27 @@ import unittest
 # 
 class factory_test(unittest.TestCase):
 
+    #
+    # Проверка работы фабрики для построения отчетности
+    #
+    def test_check_report_factory_create(self):
+        # Подготовка
+        manager = settings_manager()
+        start = start_factory( manager.settings )
+        start.create()
+        factory = report_factory()
+        key = storage.unit_key()
+        
+        # Действие
+        result = factory.create( manager.settings.report_mode, start.storage.data)
+        
+        # Проверки
+        assert result is not None
+        report = result.create( key )
+        print(report)
+        assert len(report ) > 0
+        
+ 
     #
     # Проверка создания начальных рецептов
     #    
@@ -77,10 +99,10 @@ class factory_test(unittest.TestCase):
         if manager.settings.is_first_start == True:
             assert result == True
             assert not factory.storage is None
-            assert storage.nomenclature_key in factory.storage.data
-            assert storage.receipt_key in factory.storage.data
-            assert storage.group_key in factory.storage.data
-            assert storage.unit_key in factory.storage.data
+            assert storage.nomenclature_key() in factory.storage.data
+            assert storage.receipt_key() in factory.storage.data
+            assert storage.group_key() in factory.storage.data
+            assert storage.unit_key() in factory.storage.data
         else:
             assert result == False    
         

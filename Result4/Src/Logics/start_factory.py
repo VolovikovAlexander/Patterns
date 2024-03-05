@@ -203,10 +203,8 @@ class start_factory:
             _type_: _description_
         """
         if self.__oprions.is_first_start == True:
-            self.__oprions.is_first_start = False
-            
             # 1. Формируем и зпоминаем номеклатуру
-            items = start_factory.create_nomenclature()
+            items = start_factory.create_nomenclatures()
             self.__save( storage.nomenclature_key(), items )
             
             # 2. Формируем и запоминаем рецепты
