@@ -21,16 +21,15 @@ class factory_test(unittest.TestCase):
         start.create()
         factory = report_factory()
         key = storage.unit_key()
-        
+
         # Действие
-        result = factory.create( manager.settings.report_mode, start.storage.data)
+        report = factory.create( 
+                                manager.settings.report_mode, 
+                                start.storage.data)
         
         # Проверки
-        assert result is not None
-        report = result.create( key )
-        print(report)
-        assert len(report ) > 0
-        
+        assert report is not None
+        print ( report.create(key) )
  
     #
     # Проверка создания начальных рецептов

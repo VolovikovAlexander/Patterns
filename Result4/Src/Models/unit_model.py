@@ -1,6 +1,8 @@
 from Src.reference import reference
 from Src.exceptions import exception_proxy, argument_exception
 
+
+
 #
 # Модель единицы измерения для номенклатуры
 #
@@ -30,8 +32,7 @@ class unit_model(reference):
             _type_: _description_
         """
         return self.__base_unit
-    
-    
+
     
     @base_unit.setter
     def base_unit(self, value: reference ):

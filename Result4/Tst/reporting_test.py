@@ -6,10 +6,27 @@ from Src.Logics.csv_reporting import csv_reporting
 from Src.Models.nomenclature_model import nomenclature_model
 from Src.Models.group_model import group_model
 from Src.Logics.markdown_reporting import markdown_reporting
-
+from Src.Logics.json_reporting import json_reporting
 
 class reporting_test(unittest.TestCase):
     
+    
+    def test_check_json_reporting_build(self):
+        # Подготовка
+        data = {}
+        list = []
+        item = unit_model.create_gram()
+        list.append(item)
+        key = storage.unit_key()
+        data[  key  ] = list 
+        report = json_reporting( data )
+        
+        # Действие
+        result = report.create( key )
+        
+        # Проверки
+        assert result is not None
+        assert len(result) > 0   
     
     #
     # Проверить статический метод build класса reporting
