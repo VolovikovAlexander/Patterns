@@ -6,10 +6,16 @@ import json
 
 class convert_test(unittest.TestCase):
     
-    def test_create_convert_nomenclature(self):
+    #
+    # Проверить формирование словаря и преобразование в json номенклатуры
+    #
+    def test_check_convert_nomenclature(self):
         # Подготовка
         items = start_factory.create_nomenclatures()
         factory = convert_factory()
+        if len(items) == 0:
+            raise Exception("Список номенклатуры пуст!")
+        
         item = items[0]
         
         # Действие
@@ -22,3 +28,23 @@ class convert_test(unittest.TestCase):
         file = open("nomenclature.json", "w")
         file.write(json_text)
         file.close()
+        
+    #
+    # Проверить формирование словаря по списку номенклатуры и конвертацию в json
+    #
+    def test_check_convert_nomenctalures(self):
+         # Подготовка
+        items = start_factory.create_nomenclatures()
+        factory = convert_factory()
+        
+        # Действие
+        result = factory.convert(items)
+        
+        # Проверки
+        assert result is not None
+        json_text = json.dumps(result, sort_keys = True, indent = 4)  
+       
+        file = open("nomenclatures.json", "w")
+        file.write(json_text)
+        file.close()
+            

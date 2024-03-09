@@ -43,7 +43,7 @@ class convert_factory:
         
     def convert(self, object) -> dict:
         # Сконвертируем данные как список
-        result = self.__convert_list(object)
+        result = self.__convert_list("data", object)
         if result is not None:
             return result
         
@@ -56,7 +56,7 @@ class convert_factory:
                 value = getattr(object, field)
                 
                 # Сконвертируем данные как список
-                dictionary =  self.__convert_list(value)
+                dictionary =  self.__convert_list(field, value)
                 if dictionary is None:
                     # Сконвертируем данные как значение
                     dictionary = self.__convert_item(field, value)
@@ -93,7 +93,7 @@ class convert_factory:
         
         return  dictionary
             
-    def __convert_list(self, source) -> list:
+    def __convert_list(self, field: str,  source) -> list:
         """
             Сконвертировать список
         Args:
@@ -102,11 +102,12 @@ class convert_factory:
         Returns:
             dict: _description_
         """
+        exception_proxy.validate(field, str)
         if not isinstance(source, list):
             return None
         
         items = []
         for item in source:
-            items.append( self.__convert_item( item ))  
+            items.append( self.__convert_item( field,  item ))  
         
         return items          
