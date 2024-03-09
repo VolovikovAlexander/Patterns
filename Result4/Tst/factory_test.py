@@ -1,4 +1,3 @@
-from Src.Models.unit_model import unit_model
 from Src.Logics.start_factory import start_factory
 from Src.settings_manager import settings_manager
 from Src.Storage.storage import storage

@@ -51,5 +51,11 @@ class error_proxy:
         if len(self._error_text) != 0:
             return False
         else:
-            return True         
+            return True       
+        
+    def clear(self):
+        """
+            Очистить
+        """
+        self._error_text = ""      
             

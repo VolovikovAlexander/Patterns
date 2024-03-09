@@ -59,11 +59,11 @@ class start_factory:
             _type_: _description_
         """
         items = []
-        items.append( unit_model.create_gram())
-        items.append( unit_model.create_killogram())
-        items.append( unit_model.create_liter())
-        items.append( unit_model.create_milliliter())
-        items.append(unit_model.create_ting())
+        items.append( unit_model.create_gram() )
+        items.append( unit_model.create_killogram() )
+        items.append( unit_model.create_liter() )
+        items.append( unit_model.create_milliliter() )
+        items.append( unit_model.create_ting() )
         
         return items
     
