@@ -15,7 +15,7 @@ class datetime_convertor(convertor):
           return None
       
         try:
-            result =  { field: object.strftime('%YYYY-%mm-%dd %HH:%ss') }
+            return { field: object.strftime('%YYYY-%mm-%dd %HH:%ss') }
         except Exception as ex:
-            self._error.set_error(ex)    
+            self.set_error(ex)    
         

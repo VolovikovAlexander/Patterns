@@ -13,7 +13,7 @@ class basic_convertor(convertor):
           return None
       
       try:
-            return { field, object }
+            return { field: object }
       except Exception as ex:
             self._error.set_error(ex)  
             
