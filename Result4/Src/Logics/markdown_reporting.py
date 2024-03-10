@@ -42,6 +42,5 @@ class markdown_reporting(reporting):
             
         return "\n".join(result)        
     
-      def mimetype(self) -> str:  
-          return super().mimetype()
+     
     

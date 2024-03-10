@@ -39,7 +39,3 @@ class csv_reporting(reporting):
         
         # Результат csv
         return result
-        
-    def mimetype(self) -> str:  
-        return super().mimetype()
-        

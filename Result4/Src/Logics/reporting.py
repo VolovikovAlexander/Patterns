@@ -22,7 +22,6 @@ class reporting(abc.ABC):
         """
         
         exception_proxy.validate(_data, dict)
-        
         self.__data = _data
         
 
@@ -38,7 +37,6 @@ class reporting(abc.ABC):
         
         return ""
     
-    @abc.abstractmethod
     def mimetype(self) -> str:
         """
           Тип данных для формирования ответа Web сервера

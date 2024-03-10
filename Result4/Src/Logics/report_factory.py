@@ -1,6 +1,7 @@
 from Src.Logics.reporting import reporting
 from Src.Logics .markdown_reporting import markdown_reporting
 from Src.Logics.csv_reporting import csv_reporting
+from Src.Logics.json_reporting import json_reporting
 from Src.exceptions import exception_proxy, argument_exception, operation_exception
 
 #
@@ -9,17 +10,28 @@ from Src.exceptions import exception_proxy, argument_exception, operation_except
 class report_factory:
     __maps = {}
     
+    # Формат данных для экспорт в Web сервер
+    __mimetype: str
+    
     def __init__(self) -> None:
        self.__build_structure()
 
     def __build_structure(self):
         """
-        Сформировать структуру
+            Сформировать структуру
         """
         self.__maps["csv"]  = csv_reporting
         self.__maps["markdown"] = markdown_reporting
-        self.__maps["csv"] = csv_reporting
+        self.__maps["json"] = json_reporting
       
+    @property  
+    def mimetype(self):
+        """
+           Формат данных для экспорт в Web сервер 
+        Returns:
+            _type_: _description_
+        """
+        return self.__mimetype
       
     def create(self, format: str, data:dict) -> reporting:
         """
@@ -44,6 +56,8 @@ class report_factory:
         report_type = self.__maps[format]
         # Получаем объект 
         result = report_type(data)
+        self.__mimetype = result.mimetype()
+        
         return result 
              
     def create_response(self, format: str, data:dict, storage_key: str,  app):
@@ -60,16 +74,17 @@ class report_factory:
         if app is None:
             raise argument_exception("Некорректно переданы параметры!")
         exception_proxy.validate(storage_key, str)
+
+        # Получаем нужный отчет        
+        report = self.create(format, data)
+        # Формируем данные
+        info = report.create(storage_key)
         
-        # Сформировать данные
-        data = self.create(format, data).create(storage_key)
-        report_type = self.__maps[format]
-            
         # Подготовить ответ    
         result = app.response_class(
-            response = f"{data}",
+            response = f"{info}",
             status = 200,
-            mimetype = report_type.mimetype()
+            mimetype = self.mimetype
         )
         
         return result
