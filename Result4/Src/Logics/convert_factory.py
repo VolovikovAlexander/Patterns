@@ -11,18 +11,18 @@ import datetime
 #
 class reference_convertor(convertor):
     
-    def convert(self, field: str, object) -> dict:
+    def convert(self, field: str, object: reference) -> dict:
         """
             Сконвертировать 
         Args:
             field (str): поле
             object (_type_): значение
         """
+        exception_proxy.validate(object, reference)
         factory = convert_factory()
+
         return factory.convert(object)
     
-
-
 #
 # Фабрика для конвертация данных во вложенный словарь
 #
@@ -31,7 +31,6 @@ class convert_factory:
     
     def __init__(self) -> None:
         self._maps[datetime] = datetime_convertor
-        self._maps[dict] = basic_convertor
         self._maps[int] = basic_convertor
         self._maps[str] = basic_convertor
         self._maps[bool] = basic_convertor
@@ -47,6 +46,7 @@ class convert_factory:
         if result is not None:
             return result
         
+        # Сконвертируем данные как значение
         result = {}
         fields = reference.create_fields(object)
         
@@ -103,11 +103,24 @@ class convert_factory:
             dict: _description_
         """
         exception_proxy.validate(field, str)
-        if not isinstance(source, list):
-            return None
         
-        items = []
-        for item in source:
-            items.append( self.__convert_item( field,  item ))  
+        # Сконвертировать список
+        if isinstance(source, list):
+            result = []
+            for item in source:
+                result.append( self.__convert_item( field,  item ))  
+            
+            return result 
         
-        return items          
+        # Сконвертировать словарь
+        if isinstance(source, dict):
+            result = {}
+            for key in source:
+                object = source[key]
+                value = self.__convert_item( key,  object )
+                result[key] = value
+                
+            return result    
+                
+            
+                     

@@ -33,7 +33,7 @@ class convert_test(unittest.TestCase):
     # Проверить формирование словаря по списку номенклатуры и конвертацию в json
     #
     def test_check_convert_nomenctalures(self):
-         # Подготовка
+        # Подготовка
         items = start_factory.create_nomenclatures()
         factory = convert_factory()
         
@@ -48,3 +48,22 @@ class convert_test(unittest.TestCase):
         file.write(json_text)
         file.close()
             
+    #
+    # Проверить формирование словаря по списку рецептов и конвертация в json
+    #        
+    def test_check_convert_receipts(self):
+        # Подготовка
+        items = start_factory.create_receipts()
+        factory = convert_factory()
+        
+        # Действие
+        result = factory.convert(items)
+        
+        # Проверки
+        assert result is not None
+        json_text = json.dumps(result, sort_keys = True, indent = 4)  
+       
+        file = open("receipts.json", "w")
+        file.write(json_text)
+        file.close()
+                

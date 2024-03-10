@@ -96,6 +96,15 @@ class receipe_model(reference):
         """
         exception_proxy.validate(value, str)
         self._comments = value   
+        
+    @property            
+    def consist(self) -> list:
+        """
+            Состав рецепта
+        Returns:
+            _type_: _description_
+        """
+        return self._rows    
     
     
     @staticmethod

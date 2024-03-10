@@ -9,7 +9,7 @@ class basic_convertor(convertor):
       super().convert( field, object)
       
       if not isinstance(object, (int, str, bool)):
-          self._error.error = f"Некорректный тип данных передан для конвертации. Ожидается: (int, str, bool). Передан: {type(object)}"
+          self.error = f"Некорректный тип данных передан для конвертации. Ожидается: (int, str, bool). Передан: {type(object)}"
           return None
       
       try:
