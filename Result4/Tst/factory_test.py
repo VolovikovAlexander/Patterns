@@ -10,6 +10,22 @@ import unittest
 # 
 class factory_test(unittest.TestCase):
 
+    # 
+    # Проверить метод storage_keys в хранилище
+    #
+    def test_check_method_storage_keys(self):
+        # Подготовка
+        manager = settings_manager()
+        start = start_factory( manager.settings )
+        start.create()
+        
+        # Действия
+        result = start.storage.storage_keys( start.storage  )
+        
+        # Проверки
+        assert result is not None
+        assert len(result) > 0
+     
     #
     # Проверка работы фабрики для построения отчетности
     #

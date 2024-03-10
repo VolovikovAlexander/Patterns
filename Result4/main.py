@@ -5,6 +5,7 @@ from Src.errors import error_proxy
 from Src.Logics.report_factory import report_factory
 from Src.Logics.start_factory import start_factory
 
+
 app = Flask(__name__)
 
 # Сформировать начальный набор данных
@@ -21,7 +22,7 @@ def get_report(storage_key: str):
         storage_key (str): Ключ - тип данных: номенклатура, группы и т.д.
     """
     
-    if storage_key == "" or  storage_key not in storage.storage_keys():
+    if storage_key == "" or  storage_key not in storage.storage_keys( start.storage ):
         return error_proxy.create_error_response(app, "Url запроса не корректен!", 400)
     
     # Создаем фабрику
