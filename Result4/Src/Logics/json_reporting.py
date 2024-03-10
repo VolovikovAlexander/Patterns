@@ -11,8 +11,6 @@ class json_reporting(reporting):
     
       def create(self, storage_key: str):
         super().create(storage_key)
-        result = []
-        
         
          # Исходные данные
         items = self.data[ storage_key ]
@@ -22,7 +20,8 @@ class json_reporting(reporting):
         if len(items) == 0:
             raise operation_exception("Невозможно сформировать данные. Нет данных!")
         
-        data = convert_factory.convert( items )
+        factory = convert_factory()
+        data = factory.convert( items )
         result = json.dumps(data, sort_keys = True, indent = 4)  
         return result
       

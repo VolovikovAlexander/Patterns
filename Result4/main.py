@@ -21,15 +21,15 @@ def get_report(storage_key: str):
         storage_key (str): Ключ - тип данных: номенклатура, группы и т.д.
     """
     
-    if storage_key == "":
-        return error_proxy.create_error_response(app, f"Url запроса не корректен!", 400)
+    if storage_key == "" or  storage_key not in storage.storage_keys():
+        return error_proxy.create_error_response(app, "Url запроса не корректен!", 400)
     
-    if storage_key not in storage.storage_keys():
-        return error_proxy.create_error_response(app, f"Некорректный ключ {storage_key}!", 400)
-    
+    # Создаем фабрику
     report = report_factory()
     data = start.storage.data
-    result = report.create_response( options.settings.report_mode, data, storage_key,  app )       
+    
+    # Формируем результат
+    result = report.create_response( options.settings.report_mode, data, storage_key, app )       
     return result
 
 if __name__ == "__main__":

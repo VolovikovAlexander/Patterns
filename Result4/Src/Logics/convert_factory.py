@@ -30,6 +30,7 @@ class convert_factory:
     _maps = {}
     
     def __init__(self) -> None:
+        # Связка с простыми типами
         self._maps[datetime] = datetime_convertor
         self._maps[int] = basic_convertor
         self._maps[str] = basic_convertor
@@ -85,6 +86,7 @@ class convert_factory:
         if type(source) not in self._maps.keys():
             raise operation_exception(f"Не возможно подобрать конвертор для типа {type(source)}")
 
+        # Определим конвертор
         convertor = self._maps[ type(source)]()
         dictionary = convertor.convert( field, source )
         

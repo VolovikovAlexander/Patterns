@@ -59,7 +59,8 @@ class error_proxy:
         """
         self._error_text = "" 
         
-    def create_error_response(self, app,  message: str, http_code: int = 0):
+    @staticmethod    
+    def create_error_response( app,  message: str, http_code: int = 0):
         """
             Сформировать структуру response_class для описания ошибки
         Args:
@@ -78,8 +79,11 @@ class error_proxy:
             code = 500
         else:
             code = http_code
-                
+        
+        # Формируем описание        
         json_text = json.dumps({"details" : message}, sort_keys = True, indent = 4)  
+        
+        # Формируем результат
         result = app.response_class(
             response =   f"{json_text}",
             status = code,
