@@ -1,4 +1,4 @@
-# Набор классов для обработки информации связанной с ошибками
+import json
 
 #
 # Класс для обработки и хранения текстовой информации об ошибке
@@ -57,5 +57,34 @@ class error_proxy:
         """
             Очистить
         """
-        self._error_text = ""      
+        self._error_text = "" 
+        
+    def create_error_response(self, app,  message: str, http_code: int = 0):
+        """
+            Сформировать структуру response_class для описания ошибки
+        Args:
+            app (_type_): Flask
+            message (str): Сообщение
+            http_code(int): Код возврата
+
+        Returns:
+            response_class: _description_
+        """
+        
+        if app is None:
+            raise Exception("Некорректно переданы параметры!")
+        
+        if http_code == 0:
+            code = 500
+        else:
+            code = http_code
+                
+        json_text = json.dumps({"details" : message}, sort_keys = True, indent = 4)  
+        result = app.response_class(
+            response =   f"{json_text}",
+            status = code,
+            mimetype = "application/json"
+        )    
+        
+        return result
             

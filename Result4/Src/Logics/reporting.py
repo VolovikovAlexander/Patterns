@@ -1,4 +1,4 @@
-from abc import ABC
+import abc 
 from Src.settings import settings
 from Src.exceptions import exception_proxy, operation_exception
 from Src.reference import reference
@@ -7,7 +7,7 @@ from Src.reference import reference
 #
 # Абстрактный класс для реализации отчетности
 #
-class reporting(ABC):
+class reporting(abc.ABC):
     # Набор данных
     __data = {}
     # Список полей
@@ -26,52 +26,59 @@ class reporting(ABC):
         self.__data = _data
         
 
- 
-    def create(self, typeKey: str):
+    @abc.abstractmethod
+    def create(self, storage_key: str):
         """
             Сформировать отчет
         Args:
-            typeKey (str): Ключ тип данных
+            storage_key (str): Ключ для отбора данных
         """
-        exception_proxy.validate(typeKey, str)
-        self.__fields = self.build(typeKey, self.__data)
+        exception_proxy.validate(storage_key, str)
+        self.__fields = self.build(storage_key, self.__data)
         
         return ""
     
-        
+    @abc.abstractmethod
+    def mimetype(self) -> str:
+        """
+          Тип данных для формирования ответа Web сервера
+        Returns:
+            str: _description_
+        """
+        return "application/text"    
     
     @staticmethod
-    def build( typeKey: str, data: dict) -> list:
+    def build( storage_key: str, data: dict) -> list:
         """
             Предобработка. Получить набор полей
         Args:
-            typeKey (str): ключ в словаре_
+            storage_key (str): ключ в словаре_
             data (dict): Данные - словарь
 
         Returns:
             list: список
         """
         
-        exception_proxy.validate(typeKey, str)
+        exception_proxy.validate(storage_key, str)
         if data is None:
             raise operation_exception("Набор данных не определен!")
         
         if len(data) == 0:
             raise operation_exception("Набор данных пуст!")
         
-        item = data[typeKey][0]
+        item = data[storage_key][0]
         result = reference.create_fields( item )
         return result    
     
-    def _build(self, typeKey: str) -> list:
+    def _build(self, storage_key: str) -> list:
         """
            Предобработка данных. Возвращает набор полей класса typeKey
         Args:
-            typeKey (str): ключ для выборки данных
+            storage_key (str): ключ для выборки данных
         Returns:
             list: список
         """
-        return reporting.build(typeKey, self.__data)
+        return reporting.build(storage_key, self.__data)
         
         
     @property    

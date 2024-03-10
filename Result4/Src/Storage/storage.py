@@ -60,3 +60,10 @@ class storage:
         """
         return "receipts"
     
+    @staticmethod
+    def storage_keys():
+        """
+            Получить список ключей
+        """
+        return[ storage.group_key(), storage.nomenclature_key(), storage.receipt_key(), storage.unit_key() ]
+    

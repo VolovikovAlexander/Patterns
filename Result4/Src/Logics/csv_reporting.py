@@ -7,13 +7,13 @@ from Src.exceptions import operation_exception
 #
 class csv_reporting(reporting):
     
-    def create(self, typeKey: str):
-        super().create(typeKey)
+    def create(self, storage_key: str):
+        super().create(storage_key)
         result = ""
         delimetr = ";"
 
         # Исходные данные
-        items = self.data[ typeKey ]
+        items = self.data[ storage_key ]
         if items == None:
             raise operation_exception("Невозможно сформировать данные. Данные не заполнены!")
         
@@ -40,5 +40,6 @@ class csv_reporting(reporting):
         # Результат csv
         return result
         
-        
+    def mimetype(self) -> str:  
+        return super().mimetype()
         

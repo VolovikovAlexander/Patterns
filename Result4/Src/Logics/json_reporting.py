@@ -3,6 +3,9 @@ from Src.exceptions import operation_exception
 from Src.reference import reference
 import json
 
+#
+# Формирование отчета в формате json
+#
 class json_reporting(reporting):
     
       def create(self, typeKey: str):
@@ -29,8 +32,8 @@ class json_reporting(reporting):
         data = json.dumps( result )
         return data
              
-            
-            
+      def mimetype(self) -> str:
+          return "application/json"     
                 
         
         
