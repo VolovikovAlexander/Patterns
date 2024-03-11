@@ -21,7 +21,7 @@ class json_reporting(reporting):
             raise operation_exception("Невозможно сформировать данные. Нет данных!")
         
         factory = convert_factory()
-        data = factory.convert( items )
+        data = factory.serialize( items )
         result = json.dumps(data, sort_keys = True, indent = 4)  
         return result
       

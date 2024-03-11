@@ -2,10 +2,13 @@ import abc
 from Src.errors import error_proxy
 from Src.exceptions import exception_proxy
 
+# 
+# Абстрактный класс для сериализации в json
+#
 class convertor(error_proxy):
     
     @abc.abstractmethod
-    def convert(self, field: str, object) -> dict:
+    def serialize(self, field: str, object) -> dict:
         """
             Сконвертировать объект в словарь
         Args:

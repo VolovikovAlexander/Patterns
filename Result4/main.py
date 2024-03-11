@@ -23,15 +23,18 @@ def get_report(storage_key: str):
     """
     
     if storage_key == "" or  storage_key not in storage.storage_keys( start.storage ):
-        return error_proxy.create_error_response(app, "Url запроса не корректен!", 400)
+        return error_proxy.create_error_response(app, f"Некорректный передан запрос! Необходимо передать: /api/report/<storage_key>", 400)
     
     # Создаем фабрику
     report = report_factory()
     data = start.storage.data
     
     # Формируем результат
-    result = report.create_response( options.settings.report_mode, data, storage_key, app )       
-    return result
+    try:
+        result = report.create_response( options.settings.report_mode, data, storage_key, app )       
+        return result
+    except Exception as ex:
+        return error_proxy.create_error_response(app, f"Ошибка при формировании отчета {ex}", 500)
 
 if __name__ == "__main__":
     app.run(debug = True)

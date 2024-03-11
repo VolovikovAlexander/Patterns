@@ -19,7 +19,7 @@ class convert_test(unittest.TestCase):
         item = items[0]
         
         # Действие
-        result = factory.convert(item)
+        result = factory.serialize(item)
         
         # Проверки
         assert result is not None
@@ -38,7 +38,7 @@ class convert_test(unittest.TestCase):
         factory = convert_factory()
         
         # Действие
-        result = factory.convert(items)
+        result = factory.serialize(items)
         
         # Проверки
         assert result is not None
@@ -57,7 +57,7 @@ class convert_test(unittest.TestCase):
         factory = convert_factory()
         
         # Действие
-        result = factory.convert(items)
+        result = factory.serialize(items)
         
         # Проверки
         assert result is not None

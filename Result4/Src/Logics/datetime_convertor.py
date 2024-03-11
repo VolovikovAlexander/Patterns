@@ -7,8 +7,14 @@ from datetime import datetime
 #
 class datetime_convertor(convertor):
     
-    def convert(self, field: str,  object):
-        super().convert( field, object)
+    def serialize(self, field: str,  object):
+        """
+            Подготовить словарь 
+        Args:
+            field (str): поле
+            object (_type_): значение
+        """
+        super().serialize( field, object)
       
         if not isinstance(object, datetime):
           self._error.error = f"Некорректный тип данных передан для конвертации. Ожидается: datetime. Передан: {type(object)}"

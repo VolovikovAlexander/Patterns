@@ -11,20 +11,20 @@ import datetime
 #
 class reference_convertor(convertor):
     
-    def convert(self, field: str, object: reference) -> dict:
+    def serialize(self, field: str, object: reference) -> dict:
         """
-            Сконвертировать 
+            Подготовить словарь 
         Args:
             field (str): поле
             object (_type_): значение
         """
-        exception_proxy.validate(object, reference)
+        super().serialize(field, object)
+        
         factory = convert_factory()
-
-        return factory.convert(object)
+        return factory.serialize(object)
     
 #
-# Фабрика для конвертация данных во вложенный словарь
+# Фабрика для конвертация данных
 #
 class convert_factory:
     _maps = {}
@@ -41,7 +41,16 @@ class convert_factory:
             self._maps[inheritor] = reference_convertor
     
         
-    def convert(self, object) -> dict:
+    def serialize(self, object) -> dict:
+        """
+            Подготовить словарь
+        Args:
+            object (_type_): произвольный тим
+
+        Returns:
+            dict: словарь
+        """
+        
         # Сконвертируем данные как список
         result = self.__convert_list("data", object)
         if result is not None:
@@ -88,7 +97,7 @@ class convert_factory:
 
         # Определим конвертор
         convertor = self._maps[ type(source)]()
-        dictionary = convertor.convert( field, source )
+        dictionary = convertor.serialize( field, source )
         
         if not convertor.is_empty:
             raise operation_exception(f"Ошибка при конвертации данных {convertor.error}")
