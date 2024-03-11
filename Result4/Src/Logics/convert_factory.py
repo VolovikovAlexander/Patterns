@@ -45,7 +45,7 @@ class convert_factory:
         """
             Подготовить словарь
         Args:
-            object (_type_): произвольный тим
+            object (_type_): произвольный тип
 
         Returns:
             dict: словарь

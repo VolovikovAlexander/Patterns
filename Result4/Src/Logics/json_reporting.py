@@ -22,11 +22,11 @@ class json_reporting(reporting):
         
         factory = convert_factory()
         data = factory.serialize( items )
-        result = json.dumps(data, sort_keys = True, indent = 4)  
+        result = json.dumps(data, sort_keys = True, indent = 4, ensure_ascii = False)  
         return result
       
       def mimetype(self) -> str:
-          return "application/json"     
+          return "application/json; charset=utf-8"     
                 
         
         

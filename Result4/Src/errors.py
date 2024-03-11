@@ -81,13 +81,13 @@ class error_proxy:
             code = http_code
         
         # Формируем описание        
-        json_text = json.dumps({"details" : message}, sort_keys = True, indent = 4)  
+        json_text = json.dumps({"details" : message}, sort_keys = True, indent = 4,  ensure_ascii = False)  
         
         # Формируем результат
         result = app.response_class(
             response =   f"{json_text}",
             status = code,
-            mimetype = "application/json"
+            mimetype = "application/json; charset=utf-8"
         )    
         
         return result

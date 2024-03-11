@@ -7,6 +7,7 @@ from Src.Logics.start_factory import start_factory
 
 
 app = Flask(__name__)
+app.config['JSON_AS_ASCII'] = False
 
 # Сформировать начальный набор данных
 options = settings_manager() 
@@ -22,8 +23,9 @@ def get_report(storage_key: str):
         storage_key (str): Ключ - тип данных: номенклатура, группы и т.д.
     """
     
-    if storage_key == "" or  storage_key not in storage.storage_keys( start.storage ):
-        return error_proxy.create_error_response(app, f"Некорректный передан запрос! Необходимо передать: /api/report/<storage_key>", 400)
+    keys = storage.storage_keys( start.storage )
+    if storage_key == "" or  storage_key not in keys:
+        return error_proxy.create_error_response(app, f"Некорректный передан запрос! Необходимо передать: /api/report/<storage_key>. Список ключей (storage_key): {keys}.", 400)
     
     # Создаем фабрику
     report = report_factory()
@@ -31,7 +33,7 @@ def get_report(storage_key: str):
     
     # Формируем результат
     try:
-        result = report.create_response( options.settings.report_mode, data, storage_key, app )       
+        result = report.create_response( options.settings.report_mode, data, storage_key, app )  
         return result
     except Exception as ex:
         return error_proxy.create_error_response(app, f"Ошибка при формировании отчета {ex}", 500)
