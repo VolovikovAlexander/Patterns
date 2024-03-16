@@ -48,7 +48,7 @@ class storage:
         Returns:
             _type_: _description_
         """
-        return "storage_transaction"  
+        return "transactions"  
     
 
     @staticmethod  

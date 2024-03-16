@@ -19,7 +19,7 @@ class process_factory:
         self.__maps[ process_factory.turn_key()]  = turn_processing
         
     
-    def create(self, process_key:str, data:list[storage_row_model]) -> processing:
+    def create(self, process_key:str) -> processing:
         """
             Подобрать нужный процессинг
         Args:

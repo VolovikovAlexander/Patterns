@@ -19,14 +19,33 @@ class processing_test(unittest.TestCase):
         start = start_factory(manager.settings)
         start.create()
         factory = process_factory()
-        key = storage.storage_transaction_key()
-        data = start.storage.data[ key ]
 
         # Действие
-        result = factory.create( process_factory.turn_key(), data )
+        result = factory.create( process_factory.turn_key() )
         
         # Проверка
         assert result is not None
+        
+        
+    #
+    # Проверить работу процесса расчета оборотов
+    #    
+    def test_check_process_turn(self):
+        # Подготовка
+        manager = settings_manager()
+        start = start_factory(manager.settings)
+        start.create()
+        factory = process_factory()
+        key = storage.storage_transaction_key()
+        transactions = start.storage.data[ key ]
+        processing = factory.create( process_factory.turn_key() )
+        
+        # Действие
+        result = processing().process(transactions)
+        
+        # Проверка
+        assert result is not None
+        assert len(result) > 0    
     
     
     

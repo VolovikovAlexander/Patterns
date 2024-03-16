@@ -40,7 +40,7 @@ class storage_row_turn_model(reference):
         Returns:
             float: _description_
         """
-        exception_proxy.validate(value, float)
+        exception_proxy.validate(value, (float, int))
         if value <= 0:
             raise argument_exception("Некорректно переданы параметры!")
         

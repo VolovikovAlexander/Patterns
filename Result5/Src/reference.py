@@ -99,6 +99,14 @@ class reference(ABC):
         """
         return self.id
     
+    def __hash__(self) -> int:
+        """
+            Формирование хеш по коду
+        Returns:
+            int: _description_
+        """
+        return hash(self.id)
+    
     
                 
             

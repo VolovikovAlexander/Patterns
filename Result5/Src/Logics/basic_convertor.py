@@ -14,7 +14,7 @@ class basic_convertor(convertor):
       """
       super().serialize( field, object)
       
-      if not isinstance(object, (int, str, bool)):
+      if not isinstance(object, (int, str, bool, float)):
           self.error = f"Некорректный тип данных передан для конвертации. Ожидается: (int, str, bool). Передан: {type(object)}"
           return None
       
