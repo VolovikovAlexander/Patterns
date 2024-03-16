@@ -20,8 +20,11 @@ class json_reporting(reporting):
         if len(items) == 0:
             raise operation_exception("Невозможно сформировать данные. Нет данных!")
         
+        # Сериализуем данные
         factory = convert_factory()
         data = factory.serialize( items )
+        
+        # Формируем Json
         result = json.dumps(data, sort_keys = True, indent = 4, ensure_ascii = False)  
         return result
       

@@ -3,7 +3,8 @@ from Src.errors import error_proxy
 from Src.exceptions import exception_proxy
 
 # 
-# Абстрактный класс для конвертации данных в json
+# Абстрактный класс для наследования.
+# Используется для формирования набора словарей. 
 #
 class convertor(error_proxy):
     
