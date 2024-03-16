@@ -4,7 +4,6 @@ from Src.Models.unit_model import unit_model
 from Src.Models.nomenclature_model import nomenclature_model
 from Src.reference import reference
 from Src.Models.receipe_model import receipe_model
-from Src.Models.receipe_row_model import receipe_row_model
 
 # Системное
 from Src.settings import settings
@@ -52,7 +51,7 @@ class start_factory:
     # Статические методы
     
     @staticmethod
-    def create_units():
+    def create_units() -> list:
         """
             Сформировать список единиц измерения
         Returns:
@@ -68,7 +67,7 @@ class start_factory:
         return items
     
     @staticmethod
-    def create_nomenclatures():
+    def create_nomenclatures() -> list:
         """
           Сформировать список номенклатуры
         """
@@ -120,7 +119,7 @@ class start_factory:
         return result
       
     @staticmethod      
-    def create_groups():
+    def create_groups() -> list:
         """
             Сформировать список групп номенклатуры
         Returns:
@@ -131,7 +130,7 @@ class start_factory:
         return items         
     
     @staticmethod
-    def create_receipts(_data: list = None):
+    def create_receipts(_data: list = None) -> list:
         """
             Сформировать список рецептов
         Args:
@@ -153,11 +152,11 @@ class start_factory:
         if len(data) == 0:
             raise argument_exception("Некорректно переданы параметры! Список номенклатуры пуст.")        
         
-        # ВАФЛИ ХРУСТЯЩИЕ В ВАФЕЛЬНИЦЕ
+        # Вафли хрустящие в вафильнице
         items = [ {"Мука пшеничная": 100}, {"Сахар": 80}, {"Сливочное масло": 70},
                   {"Яйца": 1} , {"Ванилин": 5 }
                 ]
-        item = receipe_model.create_receipt("ВАФЛИ ХРУСТЯЩИЕ В ВАФЕЛЬНИЦЕ", "", items, data)
+        item = receipe_model.create_receipt("Вафли хрустящие в вафильнице", "", items, data)
         
         # Шаги приготовления
         item.instructions.extend([
@@ -194,6 +193,20 @@ class start_factory:
         result.append( receipe_model.create_receipt("Безе", "", items, data))
         return result
         
+    @staticmethod
+    def create_storage_transactions(_data: list = None) -> list:
+         """
+            Сформировать список складских транзакций
+        Args:
+            _data (list, optional): Список номенклатуры. Defaults to None.
+
+        Raises:
+            argument_exception: _description_
+
+        Returns:
+            _type_: Массив объектов storage_row_model
+        """
+        
     
     # Основной метод
     def create(self) -> bool:
@@ -204,11 +217,11 @@ class start_factory:
         """
         if self.__oprions.is_first_start == True:
             # 1. Формируем и зпоминаем номеклатуру
-            items = start_factory.create_nomenclatures()
+            nomenclatures = start_factory.create_nomenclatures()
             self.__save( storage.nomenclature_key(), items )
             
             # 2. Формируем и запоминаем рецепты
-            items = start_factory.create_receipts(items)
+            items = start_factory.create_receipts(nomenclatures)
             self.__save( storage.receipt_key(), items)
       
             # 3. Формируем и запоминаем единицы измерения
@@ -218,6 +231,11 @@ class start_factory:
             # 4. Формируем и запоминаем группы номенклатуры
             items = start_factory.create_groups()
             self.__save( storage.group_key(), items)
+            
+            # 5. Формируем типовые складские проводки
+            items = start_factory.create_storage_transactions(nomenclatures)
+            self.__save( storage.storage_transaction_key(), items)
+            
             return True
            
            
