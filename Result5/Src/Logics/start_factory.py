@@ -196,27 +196,17 @@ class start_factory:
         return result
         
     @staticmethod
-    def create_storage_transactions(_data: list = None) -> list:
+    def create_storage_transactions(data: dict) -> list:
         """
             Сформировать список складских транзакций
-        Args:
-            _data (list, optional): Список номенклатуры. Defaults to None.
-
-        Raises:
-            argument_exception: _description_
-
         Returns:
             _type_: Массив объектов storage_row_model
         """
         result = []
         default_storage = storage_model.create_default()
-        if _data is None:
-            data = start_factory.create_nomenclatures()
-        else:
-            data = _data
             
-        if len(data) == 0:
-            raise argument_exception("Некорректно переданы параметры! Список номенклатуры пуст.")  
+        if len(data.keys()) == 0:
+            raise operation_exception("Набор данных пуст. Невозможно сформировать список транзакций!")  
         
         items = [ { "Мука пшеничная": [1, "кг"] }, 
                   { "Сахар" :[0.5, "кг"] },
@@ -232,8 +222,11 @@ class start_factory:
                   { "Какао": [1,"кг"] },
                   { "Ванилиин": [100, "грамм"] }  ]
         
-        for key, value in items:
-            row = storage_row_model.create_credit_row(key, value, data, default_storage)
+        for element in items:
+            key = list(element.keys())[0]
+            values = list(element.values())[0]
+            
+            row = storage_row_model.create_credit_row(key, values, data, default_storage)
             result.append(row)
         
         return result
@@ -264,7 +257,7 @@ class start_factory:
             self.__save( storage.group_key(), items)
             
             # 5. Формируем типовые складские проводки
-            items = start_factory.create_storage_transactions(nomenclatures)
+            items = start_factory.create_storage_transactions( self.storage.data )
             self.__save( storage.storage_transaction_key(), items)
             
             return True

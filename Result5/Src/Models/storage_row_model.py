@@ -3,6 +3,7 @@ from Src.exceptions import argument_exception, exception_proxy, operation_except
 from Src.reference import reference
 from Src.Models.storage_model import storage_model
 from Src.Models.storage_row_turn_model import storage_row_turn_model
+from Src.Storage.storage import storage
 
 from datetime import datetime
 
@@ -64,7 +65,7 @@ class storage_row_model(storage_row_turn_model):
         self._period = value
         
     @staticmethod    
-    def create_credit_row(nomenclature_name: str, details: list, data: dict, storage: storage_model) -> reference:
+    def create_credit_row(nomenclature_name: str, details: list, data: dict, _storage: storage_model) -> reference:
         """
             Фабричный метод для создания транзакции на поступление
             Используется в start_factoryu
@@ -77,7 +78,7 @@ class storage_row_model(storage_row_turn_model):
             reference: _description_
         """
         exception_proxy.validate(nomenclature_name, str)
-        exception_proxy.validate(storage, storage_model)
+        exception_proxy.validate(_storage, storage_model)
         if details is None:
             raise argument_exception("Некорректно переданы параметры!")
         
@@ -86,7 +87,7 @@ class storage_row_model(storage_row_turn_model):
         
         quantity = details[0]
         unit_name = details[1]
-        exception_proxy.validate(quantity, float)
+        exception_proxy.validate(quantity, (float, int))
         exception_proxy.validate(unit_name, str)
         
         # Подготовим словарь со списком номенклатуры
@@ -111,7 +112,7 @@ class storage_row_model(storage_row_turn_model):
         item.nomenclature = nomenclature
         item.unit = unit
         item.storage_type = True
-        item.storage = storage
+        item.storage = _storage
         
         return item
             
