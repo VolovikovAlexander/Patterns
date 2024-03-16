@@ -4,6 +4,8 @@ from Src.Models.unit_model import unit_model
 from Src.Models.nomenclature_model import nomenclature_model
 from Src.reference import reference
 from Src.Models.receipe_model import receipe_model
+from Src.Models.storage_row_model import storage_row_model
+from Src.Models.storage_model import storage_model
 
 # Системное
 from Src.settings import settings
@@ -195,7 +197,7 @@ class start_factory:
         
     @staticmethod
     def create_storage_transactions(_data: list = None) -> list:
-         """
+        """
             Сформировать список складских транзакций
         Args:
             _data (list, optional): Список номенклатуры. Defaults to None.
@@ -206,6 +208,35 @@ class start_factory:
         Returns:
             _type_: Массив объектов storage_row_model
         """
+        result = []
+        default_storage = storage_model.create_default()
+        if _data is None:
+            data = start_factory.create_nomenclatures()
+        else:
+            data = _data
+            
+        if len(data) == 0:
+            raise argument_exception("Некорректно переданы параметры! Список номенклатуры пуст.")  
+        
+        items = [ { "Мука пшеничная": [1, "кг"] }, 
+                  { "Сахар" :[0.5, "кг"] },
+                  { "Яйца": [6,"шт" ] },
+                  { "Масло": [0.2,"литр" ] },
+                  { "Куринное филе": [0.5, "кг"] },
+                  { "Салат Романо": [1, "шт"] },
+                  { "Хлеб" : [3, "шт"] },
+                  { "Сыр Пармезан": [0.2, "кг" ] },
+                  { "Майонез" : [0.1, "литр"] },
+                  { "Черный перец": [10, "грамм" ] },
+                  { "Лимонный сок": [1, "литр"] },
+                  { "Какао": [1,"кг"] },
+                  { "Ванилиин": [100, "грамм"] }  ]
+        
+        for key, value in items:
+            row = storage_row_model.create_credit_row(key, value, data, default_storage)
+            result.append(row)
+        
+        return result
         
     
     # Основной метод
@@ -218,7 +249,7 @@ class start_factory:
         if self.__oprions.is_first_start == True:
             # 1. Формируем и зпоминаем номеклатуру
             nomenclatures = start_factory.create_nomenclatures()
-            self.__save( storage.nomenclature_key(), items )
+            self.__save( storage.nomenclature_key(), nomenclatures )
             
             # 2. Формируем и запоминаем рецепты
             items = start_factory.create_receipts(nomenclatures)

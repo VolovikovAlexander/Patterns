@@ -117,6 +117,7 @@ class factory_test(unittest.TestCase):
             assert storage.receipt_key() in factory.storage.data
             assert storage.group_key() in factory.storage.data
             assert storage.unit_key() in factory.storage.data
+            assert storage.storage_transaction_key() in factory.storage.data
         else:
             assert result == False    
         

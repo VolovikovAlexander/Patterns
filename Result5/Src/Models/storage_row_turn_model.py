@@ -118,9 +118,9 @@ class storage_row_turn_model(reference):
             unit (unit_model): _description_
 
         Returns:
-            storage_row_turn: _description_
+            storage_row_turn_model: _description_
         """
-        row = storage_row_turn("-")
+        row = storage_row_turn_model("-")
         row.storage = storage
         row.unit = unit
         row.nomenclature = nomenclature
