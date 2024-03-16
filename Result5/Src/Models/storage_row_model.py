@@ -91,7 +91,8 @@ class storage_row_model(storage_row_turn_model):
         exception_proxy.validate(unit_name, str)
         
         # Подготовим словарь со списком номенклатуры
-        nomenclatures = data[ storage.nomenclature_key() ]    
+        items = data[ storage.nomenclature_key() ]    
+        nomenclatures = reference.create_dictionary(items)
         
         # Определеяем номенклатуру
         keys = list(filter(lambda x: x == nomenclature_name, nomenclatures.keys() ))
@@ -99,8 +100,10 @@ class storage_row_model(storage_row_turn_model):
             raise operation_exception(f"Некоректно передан список. Не найдена номенклатура {nomenclature_name}!")
         nomenclature = nomenclatures[keys[0]]    
         
+        items = data[ storage.unit_key()]
+        units = reference.create_dictionary(items)
+        
         # Определяем единицу измерения
-        units = data[ storage.unit_key()]
         keys = list(filter(lambda x: x == unit_name, units.keys() ))
         if len(keys) == 0:
             raise operation_exception(f"Некорректно передан список. Не найдена единица измерения {unit_name}!")
@@ -108,7 +111,7 @@ class storage_row_model(storage_row_turn_model):
         
         
         # Создаем транзакцию
-        item = storage_row_model()
+        item = storage_row_model("credit")
         item.nomenclature = nomenclature
         item.unit = unit
         item.storage_type = True
