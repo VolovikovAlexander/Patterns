@@ -18,6 +18,8 @@ class turn_processing(processing):
         """
         super().process(source)
         result = []
+        
+        # Код взят https://github.com/AItEKS/Design-patterns/pull/9/files#diff-401a63dd40e843c86f4a13a76fc390dac87de5ab5e65afc30cd5bcede4893f94
 
         grouped_transactions = {}
         for transaction in source:

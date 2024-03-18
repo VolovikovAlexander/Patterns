@@ -45,7 +45,11 @@ class processing_test(unittest.TestCase):
         
         # Проверка
         assert result is not None
-        assert len(result) > 0    
+        assert len(result) > 0   
+        turn = list(filter(lambda x: x.nomenclature.name == "Сыр Пармезан", result ))
+        assert turn[0].value == 0.5
+        
+        
     
     
     
