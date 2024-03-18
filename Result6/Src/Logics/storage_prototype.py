@@ -7,17 +7,15 @@ from datetime import datetime
 # Шаблон прототип
 #
 class storage_prototype(error_proxy):
-    # Фабрика процессоов
-    __factory: process_factory = None
-    
-    # Исходная фабрика
+    # Исходные данные
     __data = []
     
     def __init__(self, data: list[storage_row_model]):
         super().__init__(None)
-        
-        self.__data = data
-        self.__factory = process_factory()
+        if data is None:
+            self.error = "Некорректно переданы параметры!"
+        else:            
+            self.__data = data
         
     @property    
     def data(self):
