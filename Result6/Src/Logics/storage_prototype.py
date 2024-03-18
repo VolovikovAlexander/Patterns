@@ -1,7 +1,7 @@
 from Src.errors import error_proxy
-from Src.Logics.process_factory import process_factory
 from Src.Models.storage_row_model import storage_row_model
 from datetime import datetime
+from Src.exceptions import exception_proxy
 
 #
 # Шаблон прототип
@@ -27,7 +27,7 @@ class storage_prototype(error_proxy):
         return self.__data    
         
     
-    def filter_period(self, start_period: datetime, stop_period: datetime) -> list[storage_row_model]:
+    def filter_period(self, start_period: datetime, stop_period: datetime):
         """
             Фильтр по периоду
         Args:
@@ -35,16 +35,24 @@ class storage_prototype(error_proxy):
             stop_period (datetime): _description_
 
         Returns:
-            list[storage_row_model]: _description_
+            storage_prototype : _description_
         """
+        self.clear()
+        exception_proxy.validate(start_period, datetime)
+        exception_proxy.validate(stop_period, datetime)
+        
         if len(self.__data) == 0:
             self.error = "Исходные данные пусты!"
             return self.__data
         
-        if start_period < stop_period:
+        if start_period > stop_period:
             self.error = "Некорректно передан период!"
             return self.__data
         
-        result = list(filter(lambda x : x.period >= start_period and x.period <= stop_period, self.__data ))
+        result = []
+        for item in self.__data:
+            if item.period >= start_period and item.period <= stop_period:
+                result.append(item)
+
         return storage_prototype(result)
           

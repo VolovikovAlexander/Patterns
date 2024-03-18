@@ -210,8 +210,8 @@ class storage_row_model(reference):
             raise operation_exception(f"Некорректно передан список. Не найдена единица измерения {unit_name}!")
         unit = units[keys[0]]
         
-        start_date = datetime.strptime('1/1/2024 1:30 PM', '%m/%d/%Y %I:%M %p')
-        stop_date = datetime.strptime('4/1/2024 4:50 AM', '%m/%d/%Y %I:%M %p')
+        start_date = datetime.strptime('2024-01-01', '%Y-%m-%d')
+        stop_date = datetime.strptime('2024-05-01', '%Y-%m-%d')
 
         # Создаем транзакцию
         item = storage_row_model("sample_credit_transaction")

@@ -24,7 +24,6 @@ class process_factory:
             Подобрать нужный процессинг
         Args:
             process_key (str): Ключ
-            data (list[storage_row_model]): Исходные данные
         Returns:
             processing: нужный процессинг
         """
