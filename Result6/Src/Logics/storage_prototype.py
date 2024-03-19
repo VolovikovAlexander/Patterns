@@ -1,58 +1,52 @@
+from Src.exceptions import argument_exception
 from Src.errors import error_proxy
-from Src.Models.storage_row_model import storage_row_model
 from datetime import datetime
-from Src.exceptions import exception_proxy
+
 
 #
-# Шаблон прототип
+# Прототип для обработки складских транзакций
 #
 class storage_prototype(error_proxy):
-    # Исходные данные
     __data = []
     
-    def __init__(self, data: list[storage_row_model]):
-        super().__init__(None)
-        if data is None:
+    def __init__(self, data: list) -> None:
+        if len(data) <= 0:
             self.error = "Некорректно переданы параметры!"
-        else:            
-            self.__data = data
         
-    @property    
-    def data(self):
+        self.__data = data
+
+    def filter( self,start_period: datetime, stop_period: datetime  ):
         """
-            Набор складских транзакций
-        Returns:
-            _type_: _description_
-        """
-        return self.__data    
-        
-    
-    def filter_period(self, start_period: datetime, stop_period: datetime):
-        """
-            Фильтр по периоду
+            Отфильтровать по периоду
         Args:
-            start_period (datetime): _description_
-            stop_period (datetime): _description_
+            data (list): список складских транзакций
+            start_period (datetime): начало
+            stop_period (datetime): окончание
 
         Returns:
-            storage_prototype : _description_
+            storage_prototype: _description_
         """
-        self.clear()
-        exception_proxy.validate(start_period, datetime)
-        exception_proxy.validate(stop_period, datetime)
-        
-        if len(self.__data) == 0:
-            self.error = "Исходные данные пусты!"
-            return self.__data
-        
+        if len(self.__data) <= 0:
+            self.error = "Некорректно переданы параметры!"
+            
         if start_period > stop_period:
-            self.error = "Некорректно передан период!"
+            self.error = "Некорректный период!"
+            
+         
+        if not self.is_empty:
             return self.__data
         
         result = []
         for item in self.__data:
-            if item.period >= start_period and item.period <= stop_period:
+            if item.period > start_period and item.period <= stop_period:
                 result.append(item)
-
-        return storage_prototype(result)
-          
+                
+        return   storage_prototype( result )
+    
+             
+                
+                   
+            
+            
+        
+    
