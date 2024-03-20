@@ -11,7 +11,7 @@ class storage_prototype(error_proxy):
     
     def __init__(self, data: list) -> None:
         if len(data) <= 0:
-            self.error = "Некорректно переданы параметры!"
+            self.error = "Набор данных пуст!"
         
         self.__data = data
 
@@ -43,7 +43,14 @@ class storage_prototype(error_proxy):
                 
         return   storage_prototype( result )
     
-             
+    @property
+    def data(self):
+        """
+            Полученные данные
+        Returns:
+            _type_: _description_
+        """
+        return self.__data         
                 
                    
             

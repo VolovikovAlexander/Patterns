@@ -22,10 +22,8 @@ class prototype_test(unittest.TestCase):
         
         
         # Дейтсвие
-        result1 = prototype.filter(   start_date, stop_date ) 
-        stop_date = datetime.strptime("2024-01-05", "%Y-%m-%d")
-        result2 = result1.filter( start_date, stop_date)
+        result = prototype.filter(   start_date, stop_date ) 
         
         # Проверка
-        assert isinstance(result1, storage_prototype)
+        assert isinstance(result, storage_prototype)
         assert prototype.is_empty
