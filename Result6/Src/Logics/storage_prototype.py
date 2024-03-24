@@ -16,6 +16,8 @@ class storage_prototype(error_proxy):
         exception_proxy.validate(data, list)
         self.__data = data
 
+    # Методы фильтрации
+
     def filter_by_period( self,start_period: datetime, stop_period: datetime  ):
         """
             Отфильтровать по периоду
@@ -26,6 +28,7 @@ class storage_prototype(error_proxy):
         Returns:
             storage_prototype: _description_
         """
+        self.clear()
         exception_proxy.validate(start_period, datetime)
         exception_proxy.validate(stop_period, datetime)
         if len(self.__data) <= 0:
@@ -55,6 +58,7 @@ class storage_prototype(error_proxy):
         Returns:
             storage_prototype: _description_
         """
+        self.clear()
         exception_proxy.validate(nomenclature, nomenclature_model)
         
         result = []
@@ -64,6 +68,7 @@ class storage_prototype(error_proxy):
                 
         return   storage_prototype( result )
         
+    # Методы фильтрации    
     
     @property
     def data(self):
