@@ -21,7 +21,23 @@ class receipe_model(reference):
     # Описание
     _comments: str = ""
     
+    @property
+    def rows(self):
+        """
+            Получить состав рецепта (read only)
+        Returns:
+            _type_: _description_
+        """
+        result = []
+        for key in self._rows.keys():
+            result.append( self._rows[key] )
+            
+        return result
+    
     def  rows_ids(self):
+        """
+            Получить список кодов состава блюда
+        """
         result = []
         for item in self._rows:
             result.append(item.value.id)

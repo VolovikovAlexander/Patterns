@@ -54,6 +54,88 @@ class service_test(unittest.TestCase):
         # Проверки
         assert len(result) == 1
             
+    #
+    # Проверить метод  turns_only_nomenclature
+    #    
+    def test_check_create_turns_only_nomenclature(self):
+        # Подготовка
+        manager = settings_manager()
+        start = start_factory(manager.settings)
+        start.create()
+        key = storage.storage_transaction_key()
+        data = start.storage.data[ key ]
+        service = storage_service(data)
         
+        if len(data) == 0:
+            raise operation_exception("Набор данных пуст!")
+        
+        nomenclature = data[0].nomenclature 
+        
+        # Действие
+        result = service.create_turns_only_nomenclature( nomenclature )
+        
+        # Проверки
+        assert len(result) > 0
+        
+    #
+    # Проверить работу метода    create_turns_by_receipt
+    # 
+    def test_check_create_turns_by_receipt(self):
+        # Подготовка
+        manager = settings_manager()
+        start = start_factory(manager.settings)
+        start.create()
+        key = storage.storage_transaction_key()
+        transactions_data = start.storage.data[ key ]
+        service = storage_service(transactions_data)
+        
+        if len(transactions_data) == 0:
+            raise operation_exception("Набор данных пуст!")
+        
+        key = storage.receipt_key()
+        receipts_data = start.storage.data[ key ]
+        
+        if len(receipts_data) == 0:
+            raise operation_exception("Набор данных пуст!")
+        
+        receipt = receipts_data[0]
+        
+        # Действие
+        result = service.create_turns_by_receipt(receipt)
+        
+        # Проверки
+        assert len(result) > 0
+        
+    #
+    # Проверить метод  build_debits_by_receipt
+    #   
+    def test_check_build_debits_by_receipt(self):
+        # Подготовка
+        manager = settings_manager()
+        start = start_factory(manager.settings)
+        start.create()
+        key = storage.storage_transaction_key()
+        transactions_data = start.storage.data[ key ]
+        service = storage_service(transactions_data)
+        
+        if len(transactions_data) == 0:
+            raise operation_exception("Набор данных пуст!")
+        
+        key = storage.receipt_key()
+        receipts_data = start.storage.data[ key ]
+        
+        if len(receipts_data) == 0:
+            raise operation_exception("Набор данных пуст!")
+        
+        receipt = receipts_data[0]
+        
+        # Действие и проверка
+        with self.assertRaises(operation_exception):
+            service.build_debits_by_receipt( receipt )
+        
+            
+        
+            
+            
         
         

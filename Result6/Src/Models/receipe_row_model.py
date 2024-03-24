@@ -2,6 +2,10 @@ from Src.reference import reference
 from Src.Models.nomenclature_model import nomenclature_model
 from Src.Models.unit_model import unit_model
 from Src.exceptions import exception_proxy
+from Src.Models.storage_row_model import storage_row_model
+from Src.Models.storage_model import storage_model
+
+from datetime import datetime
 
 #
 # Класс описание одной строки рецепта
@@ -63,5 +67,31 @@ class receipe_row_model(reference):
             _type_: _description_
         """
         return self.__unit    
+    
+    
+    @staticmethod
+    def create_debit_transaction( row, period : datetime, storage: storage_model ) -> storage_row_model:
+        """
+            Сформировать транзакцию списания
+        Args:
+            row (receipe_row_model): исходная запись рецепта
+            period (datetime): период
+            storage (storage_model): склад
+
+        Returns:
+            storage_row_model: _description_
+        """
+        exception_proxy.validate(period , datetime)
+        exception_proxy.validate(storage, storage_model)
+        
+        item = storage_row_model()
+        item.nomenclature = row.nomenclature
+        item.period  = period
+        item.storage = storage
+        item.storage_type = False
+        item.value = row.size
+        item.unit = row.unit
+        
+        return item
         
     

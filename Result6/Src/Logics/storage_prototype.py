@@ -74,6 +74,15 @@ class storage_prototype(error_proxy):
         """
         return self.__data         
                 
+    @data.setter            
+    def data(self, value: list):
+        """
+            Исходные данные
+        Args:
+            value (list): _description_
+        """
+        exception_proxy.validate(value, list)
+        self.__data = value            
                    
             
             
