@@ -1,7 +1,7 @@
 from Src.Logics.processing import processing
 from Src.Logics.turn_processing import turn_processing
-from Src.Models.storage_row_model import storage_row_model
 from Src.exceptions import exception_proxy, argument_exception, operation_exception
+from Src.Logics.debit_processing import debit_processing
 
 #
 # Фабрика процессов обработки складских транзакций
@@ -17,6 +17,7 @@ class process_factory:
             Сформировать структуру
         """
         self.__maps[ process_factory.turn_key()]  = turn_processing
+        self.__maps[ process_factory.debit_key()] = debit_processing
         
     
     def create(self, process_key:str) -> processing:
@@ -47,7 +48,15 @@ class process_factory:
         Returns:
             str: _description_
         """
-        return "turns"    
+        return "turns"  
+    
+    def debit_key() -> str:
+        """
+            Сформировать проводки списания
+        Returns:
+            str: _description_
+        """
+        return "debits"  
     
       
     # Код взят: https://github.com/UpTechCompany/GitExample/blob/6665bc70c4933da12f07c0a0d7a4fc638c157c40/storage/storage.py#L30

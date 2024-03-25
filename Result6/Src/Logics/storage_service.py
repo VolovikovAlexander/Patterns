@@ -123,7 +123,7 @@ class storage_service:
         # Отфильтровать по рецепту
         transactions = []
         filter =  storage_prototype(  self.__data )
-        for item in receipt.rows:
+        for item in receipt.rows():
             filter =  filter.filter_by_nomenclature( item.nomenclature )
             if filter.is_empty:
                 for transaction in filter.data:
@@ -157,16 +157,16 @@ class storage_service:
         if len(turns) <= 0:
             raise operation_exception("По указанному рецепту не найдеты обороты!")
         
-        if len(receipt.rows) != len(turns):
+        if len(receipt.rows()) > len(turns):
             raise operation_exception("Невозможно сформировать список транзакций для списания т.к. нет достаточно остатков!")
         
         # Формируем список проводок на списание
+        processing = process_factory().create( process_factory.debit_key() )
+        transactions = processing.process( receipt.rows() )
         key = storage.storage_transaction_key()
         data = storage.data[ key ]
-        storage_default = storage_model.create_default()
-        for row in receipt.rows:
-            debit_transaction = receipe_row_model.create_debit_transaction( row, datetime.now, storage_default )
-            data.append( debit_transaction )
+        for transaction in transactions:
+            data.append ( transaction )
             
         
     

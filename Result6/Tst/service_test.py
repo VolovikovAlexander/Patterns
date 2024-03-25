@@ -109,7 +109,7 @@ class service_test(unittest.TestCase):
     #
     # Проверить метод  build_debits_by_receipt
     #   
-    def test_check_build_debits_by_receipt(self):
+    def test_check_build_debits_by_receipt_fail(self):
         # Подготовка
         manager = settings_manager()
         start = start_factory(manager.settings)
@@ -127,11 +127,43 @@ class service_test(unittest.TestCase):
         if len(receipts_data) == 0:
             raise operation_exception("Набор данных пуст!")
         
-        receipt = receipts_data[0]
+        # -> Цезарь с курицей
+        receipt = receipts_data[1]
         
         # Действие и проверка
         with self.assertRaises(operation_exception):
             service.build_debits_by_receipt( receipt )
+            
+            
+    #
+    # Проверить метод  build_debits_by_receipt
+    #   
+    def test_check_build_debits_by_receipt_pass(self):
+        # Подготовка
+        manager = settings_manager()
+        start = start_factory(manager.settings)
+        start.create()
+        key = storage.storage_transaction_key()
+        transactions_data = start.storage.data[ key ]
+        service = storage_service(transactions_data)
+        
+        if len(transactions_data) == 0:
+            raise operation_exception("Набор данных пуст!")
+        
+        key = storage.receipt_key()
+        receipts_data = start.storage.data[ key ]
+        
+        if len(receipts_data) == 0:
+            raise operation_exception("Набор данных пуст!")
+        
+        # -> Вафли хрустящие в вафильнице
+        receipt = receipts_data[0]
+        
+        # Действие и проверка
+        result = service.build_debits_by_receipt( receipt ) 
+          
+        # Проверка    
+        assert len(result) > 0        
         
             
         

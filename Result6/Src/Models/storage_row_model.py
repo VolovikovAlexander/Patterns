@@ -166,13 +166,14 @@ class storage_row_model(reference):
         self._period = value
         
     @staticmethod    
-    def create_credit_row(nomenclature_name: str, details: list, data: dict, _storage: storage_model) -> reference:
+    def create_credit_row(nomenclature_name: str, quantity, unit_name: str, data: dict, _storage: storage_model) -> reference:
         """
             Фабричный метод для создания транзакции на поступление
-            Используется в start_factoryu
+            Используется в start_factory
         Args:
             nomenclature_name (str): Наименование номенклатуры
-            details (list): список типа [0.1, "литр"] 
+            quantity(int, float): Количество
+            unit_name (str): Наименование единицы измерения
             data (dict): исходный набор данных
             storage(storage_model): склад
         Returns:
@@ -180,16 +181,9 @@ class storage_row_model(reference):
         """
         exception_proxy.validate(nomenclature_name, str)
         exception_proxy.validate(_storage, storage_model)
-        if details is None:
-            raise argument_exception("Некорректно переданы параметры!")
-        
-        if len(details) < 2:
-            raise argument_exception("Некорректно переданы параметры!")
-        
-        quantity = details[0]
-        unit_name = details[1]
-        exception_proxy.validate(quantity, (float, int))
+        exception_proxy.validate(quantity, (int, float))
         exception_proxy.validate(unit_name, str)
+        
         
         # Подготовим словарь со списком номенклатуры
         items = data[ storage.nomenclature_key() ]    

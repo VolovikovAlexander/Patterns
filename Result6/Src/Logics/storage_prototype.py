@@ -15,6 +15,7 @@ class storage_prototype(error_proxy):
         
         exception_proxy.validate(data, list)
         self.__data = data
+        self.clear()
 
     # Методы фильтрации
 
@@ -29,6 +30,7 @@ class storage_prototype(error_proxy):
             storage_prototype: _description_
         """
         self.clear()
+        
         exception_proxy.validate(start_period, datetime)
         exception_proxy.validate(stop_period, datetime)
         if len(self.__data) <= 0:
@@ -59,6 +61,7 @@ class storage_prototype(error_proxy):
             storage_prototype: _description_
         """
         self.clear()
+        
         exception_proxy.validate(nomenclature, nomenclature_model)
         
         result = []

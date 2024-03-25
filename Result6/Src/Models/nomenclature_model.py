@@ -1,5 +1,5 @@
 from Src.reference import reference
-from Src.exceptions import exception_proxy
+from Src.exceptions import exception_proxy, operation_exception
 
 
 class nomenclature_model(reference):
@@ -50,5 +50,26 @@ class nomenclature_model(reference):
         exception_proxy.validate(value, reference)
         self._unit = value
         
+        
+    # Фабричные методы
+    
+    @staticmethod
+    def get(nomenclature_name: str, nomenclatures: dict):
+        """
+            Получить значение элемента номенклатуры из словаря
+        Args:
+            nomenclature_name (str): наименование
+            nomenclatures (dict): исходный словарь storage.data
+
+        Returns:
+            nomenclature_model: _description_
+        """
+        exception_proxy.validate(nomenclature_name, str)
+        
+        keys = list(filter(lambda x: x == nomenclature_name, nomenclatures.keys() ))
+        if len(keys) == 0:
+            raise operation_exception(f"Некоректно передан список. Не найдена номенклатура {nomenclature_name}!")
+                
+        return nomenclatures[keys[0]]
   
     
