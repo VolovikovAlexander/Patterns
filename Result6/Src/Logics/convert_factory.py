@@ -73,10 +73,15 @@ class convert_factory:
                     # Сконвертируем данные как значение
                     dictionary = self.__convert_item(field, value)
                     
-                if len(dictionary) == 1:
-                    result[field] =  dictionary[field]
-                else:
-                    result[field] = dictionary       
+                try:    
+                    if len(dictionary) == 1:
+                        # Обычное поле
+                        result[field] =  dictionary[field]
+                    else:
+                        # Вложенный словарь
+                        result[field] = dictionary    
+                except:
+                    raise operation_exception(f"Невозможно сконвертировать объект в набор словарей. Поле {field}, значение: {dictionary}")           
           
         return result  
     

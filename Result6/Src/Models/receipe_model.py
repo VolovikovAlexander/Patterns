@@ -134,14 +134,6 @@ class receipe_model(reference):
             
         return result
     
-    def  rows_ids(self):
-        """
-            Получить список кодов состава блюда
-        """
-        result = []
-        for item in self._rows:
-            result.append(item.value.id)
-    
     
     @staticmethod
     def create_receipt(name: str, comments: str, items: list, data: list):

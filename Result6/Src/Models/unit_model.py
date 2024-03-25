@@ -1,5 +1,5 @@
 from Src.reference import reference
-from Src.exceptions import exception_proxy, argument_exception
+from Src.exceptions import exception_proxy, argument_exception, operation_exception
 
 
 
@@ -110,6 +110,26 @@ class unit_model(reference):
         item = unit_model("литр", base, 1000)
         return item
     
+    
+    @staticmethod
+    def get(unit_name: str, units: dict):
+        """
+            Получить значение элемента единицы измерения из словаря
+        Args:
+            nomenclature_name (str): наименование
+            nomenclatures (dict): исходный словарь storage.data
+
+        Returns:
+            nomenclature_model: _description_
+        """
+        exception_proxy.validate(unit_name, str)
+        
+        keys = list(filter(lambda x: x == unit_name, units.keys() ))
+        if len(keys) == 0:
+            raise operation_exception(f"Некоректно передан список. Не найдена номенклатура {unit_name}!")
+                
+        return units[keys[0]]
+  
     
 
         

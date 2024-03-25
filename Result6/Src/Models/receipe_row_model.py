@@ -84,7 +84,7 @@ class receipe_row_model(reference):
         exception_proxy.validate(period , datetime)
         exception_proxy.validate(storage, storage_model)
         
-        item = storage_row_model()
+        item = storage_row_model(f"debit transaction")
         item.nomenclature = row.nomenclature
         item.period  = period
         item.storage = storage

@@ -185,24 +185,15 @@ class storage_row_model(reference):
         exception_proxy.validate(unit_name, str)
         
         
-        # Подготовим словарь со списком номенклатуры
+        # Определим номенклатуру
         items = data[ storage.nomenclature_key() ]    
         nomenclatures = reference.create_dictionary(items)
-        
-        # Определеяем номенклатуру
-        keys = list(filter(lambda x: x == nomenclature_name, nomenclatures.keys() ))
-        if len(keys) == 0:
-            raise operation_exception(f"Некоректно передан список. Не найдена номенклатура {nomenclature_name}!")
-        nomenclature = nomenclatures[keys[0]]    
-        
+        nomenclature = nomenclature_model.get( nomenclature_name, nomenclatures)
+
+        # Определяем единицу измерения
         items = data[ storage.unit_key()]
         units = reference.create_dictionary(items)
-        
-        # Определяем единицу измерения
-        keys = list(filter(lambda x: x == unit_name, units.keys() ))
-        if len(keys) == 0:
-            raise operation_exception(f"Некорректно передан список. Не найдена единица измерения {unit_name}!")
-        unit = units[keys[0]]
+        unit = unit_model.get(unit_name, units )
         
         start_date = datetime.strptime("2024-01-01", "%Y-%m-%d")
         stop_date = datetime.strptime("2024-02-01", "%Y-%m-%d")

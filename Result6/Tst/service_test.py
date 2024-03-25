@@ -145,6 +145,7 @@ class service_test(unittest.TestCase):
         start.create()
         key = storage.storage_transaction_key()
         transactions_data = start.storage.data[ key ]
+        start_len_transaction = len(transactions_data)
         service = storage_service(transactions_data)
         
         if len(transactions_data) == 0:
@@ -160,10 +161,11 @@ class service_test(unittest.TestCase):
         receipt = receipts_data[0]
         
         # Действие и проверка
-        result = service.build_debits_by_receipt( receipt ) 
+        service.build_debits_by_receipt( receipt ) 
+        stop_len_transaction = len(start.storage.data[  storage.storage_transaction_key() ])
           
-        # Проверка    
-        assert len(result) > 0        
+        # Проверка (транзакций должно быть больше)   
+        assert start_len_transaction < stop_len_transaction   
         
             
         

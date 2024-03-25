@@ -162,9 +162,10 @@ class storage_service:
         
         # Формируем список проводок на списание
         processing = process_factory().create( process_factory.debit_key() )
-        transactions = processing.process( receipt.rows() )
+        transactions = processing().process( receipt.rows() )
         key = storage.storage_transaction_key()
-        data = storage.data[ key ]
+        
+        data = storage().data[ key ]
         for transaction in transactions:
             data.append ( transaction )
             

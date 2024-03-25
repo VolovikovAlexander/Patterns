@@ -24,7 +24,7 @@ class debit_processing(processing):
         storage_default = storage_model.create_default()
           
         for row in source:
-            debit_transaction = receipe_row_model.create_debit_transaction( row, datetime.now, storage_default )
+            debit_transaction = receipe_row_model.create_debit_transaction( row, datetime.now(), storage_default )
             result.append( debit_transaction )
             
         return result    
