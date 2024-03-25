@@ -12,9 +12,9 @@ class debit_processing(processing):
     
       def process(self, source: list) -> list:
         """
-            Сформировать складские обороты
+            Сформировать проводки списания
         Args:
-            transactions (list): Список объектов типа storage_row_model
+            transactions (list): Список объектов типа receipe_row_model
 
         Returns:
             list: _description_
