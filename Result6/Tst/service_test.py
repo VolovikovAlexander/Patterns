@@ -107,7 +107,7 @@ class service_test(unittest.TestCase):
         assert len(result) > 0
         
     #
-    # Проверить метод  build_debits_by_receipt
+    # Проверить метод  build_debits_by_receipt. Ошибочный сценарий.
     #   
     def test_check_build_debits_by_receipt_fail(self):
         # Подготовка
@@ -136,7 +136,7 @@ class service_test(unittest.TestCase):
             
             
     #
-    # Проверить метод  build_debits_by_receipt
+    # Проверить метод  build_debits_by_receipt. Корректный сценарий
     #   
     def test_check_build_debits_by_receipt_pass(self):
         # Подготовка
