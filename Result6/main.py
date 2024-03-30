@@ -59,7 +59,6 @@ def get_turns():
     result = storage_service.create_response( data, app )
     return result
       
-      
 @app.route("/api/storage/<nomenclature_id>/turns", methods = ["GET"] )
 def get_turns_nomenclature(nomenclature_id):
     
@@ -71,8 +70,11 @@ def get_turns_nomenclature(nomenclature_id):
     if "stop_period" not in args.keys():
         return error_proxy.create_error_response(app, "Необходимо передать параметры: start_period, stop_period!")
 
-    start_date = datetime.strptime(args["start_period"], "%Y-%m-%d")
-    stop_date = datetime.strptime(args["stop_period"], "%Y-%m-%d")
+    try:
+        start_date = datetime.strptime(args["start_period"], "%Y-%m-%d")
+        stop_date = datetime.strptime(args["stop_period"], "%Y-%m-%d")
+    except:
+        return error_proxy.create_error_response(app, "Некорректно перпеданы параметры: start_period, stop_period")    
 
     transactions_data = start.storage.data[  storage.storage_transaction_key()   ]   
     nomenclature_data =  start.storage.data[  storage.nomenclature_key()   ]   

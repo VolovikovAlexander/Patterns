@@ -20,6 +20,27 @@ class storage_service:
         
         self.__data = data
         
+    def __processing(self, data: list) -> list:
+        """
+            Сформировать обороты
+        Args:
+            data (list): _description_
+
+        Returns:
+            list: _description_
+        """
+        if len(data) == 0:
+            raise argument_exception("Некорректно переданы параметры!")
+        
+        # Подобрать процессинг    
+        key_turn = process_factory.turn_key()
+        processing = process_factory().create( key_turn  )
+    
+        # Обороты
+        turns =  processing().process( data )
+        return turns
+            
+        
     # Набор основных методов    
         
     def create_turns(self, start_period: datetime, stop_period:datetime ) -> list:
@@ -41,14 +62,9 @@ class storage_service:
         # Фильтруем      
         prototype = storage_prototype(  self.__data )  
         filter = prototype.filter_by_period( start_period, stop_period)
+        
+        return self.__processing( filter. data )
             
-        # Подобрать процессинг    
-        key_turn = process_factory.turn_key()
-        processing = process_factory().create( key_turn  )
-    
-        # Обороты
-        turns =  processing().process( filter.data )
-        return turns
         
     def create_turns_by_nomenclature(self, start_period: datetime, stop_period: datetime, nomenclature: nomenclature_model) -> list:
         """
@@ -75,13 +91,7 @@ class storage_service:
         if not filter.is_empty:
             raise operation_exception(f"Невозможно сформировать обороты по указанным данных: {filter.error}")
             
-        # Подобрать процессинг    
-        key_turn = process_factory.turn_key()
-        processing = process_factory().create( key_turn  )
-    
-        # Обороты
-        turns =  processing().process( filter.data )
-        return turns        
+        return self.__processing( filter. data )    
     
     def create_turns_only_nomenclature(self, nomenclature: nomenclature_model) -> list:
         """
@@ -98,13 +108,7 @@ class storage_service:
         if not filter.is_empty:
             raise operation_exception(f"Невозможно сформировать обороты по указанным данных: {filter.error}")
          
-        # Подобрать процессинг    
-        key_turn = process_factory.turn_key()
-        processing = process_factory().create( key_turn  )
-    
-        # Обороты
-        turns =  processing().process( filter.data )
-        return turns    
+        return self.__processing( filter. data )   
     
     def create_turns_by_receipt(self, receipt: receipe_model) -> list:
         """
@@ -130,14 +134,9 @@ class storage_service:
                     transactions.append( transaction )
                     
             filter.data = self.__data        
-                    
-        # Подобрать процессинг    
-        key_turn = process_factory.turn_key()
-        processing = process_factory().create( key_turn  )
-    
-        # Обороты
-        turns =  processing().process( transactions )
-        return turns       
+            
+        return self.__processing( transactions )     
+            
     
     def build_debits_by_receipt(self, receipt: receipe_model) -> list:
         """
@@ -168,8 +167,6 @@ class storage_service:
         data = storage().data[ key ]
         for transaction in transactions:
             data.append ( transaction )
-            
-        
     
     # Набор основных методов        
     
