@@ -5,18 +5,18 @@
         "consist": {
             "\u041c\u0443\u043a\u0430 \u043f\u0448\u0435\u043d\u0438\u0447\u043d\u0430\u044f": {
                 "description": "",
-                "id": "c6da5535acbe4d6aaf46a9e35b6d7591",
+                "id": "68c64ca025144d1c9414b054f0390937",
                 "is_error": false,
                 "name": "\u041c\u0443\u043a\u0430 \u043f\u0448\u0435\u043d\u0438\u0447\u043d\u0430\u044f",
                 "nomenclature": {
                     "description": "",
                     "group": {
                         "description": "",
-                        "id": "d73a3e178cea4e53ac8670e652787a0f",
+                        "id": "032d6422414c469588b76b2fd9e902a3",
                         "is_error": false,
                         "name": "\u0418\u043d\u0433\u0440\u0435\u0434\u0438\u0435\u043d\u0442\u044b"
                     },
-                    "id": "8b20aed10a1342218c8382fa77ac1837",
+                    "id": "a6911b39699243d5b074fad1c2dcb13e",
                     "is_error": false,
                     "name": "\u041c\u0443\u043a\u0430 \u043f\u0448\u0435\u043d\u0438\u0447\u043d\u0430\u044f",
                     "unit": {
@@ -24,13 +24,13 @@
                             "base_unit": null,
                             "coefficient": 1,
                             "description": "",
-                            "id": "85942fa64c9846878a399457d878feb3",
+                            "id": "e6cdea4702404f3caf09a1de2cfa1bc1",
                             "is_error": false,
                             "name": "\u0433\u0440\u0430\u043c\u043c"
                         },
                         "coefficient": 1000,
                         "description": "",
-                        "id": "7e472c3df8694d64a5d37ac7a1656783",
+                        "id": "0bdbb05940c04b03b271081fa61abe80",
                         "is_error": false,
                         "name": "\u043a\u0438\u043b\u043b\u043e\u0433\u0440\u0430\u043c\u043c"
                     }
@@ -40,25 +40,25 @@
                     "base_unit": null,
                     "coefficient": 1,
                     "description": "",
-                    "id": "85942fa64c9846878a399457d878feb3",
+                    "id": "e6cdea4702404f3caf09a1de2cfa1bc1",
                     "is_error": false,
                     "name": "\u0433\u0440\u0430\u043c\u043c"
                 }
             },
             "\u0421\u0430\u0445\u0430\u0440": {
                 "description": "",
-                "id": "3645c780fb4d49d486487d78816cc862",
+                "id": "da8e7ac320e1479ab113939b41d391a4",
                 "is_error": false,
                 "name": "\u0421\u0430\u0445\u0430\u0440",
                 "nomenclature": {
                     "description": "",
                     "group": {
                         "description": "",
-                        "id": "d73a3e178cea4e53ac8670e652787a0f",
+                        "id": "032d6422414c469588b76b2fd9e902a3",
                         "is_error": false,
                         "name": "\u0418\u043d\u0433\u0440\u0435\u0434\u0438\u0435\u043d\u0442\u044b"
                     },
-                    "id": "ec94a55deb7942b7b724f2c51555afaa",
+                    "id": "0a6c5ab5997e41c689742d0b42ff696b",
                     "is_error": false,
                     "name": "\u0421\u0430\u0445\u0430\u0440",
                     "unit": {
@@ -66,13 +66,13 @@
                             "base_unit": null,
                             "coefficient": 1,
                             "description": "",
-                            "id": "85942fa64c9846878a399457d878feb3",
+                            "id": "e6cdea4702404f3caf09a1de2cfa1bc1",
                             "is_error": false,
                             "name": "\u0433\u0440\u0430\u043c\u043c"
                         },
                         "coefficient": 1000,
                         "description": "",
-                        "id": "7e472c3df8694d64a5d37ac7a1656783",
+                        "id": "0bdbb05940c04b03b271081fa61abe80",
                         "is_error": false,
                         "name": "\u043a\u0438\u043b\u043b\u043e\u0433\u0440\u0430\u043c\u043c"
                     }
@@ -82,25 +82,25 @@
                     "base_unit": null,
                     "coefficient": 1,
                     "description": "",
-                    "id": "85942fa64c9846878a399457d878feb3",
+                    "id": "e6cdea4702404f3caf09a1de2cfa1bc1",
                     "is_error": false,
                     "name": "\u0433\u0440\u0430\u043c\u043c"
                 }
             },
             "\u0421\u043b\u0438\u0432\u043e\u0447\u043d\u043e\u0435 \u043c\u0430\u0441\u043b\u043e": {
                 "description": "",
-                "id": "18ff24ae92ea4314b4c577d97094ddb3",
+                "id": "2a70ec9ba5084ce68558f829cef899f3",
                 "is_error": false,
                 "name": "\u0421\u043b\u0438\u0432\u043e\u0447\u043d\u043e\u0435 \u043c\u0430\u0441\u043b\u043e",
                 "nomenclature": {
                     "description": "",
                     "group": {
                         "description": "",
-                        "id": "d73a3e178cea4e53ac8670e652787a0f",
+                        "id": "032d6422414c469588b76b2fd9e902a3",
                         "is_error": false,
                         "name": "\u0418\u043d\u0433\u0440\u0435\u0434\u0438\u0435\u043d\u0442\u044b"
                     },
-                    "id": "7b47264b37394d32af6d10236bceaf22",
+                    "id": "23158d0bdab745cca8ac045185af464d",
                     "is_error": false,
                     "name": "\u0421\u043b\u0438\u0432\u043e\u0447\u043d\u043e\u0435 \u043c\u0430\u0441\u043b\u043e",
                     "unit": {
@@ -108,13 +108,13 @@
                             "base_unit": null,
                             "coefficient": 1,
                             "description": "",
-                            "id": "85942fa64c9846878a399457d878feb3",
+                            "id": "e6cdea4702404f3caf09a1de2cfa1bc1",
                             "is_error": false,
                             "name": "\u0433\u0440\u0430\u043c\u043c"
                         },
                         "coefficient": 1000,
                         "description": "",
-                        "id": "7e472c3df8694d64a5d37ac7a1656783",
+                        "id": "0bdbb05940c04b03b271081fa61abe80",
                         "is_error": false,
                         "name": "\u043a\u0438\u043b\u043b\u043e\u0433\u0440\u0430\u043c\u043c"
                     }
@@ -124,32 +124,32 @@
                     "base_unit": null,
                     "coefficient": 1,
                     "description": "",
-                    "id": "85942fa64c9846878a399457d878feb3",
+                    "id": "e6cdea4702404f3caf09a1de2cfa1bc1",
                     "is_error": false,
                     "name": "\u0433\u0440\u0430\u043c\u043c"
                 }
             },
             "\u042f\u0439\u0446\u0430": {
                 "description": "",
-                "id": "8d50ceac57494c48b06f2cb842ba7320",
+                "id": "d8b6b4db011c4230a0f547e76d44952c",
                 "is_error": false,
                 "name": "\u042f\u0439\u0446\u0430",
                 "nomenclature": {
                     "description": "",
                     "group": {
                         "description": "",
-                        "id": "d73a3e178cea4e53ac8670e652787a0f",
+                        "id": "032d6422414c469588b76b2fd9e902a3",
                         "is_error": false,
                         "name": "\u0418\u043d\u0433\u0440\u0435\u0434\u0438\u0435\u043d\u0442\u044b"
                     },
-                    "id": "7e33c7b1928a439697820327bbe29871",
+                    "id": "fc62170cb2644901a1c8fefe33e2eb2a",
                     "is_error": false,
                     "name": "\u042f\u0439\u0446\u0430",
                     "unit": {
                         "base_unit": null,
                         "coefficient": 1,
                         "description": "",
-                        "id": "d16811d6a25a40e8a723f2894a5d8056",
+                        "id": "1b19ce48e71941d4b653af16850b33f2",
                         "is_error": false,
                         "name": "\u0448\u0442\u0443\u043a\u0430"
                     }
@@ -159,14 +159,14 @@
                     "base_unit": null,
                     "coefficient": 1,
                     "description": "",
-                    "id": "d16811d6a25a40e8a723f2894a5d8056",
+                    "id": "1b19ce48e71941d4b653af16850b33f2",
                     "is_error": false,
                     "name": "\u0448\u0442\u0443\u043a\u0430"
                 }
             }
         },
         "description": "",
-        "id": "7b47e6eea80947878156d8b9862968f2",
+        "id": "02778647583b4c1abaaea0fe8fd12eff",
         "instructions": [
             {
                 "instructions": "\u041c\u0430\u0441\u043b\u043e \u043f\u043e\u043b\u043e\u0436\u0438\u0442\u0435 \u0432 \u0441\u043e\u0442\u0435\u0439\u043d\u0438\u043a \u0441 \u0442\u043e\u043b\u0441\u0442\u044b\u043c \u0434\u043d\u043e\u043c. \u0420\u0430\u0441\u0442\u043e\u043f\u0438\u0442\u0435 \u0435\u0433\u043e \u043d\u0430 \u043c\u0430\u043b\u0435\u043d\u044c\u043a\u043e\u043c \u043e\u0433\u043d\u0435 \u043d\u0430 \u043f\u043b\u0438\u0442\u0435, \u043d\u0430 \u0432\u043e\u0434\u044f\u043d\u043e\u0439 \u0431\u0430\u043d\u0435 \u043b\u0438\u0431\u043e \u0432 \u043c\u0438\u043a\u0440\u043e\u0432\u043e\u043b\u043d\u043e\u0432\u043a\u0435."
@@ -194,18 +194,18 @@
         "consist": {
             "\u0411\u0435\u043b\u044b\u0439 \u0445\u043b\u0435\u0431": {
                 "description": "",
-                "id": "d73ee0a7baac4dde8ac11036ed3e4757",
+                "id": "a6285e0d77ba48128d511346abd0832d",
                 "is_error": false,
                 "name": "\u0411\u0435\u043b\u044b\u0439 \u0445\u043b\u0435\u0431",
                 "nomenclature": {
                     "description": "",
                     "group": {
                         "description": "",
-                        "id": "d73a3e178cea4e53ac8670e652787a0f",
+                        "id": "032d6422414c469588b76b2fd9e902a3",
                         "is_error": false,
                         "name": "\u0418\u043d\u0433\u0440\u0435\u0434\u0438\u0435\u043d\u0442\u044b"
                     },
-                    "id": "cb0013cc12c64451a42e981e36fedbf3",
+                    "id": "a25087cdea5a4a7690b44f2a680d65bc",
                     "is_error": false,
                     "name": "\u0411\u0435\u043b\u044b\u0439 \u0445\u043b\u0435\u0431",
                     "unit": {
@@ -213,13 +213,13 @@
                             "base_unit": null,
                             "coefficient": 1,
                             "description": "",
-                            "id": "85942fa64c9846878a399457d878feb3",
+                            "id": "e6cdea4702404f3caf09a1de2cfa1bc1",
                             "is_error": false,
                             "name": "\u0433\u0440\u0430\u043c\u043c"
                         },
                         "coefficient": 1000,
                         "description": "",
-                        "id": "7e472c3df8694d64a5d37ac7a1656783",
+                        "id": "0bdbb05940c04b03b271081fa61abe80",
                         "is_error": false,
                         "name": "\u043a\u0438\u043b\u043b\u043e\u0433\u0440\u0430\u043c\u043c"
                     }
@@ -229,32 +229,32 @@
                     "base_unit": null,
                     "coefficient": 1,
                     "description": "",
-                    "id": "85942fa64c9846878a399457d878feb3",
+                    "id": "e6cdea4702404f3caf09a1de2cfa1bc1",
                     "is_error": false,
                     "name": "\u0433\u0440\u0430\u043c\u043c"
                 }
             },
             "\u0413\u043e\u0440\u0447\u0438\u0446\u0430 \u0434\u0438\u0436\u043e\u043d\u0441\u043a\u0430\u044f": {
                 "description": "",
-                "id": "7a2d70f6a7a740b39da2aff9a0df1ea9",
+                "id": "415532a6a5bb43f58b4057186e7f6564",
                 "is_error": false,
                 "name": "\u0413\u043e\u0440\u0447\u0438\u0446\u0430 \u0434\u0438\u0436\u043e\u043d\u0441\u043a\u0430\u044f",
                 "nomenclature": {
                     "description": "",
                     "group": {
                         "description": "",
-                        "id": "d73a3e178cea4e53ac8670e652787a0f",
+                        "id": "032d6422414c469588b76b2fd9e902a3",
                         "is_error": false,
                         "name": "\u0418\u043d\u0433\u0440\u0435\u0434\u0438\u0435\u043d\u0442\u044b"
                     },
-                    "id": "d408963fd6ff473c87fc5ebc2decad5c",
+                    "id": "a4ad869bfe3340e0988f9e3a3dfc4f61",
                     "is_error": false,
                     "name": "\u0413\u043e\u0440\u0447\u0438\u0446\u0430 \u0434\u0438\u0436\u043e\u043d\u0441\u043a\u0430\u044f",
                     "unit": {
                         "base_unit": null,
                         "coefficient": 1,
                         "description": "",
-                        "id": "57889b56ea5f4f6b95de2d319398ae82",
+                        "id": "9d6c412e22394177a8c8603644d8e69f",
                         "is_error": false,
                         "name": "\u0433\u0440\u0430\u043c\u043c"
                     }
@@ -264,25 +264,25 @@
                     "base_unit": null,
                     "coefficient": 1,
                     "description": "",
-                    "id": "57889b56ea5f4f6b95de2d319398ae82",
+                    "id": "9d6c412e22394177a8c8603644d8e69f",
                     "is_error": false,
                     "name": "\u0433\u0440\u0430\u043c\u043c"
                 }
             },
             "\u041a\u0443\u0440\u0438\u043d\u043d\u043e\u0435 \u0444\u0438\u043b\u0435": {
                 "description": "",
-                "id": "71c8a109bc18447bbe3d47d3a2de31af",
+                "id": "4fd1399c8cb9414193f362085245063a",
                 "is_error": false,
                 "name": "\u041a\u0443\u0440\u0438\u043d\u043d\u043e\u0435 \u0444\u0438\u043b\u0435",
                 "nomenclature": {
                     "description": "",
                     "group": {
                         "description": "",
-                        "id": "d73a3e178cea4e53ac8670e652787a0f",
+                        "id": "032d6422414c469588b76b2fd9e902a3",
                         "is_error": false,
                         "name": "\u0418\u043d\u0433\u0440\u0435\u0434\u0438\u0435\u043d\u0442\u044b"
                     },
-                    "id": "9d317486820143908d78a6eb7dfa73e8",
+                    "id": "8aafcea9a31b4f78b71b42299363315e",
                     "is_error": false,
                     "name": "\u041a\u0443\u0440\u0438\u043d\u043d\u043e\u0435 \u0444\u0438\u043b\u0435",
                     "unit": {
@@ -290,13 +290,13 @@
                             "base_unit": null,
                             "coefficient": 1,
                             "description": "",
-                            "id": "85942fa64c9846878a399457d878feb3",
+                            "id": "e6cdea4702404f3caf09a1de2cfa1bc1",
                             "is_error": false,
                             "name": "\u0433\u0440\u0430\u043c\u043c"
                         },
                         "coefficient": 1000,
                         "description": "",
-                        "id": "7e472c3df8694d64a5d37ac7a1656783",
+                        "id": "0bdbb05940c04b03b271081fa61abe80",
                         "is_error": false,
                         "name": "\u043a\u0438\u043b\u043b\u043e\u0433\u0440\u0430\u043c\u043c"
                     }
@@ -306,25 +306,25 @@
                     "base_unit": null,
                     "coefficient": 1,
                     "description": "",
-                    "id": "85942fa64c9846878a399457d878feb3",
+                    "id": "e6cdea4702404f3caf09a1de2cfa1bc1",
                     "is_error": false,
                     "name": "\u0433\u0440\u0430\u043c\u043c"
                 }
             },
             "\u041b\u0438\u043c\u043e\u043d\u043d\u044b\u0439 \u0441\u043e\u043a": {
                 "description": "",
-                "id": "eea36db75240453da8a3a3faf623edda",
+                "id": "fc1ed00f8dc747c9bed2c6fa5004901f",
                 "is_error": false,
                 "name": "\u041b\u0438\u043c\u043e\u043d\u043d\u044b\u0439 \u0441\u043e\u043a",
                 "nomenclature": {
                     "description": "",
                     "group": {
                         "description": "",
-                        "id": "d73a3e178cea4e53ac8670e652787a0f",
+                        "id": "032d6422414c469588b76b2fd9e902a3",
                         "is_error": false,
                         "name": "\u0418\u043d\u0433\u0440\u0435\u0434\u0438\u0435\u043d\u0442\u044b"
                     },
-                    "id": "ecca0303449740d78ad77ac0e7f013b5",
+                    "id": "4f2443713caf4f9caf25e971d2bf4073",
                     "is_error": false,
                     "name": "\u041b\u0438\u043c\u043e\u043d\u043d\u044b\u0439 \u0441\u043e\u043a",
                     "unit": {
@@ -332,13 +332,13 @@
                             "base_unit": null,
                             "coefficient": 1,
                             "description": "",
-                            "id": "54e8b674d5f9479b9856d653d356e0be",
+                            "id": "9e933a73738c41e2b588e4f2a92ec16e",
                             "is_error": false,
                             "name": "\u043c\u0438\u043b\u043b\u0438\u043b\u0438\u0442\u0440"
                         },
                         "coefficient": 1000,
                         "description": "",
-                        "id": "b6489c83c1fb4bf093c3e593eab981bf",
+                        "id": "beda895f8dd24fc0b7909a923842d6c5",
                         "is_error": false,
                         "name": "\u043b\u0438\u0442\u0440"
                     }
@@ -348,25 +348,25 @@
                     "base_unit": null,
                     "coefficient": 1,
                     "description": "",
-                    "id": "54e8b674d5f9479b9856d653d356e0be",
+                    "id": "9e933a73738c41e2b588e4f2a92ec16e",
                     "is_error": false,
                     "name": "\u043c\u0438\u043b\u043b\u0438\u043b\u0438\u0442\u0440"
                 }
             },
             "\u041e\u043b\u0438\u0432\u043a\u043e\u0432\u043e\u0435 \u043c\u0430\u0441\u043b\u043e": {
                 "description": "",
-                "id": "8323e693a7ea49669b417c681a976910",
+                "id": "91f5fe1c1ef24fdd82aacd3a22a893e7",
                 "is_error": false,
                 "name": "\u041e\u043b\u0438\u0432\u043a\u043e\u0432\u043e\u0435 \u043c\u0430\u0441\u043b\u043e",
                 "nomenclature": {
                     "description": "",
                     "group": {
                         "description": "",
-                        "id": "d73a3e178cea4e53ac8670e652787a0f",
+                        "id": "032d6422414c469588b76b2fd9e902a3",
                         "is_error": false,
                         "name": "\u0418\u043d\u0433\u0440\u0435\u0434\u0438\u0435\u043d\u0442\u044b"
                     },
-                    "id": "586996c970aa4f96bcca34062c44e6b1",
+                    "id": "770dda2eaae141e4a63d27ccbb49268d",
                     "is_error": false,
                     "name": "\u041e\u043b\u0438\u0432\u043a\u043e\u0432\u043e\u0435 \u043c\u0430\u0441\u043b\u043e",
                     "unit": {
@@ -374,13 +374,13 @@
                             "base_unit": null,
                             "coefficient": 1,
                             "description": "",
-                            "id": "54e8b674d5f9479b9856d653d356e0be",
+                            "id": "9e933a73738c41e2b588e4f2a92ec16e",
                             "is_error": false,
                             "name": "\u043c\u0438\u043b\u043b\u0438\u043b\u0438\u0442\u0440"
                         },
                         "coefficient": 1000,
                         "description": "",
-                        "id": "b6489c83c1fb4bf093c3e593eab981bf",
+                        "id": "beda895f8dd24fc0b7909a923842d6c5",
                         "is_error": false,
                         "name": "\u043b\u0438\u0442\u0440"
                     }
@@ -390,32 +390,32 @@
                     "base_unit": null,
                     "coefficient": 1,
                     "description": "",
-                    "id": "54e8b674d5f9479b9856d653d356e0be",
+                    "id": "9e933a73738c41e2b588e4f2a92ec16e",
                     "is_error": false,
                     "name": "\u043c\u0438\u043b\u043b\u0438\u043b\u0438\u0442\u0440"
                 }
             },
             "\u0421\u0430\u043b\u0430\u0442 \u0420\u043e\u043c\u0430\u043d\u043e": {
                 "description": "",
-                "id": "2ee028d0acc14949bc213e14ea94e109",
+                "id": "7b23f7b9a0ca42a68ec57afb255c693d",
                 "is_error": false,
                 "name": "\u0421\u0430\u043b\u0430\u0442 \u0420\u043e\u043c\u0430\u043d\u043e",
                 "nomenclature": {
                     "description": "",
                     "group": {
                         "description": "",
-                        "id": "d73a3e178cea4e53ac8670e652787a0f",
+                        "id": "032d6422414c469588b76b2fd9e902a3",
                         "is_error": false,
                         "name": "\u0418\u043d\u0433\u0440\u0435\u0434\u0438\u0435\u043d\u0442\u044b"
                     },
-                    "id": "31b20e53b8284bdb8db9b06cfbe0e54d",
+                    "id": "1a8160ec28bc4d329b6b55a2eda422bd",
                     "is_error": false,
                     "name": "\u0421\u0430\u043b\u0430\u0442 \u0420\u043e\u043c\u0430\u043d\u043e",
                     "unit": {
                         "base_unit": null,
                         "coefficient": 1,
                         "description": "",
-                        "id": "57889b56ea5f4f6b95de2d319398ae82",
+                        "id": "9d6c412e22394177a8c8603644d8e69f",
                         "is_error": false,
                         "name": "\u0433\u0440\u0430\u043c\u043c"
                     }
@@ -425,25 +425,25 @@
                     "base_unit": null,
                     "coefficient": 1,
                     "description": "",
-                    "id": "57889b56ea5f4f6b95de2d319398ae82",
+                    "id": "9d6c412e22394177a8c8603644d8e69f",
                     "is_error": false,
                     "name": "\u0433\u0440\u0430\u043c\u043c"
                 }
             },
             "\u0421\u043e\u043b\u044c": {
                 "description": "",
-                "id": "d1b769b5c47b4301a9886eb59e74ff74",
+                "id": "f1b33f351d044320b7eb2fa0c68af944",
                 "is_error": false,
                 "name": "\u0421\u043e\u043b\u044c",
                 "nomenclature": {
                     "description": "",
                     "group": {
                         "description": "",
-                        "id": "d73a3e178cea4e53ac8670e652787a0f",
+                        "id": "032d6422414c469588b76b2fd9e902a3",
                         "is_error": false,
                         "name": "\u0418\u043d\u0433\u0440\u0435\u0434\u0438\u0435\u043d\u0442\u044b"
                     },
-                    "id": "e3bd17a736cb4ce58178d49bad36e942",
+                    "id": "d9ea33dd64fb41a2a687a8c3fcf0adb4",
                     "is_error": false,
                     "name": "\u0421\u043e\u043b\u044c",
                     "unit": {
@@ -451,13 +451,13 @@
                             "base_unit": null,
                             "coefficient": 1,
                             "description": "",
-                            "id": "85942fa64c9846878a399457d878feb3",
+                            "id": "e6cdea4702404f3caf09a1de2cfa1bc1",
                             "is_error": false,
                             "name": "\u0433\u0440\u0430\u043c\u043c"
                         },
                         "coefficient": 1000,
                         "description": "",
-                        "id": "7e472c3df8694d64a5d37ac7a1656783",
+                        "id": "0bdbb05940c04b03b271081fa61abe80",
                         "is_error": false,
                         "name": "\u043a\u0438\u043b\u043b\u043e\u0433\u0440\u0430\u043c\u043c"
                     }
@@ -467,25 +467,25 @@
                     "base_unit": null,
                     "coefficient": 1,
                     "description": "",
-                    "id": "85942fa64c9846878a399457d878feb3",
+                    "id": "e6cdea4702404f3caf09a1de2cfa1bc1",
                     "is_error": false,
                     "name": "\u0433\u0440\u0430\u043c\u043c"
                 }
             },
             "\u0421\u044b\u0440 \u041f\u0430\u0440\u043c\u0435\u0437\u0430\u043d": {
                 "description": "",
-                "id": "1c2a3c68061349cea107b36ddd135d3b",
+                "id": "50598b82b9f948ce98606b9e79d40007",
                 "is_error": false,
                 "name": "\u0421\u044b\u0440 \u041f\u0430\u0440\u043c\u0435\u0437\u0430\u043d",
                 "nomenclature": {
                     "description": "",
                     "group": {
                         "description": "",
-                        "id": "d73a3e178cea4e53ac8670e652787a0f",
+                        "id": "032d6422414c469588b76b2fd9e902a3",
                         "is_error": false,
                         "name": "\u0418\u043d\u0433\u0440\u0435\u0434\u0438\u0435\u043d\u0442\u044b"
                     },
-                    "id": "bc00f8fe4cd2410281be0bbbe92258f9",
+                    "id": "53b0c3187a844ff68c8749b13f748194",
                     "is_error": false,
                     "name": "\u0421\u044b\u0440 \u041f\u0430\u0440\u043c\u0435\u0437\u0430\u043d",
                     "unit": {
@@ -493,13 +493,13 @@
                             "base_unit": null,
                             "coefficient": 1,
                             "description": "",
-                            "id": "85942fa64c9846878a399457d878feb3",
+                            "id": "e6cdea4702404f3caf09a1de2cfa1bc1",
                             "is_error": false,
                             "name": "\u0433\u0440\u0430\u043c\u043c"
                         },
                         "coefficient": 1000,
                         "description": "",
-                        "id": "7e472c3df8694d64a5d37ac7a1656783",
+                        "id": "0bdbb05940c04b03b271081fa61abe80",
                         "is_error": false,
                         "name": "\u043a\u0438\u043b\u043b\u043e\u0433\u0440\u0430\u043c\u043c"
                     }
@@ -509,32 +509,32 @@
                     "base_unit": null,
                     "coefficient": 1,
                     "description": "",
-                    "id": "85942fa64c9846878a399457d878feb3",
+                    "id": "e6cdea4702404f3caf09a1de2cfa1bc1",
                     "is_error": false,
                     "name": "\u0433\u0440\u0430\u043c\u043c"
                 }
             },
             "\u0427\u0435\u0440\u043d\u044b\u0439 \u043f\u0435\u0440\u0435\u0446": {
                 "description": "",
-                "id": "dcbe1005b890437ca0c191f57b778f23",
+                "id": "2692d2ccdb544e1a990c40c56408a1fe",
                 "is_error": false,
                 "name": "\u0427\u0435\u0440\u043d\u044b\u0439 \u043f\u0435\u0440\u0435\u0446",
                 "nomenclature": {
                     "description": "",
                     "group": {
                         "description": "",
-                        "id": "d73a3e178cea4e53ac8670e652787a0f",
+                        "id": "032d6422414c469588b76b2fd9e902a3",
                         "is_error": false,
                         "name": "\u0418\u043d\u0433\u0440\u0435\u0434\u0438\u0435\u043d\u0442\u044b"
                     },
-                    "id": "c137eeaa31d7408a854e164ef7e6f0d6",
+                    "id": "2fab3b715d1444268e9addd4f191008c",
                     "is_error": false,
                     "name": "\u0427\u0435\u0440\u043d\u044b\u0439 \u043f\u0435\u0440\u0435\u0446",
                     "unit": {
                         "base_unit": null,
                         "coefficient": 1,
                         "description": "",
-                        "id": "57889b56ea5f4f6b95de2d319398ae82",
+                        "id": "9d6c412e22394177a8c8603644d8e69f",
                         "is_error": false,
                         "name": "\u0433\u0440\u0430\u043c\u043c"
                     }
@@ -544,25 +544,25 @@
                     "base_unit": null,
                     "coefficient": 1,
                     "description": "",
-                    "id": "57889b56ea5f4f6b95de2d319398ae82",
+                    "id": "9d6c412e22394177a8c8603644d8e69f",
                     "is_error": false,
                     "name": "\u0433\u0440\u0430\u043c\u043c"
                 }
             },
             "\u0427\u0435\u0441\u043d\u043e\u043a": {
                 "description": "",
-                "id": "2d703e5acc85498e93d06c7e632b95d9",
+                "id": "8e0c4259f58f4bb2bdaa90b6c3d3451e",
                 "is_error": false,
                 "name": "\u0427\u0435\u0441\u043d\u043e\u043a",
                 "nomenclature": {
                     "description": "",
                     "group": {
                         "description": "",
-                        "id": "d73a3e178cea4e53ac8670e652787a0f",
+                        "id": "032d6422414c469588b76b2fd9e902a3",
                         "is_error": false,
                         "name": "\u0418\u043d\u0433\u0440\u0435\u0434\u0438\u0435\u043d\u0442\u044b"
                     },
-                    "id": "99f4ff8c3ca74e07ab8c5fa3724d1a78",
+                    "id": "e576930791c14e49a97a913a84b65c5e",
                     "is_error": false,
                     "name": "\u0427\u0435\u0441\u043d\u043e\u043a",
                     "unit": {
@@ -570,13 +570,13 @@
                             "base_unit": null,
                             "coefficient": 1,
                             "description": "",
-                            "id": "85942fa64c9846878a399457d878feb3",
+                            "id": "e6cdea4702404f3caf09a1de2cfa1bc1",
                             "is_error": false,
                             "name": "\u0433\u0440\u0430\u043c\u043c"
                         },
                         "coefficient": 1000,
                         "description": "",
-                        "id": "7e472c3df8694d64a5d37ac7a1656783",
+                        "id": "0bdbb05940c04b03b271081fa61abe80",
                         "is_error": false,
                         "name": "\u043a\u0438\u043b\u043b\u043e\u0433\u0440\u0430\u043c\u043c"
                     }
@@ -586,32 +586,32 @@
                     "base_unit": null,
                     "coefficient": 1,
                     "description": "",
-                    "id": "85942fa64c9846878a399457d878feb3",
+                    "id": "e6cdea4702404f3caf09a1de2cfa1bc1",
                     "is_error": false,
                     "name": "\u0433\u0440\u0430\u043c\u043c"
                 }
             },
             "\u042f\u0439\u0446\u0430": {
                 "description": "",
-                "id": "567f8683587d4d6c9396e26582a85f86",
+                "id": "41e88534efae4a0eb204c4ee8d4ae834",
                 "is_error": false,
                 "name": "\u042f\u0439\u0446\u0430",
                 "nomenclature": {
                     "description": "",
                     "group": {
                         "description": "",
-                        "id": "d73a3e178cea4e53ac8670e652787a0f",
+                        "id": "032d6422414c469588b76b2fd9e902a3",
                         "is_error": false,
                         "name": "\u0418\u043d\u0433\u0440\u0435\u0434\u0438\u0435\u043d\u0442\u044b"
                     },
-                    "id": "7e33c7b1928a439697820327bbe29871",
+                    "id": "fc62170cb2644901a1c8fefe33e2eb2a",
                     "is_error": false,
                     "name": "\u042f\u0439\u0446\u0430",
                     "unit": {
                         "base_unit": null,
                         "coefficient": 1,
                         "description": "",
-                        "id": "d16811d6a25a40e8a723f2894a5d8056",
+                        "id": "1b19ce48e71941d4b653af16850b33f2",
                         "is_error": false,
                         "name": "\u0448\u0442\u0443\u043a\u0430"
                     }
@@ -621,14 +621,14 @@
                     "base_unit": null,
                     "coefficient": 1,
                     "description": "",
-                    "id": "d16811d6a25a40e8a723f2894a5d8056",
+                    "id": "1b19ce48e71941d4b653af16850b33f2",
                     "is_error": false,
                     "name": "\u0448\u0442\u0443\u043a\u0430"
                 }
             }
         },
         "description": "",
-        "id": "4f8ff7e80f434986952e7e971e640e81",
+        "id": "ab34c3ccb4474ddab92abfccd3b6d099",
         "instructions": [],
         "is_error": false,
         "name": "\u0426\u0435\u0437\u0430\u0440\u044c \u0441 \u043a\u0443\u0440\u0438\u0446\u0435\u0439",
@@ -640,25 +640,25 @@
         "consist": {
             "\u0412\u0430\u043d\u0438\u043b\u0438\u0438\u043d": {
                 "description": "",
-                "id": "c583606344854b41a0601a534899a78b",
+                "id": "359ab7a9c7fd45d892675e8f50f34142",
                 "is_error": false,
                 "name": "\u0412\u0430\u043d\u0438\u043b\u0438\u0438\u043d",
                 "nomenclature": {
                     "description": "",
                     "group": {
                         "description": "",
-                        "id": "d73a3e178cea4e53ac8670e652787a0f",
+                        "id": "032d6422414c469588b76b2fd9e902a3",
                         "is_error": false,
                         "name": "\u0418\u043d\u0433\u0440\u0435\u0434\u0438\u0435\u043d\u0442\u044b"
                     },
-                    "id": "df3efcfccdfd4766a8f5c3efe012e5ad",
+                    "id": "6fed78d984f4405b86a33f901ac65399",
                     "is_error": false,
                     "name": "\u0412\u0430\u043d\u0438\u043b\u0438\u0438\u043d",
                     "unit": {
                         "base_unit": null,
                         "coefficient": 1,
                         "description": "",
-                        "id": "57889b56ea5f4f6b95de2d319398ae82",
+                        "id": "9d6c412e22394177a8c8603644d8e69f",
                         "is_error": false,
                         "name": "\u0433\u0440\u0430\u043c\u043c"
                     }
@@ -668,25 +668,25 @@
                     "base_unit": null,
                     "coefficient": 1,
                     "description": "",
-                    "id": "57889b56ea5f4f6b95de2d319398ae82",
+                    "id": "9d6c412e22394177a8c8603644d8e69f",
                     "is_error": false,
                     "name": "\u0433\u0440\u0430\u043c\u043c"
                 }
             },
             "\u041a\u0430\u043a\u0430\u043e": {
                 "description": "",
-                "id": "93ffc4e36e844a6490d459c6171a6d98",
+                "id": "58476f74f5e342e0a40fdcb887160669",
                 "is_error": false,
                 "name": "\u041a\u0430\u043a\u0430\u043e",
                 "nomenclature": {
                     "description": "",
                     "group": {
                         "description": "",
-                        "id": "d73a3e178cea4e53ac8670e652787a0f",
+                        "id": "032d6422414c469588b76b2fd9e902a3",
                         "is_error": false,
                         "name": "\u0418\u043d\u0433\u0440\u0435\u0434\u0438\u0435\u043d\u0442\u044b"
                     },
-                    "id": "ca5b3076be5842b9939f386a2075aa2a",
+                    "id": "ba648756dfbe43738784f53d4114b234",
                     "is_error": false,
                     "name": "\u041a\u0430\u043a\u0430\u043e",
                     "unit": {
@@ -694,13 +694,13 @@
                             "base_unit": null,
                             "coefficient": 1,
                             "description": "",
-                            "id": "85942fa64c9846878a399457d878feb3",
+                            "id": "e6cdea4702404f3caf09a1de2cfa1bc1",
                             "is_error": false,
                             "name": "\u0433\u0440\u0430\u043c\u043c"
                         },
                         "coefficient": 1000,
                         "description": "",
-                        "id": "7e472c3df8694d64a5d37ac7a1656783",
+                        "id": "0bdbb05940c04b03b271081fa61abe80",
                         "is_error": false,
                         "name": "\u043a\u0438\u043b\u043b\u043e\u0433\u0440\u0430\u043c\u043c"
                     }
@@ -710,32 +710,32 @@
                     "base_unit": null,
                     "coefficient": 1,
                     "description": "",
-                    "id": "85942fa64c9846878a399457d878feb3",
+                    "id": "e6cdea4702404f3caf09a1de2cfa1bc1",
                     "is_error": false,
                     "name": "\u0433\u0440\u0430\u043c\u043c"
                 }
             },
             "\u041a\u043e\u0440\u0438\u0446\u0430": {
                 "description": "",
-                "id": "f04145bb2c59494d92faafc0a19292f2",
+                "id": "2639ac44ac7040e3a7896e0f47f240bf",
                 "is_error": false,
                 "name": "\u041a\u043e\u0440\u0438\u0446\u0430",
                 "nomenclature": {
                     "description": "",
                     "group": {
                         "description": "",
-                        "id": "d73a3e178cea4e53ac8670e652787a0f",
+                        "id": "032d6422414c469588b76b2fd9e902a3",
                         "is_error": false,
                         "name": "\u0418\u043d\u0433\u0440\u0435\u0434\u0438\u0435\u043d\u0442\u044b"
                     },
-                    "id": "0c50cb181d0a43be94b812ea6fbc7c90",
+                    "id": "40a80e365b5c431d899ac231ebbcc253",
                     "is_error": false,
                     "name": "\u041a\u043e\u0440\u0438\u0446\u0430",
                     "unit": {
                         "base_unit": null,
                         "coefficient": 1,
                         "description": "",
-                        "id": "57889b56ea5f4f6b95de2d319398ae82",
+                        "id": "9d6c412e22394177a8c8603644d8e69f",
                         "is_error": false,
                         "name": "\u0433\u0440\u0430\u043c\u043c"
                     }
@@ -745,32 +745,32 @@
                     "base_unit": null,
                     "coefficient": 1,
                     "description": "",
-                    "id": "57889b56ea5f4f6b95de2d319398ae82",
+                    "id": "9d6c412e22394177a8c8603644d8e69f",
                     "is_error": false,
                     "name": "\u0433\u0440\u0430\u043c\u043c"
                 }
             },
             "\u0421\u0430\u0445\u0430\u0440\u043d\u0430\u044f \u043f\u0443\u0434\u0440\u0430": {
                 "description": "",
-                "id": "1a79fe0684044073a1c9876733f43c7d",
+                "id": "02e86c815f88455e9e440981d524350a",
                 "is_error": false,
                 "name": "\u0421\u0430\u0445\u0430\u0440\u043d\u0430\u044f \u043f\u0443\u0434\u0440\u0430",
                 "nomenclature": {
                     "description": "",
                     "group": {
                         "description": "",
-                        "id": "d73a3e178cea4e53ac8670e652787a0f",
+                        "id": "032d6422414c469588b76b2fd9e902a3",
                         "is_error": false,
                         "name": "\u0418\u043d\u0433\u0440\u0435\u0434\u0438\u0435\u043d\u0442\u044b"
                     },
-                    "id": "8bf78a6906664a358ee3b7ba0aeae0c7",
+                    "id": "1bb18e85e6c749a1bb876d88d97be754",
                     "is_error": false,
                     "name": "\u0421\u0430\u0445\u0430\u0440\u043d\u0430\u044f \u043f\u0443\u0434\u0440\u0430",
                     "unit": {
                         "base_unit": null,
                         "coefficient": 1,
                         "description": "",
-                        "id": "57889b56ea5f4f6b95de2d319398ae82",
+                        "id": "9d6c412e22394177a8c8603644d8e69f",
                         "is_error": false,
                         "name": "\u0433\u0440\u0430\u043c\u043c"
                     }
@@ -780,32 +780,32 @@
                     "base_unit": null,
                     "coefficient": 1,
                     "description": "",
-                    "id": "57889b56ea5f4f6b95de2d319398ae82",
+                    "id": "9d6c412e22394177a8c8603644d8e69f",
                     "is_error": false,
                     "name": "\u0433\u0440\u0430\u043c\u043c"
                 }
             },
             "\u042f\u0439\u0446\u0430": {
                 "description": "",
-                "id": "33530f81dfd249f38bf7b5fca4b1a525",
+                "id": "73caa07e6e764cdd8ee5c2c3c1bb6f34",
                 "is_error": false,
                 "name": "\u042f\u0439\u0446\u0430",
                 "nomenclature": {
                     "description": "",
                     "group": {
                         "description": "",
-                        "id": "d73a3e178cea4e53ac8670e652787a0f",
+                        "id": "032d6422414c469588b76b2fd9e902a3",
                         "is_error": false,
                         "name": "\u0418\u043d\u0433\u0440\u0435\u0434\u0438\u0435\u043d\u0442\u044b"
                     },
-                    "id": "7e33c7b1928a439697820327bbe29871",
+                    "id": "fc62170cb2644901a1c8fefe33e2eb2a",
                     "is_error": false,
                     "name": "\u042f\u0439\u0446\u0430",
                     "unit": {
                         "base_unit": null,
                         "coefficient": 1,
                         "description": "",
-                        "id": "d16811d6a25a40e8a723f2894a5d8056",
+                        "id": "1b19ce48e71941d4b653af16850b33f2",
                         "is_error": false,
                         "name": "\u0448\u0442\u0443\u043a\u0430"
                     }
@@ -815,14 +815,14 @@
                     "base_unit": null,
                     "coefficient": 1,
                     "description": "",
-                    "id": "d16811d6a25a40e8a723f2894a5d8056",
+                    "id": "1b19ce48e71941d4b653af16850b33f2",
                     "is_error": false,
                     "name": "\u0448\u0442\u0443\u043a\u0430"
                 }
             }
         },
         "description": "",
-        "id": "97ce06d565284b5f9cc1aabf73470b9e",
+        "id": "7e484a6cbe2c4c46b5794e7d4886ba6e",
         "instructions": [],
         "is_error": false,
         "name": "\u0411\u0435\u0437\u0435",
