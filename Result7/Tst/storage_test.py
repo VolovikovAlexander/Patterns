@@ -1,6 +1,7 @@
 import unittest
 from Src.settings_manager import settings_manager
 from Src.Logics.start_factory import start_factory
+from Src.exceptions import operation_exception
 
 class storage_test(unittest.TestCase):
 
@@ -32,8 +33,9 @@ class storage_test(unittest.TestCase):
 
 
         # Действие
-        result = storage.load()
+        storage.load()
 
         # Проверки
-        assert result == True
+        assert len(storage.data) > 0
 
+      

@@ -102,7 +102,7 @@ class convert_factory:
         if source is None:
             return {field: None}
         
-        if isinstance(source, list):
+        if isinstance(source, (list, dict)):
             return self.__serialize_list(field, source)
         
         if type(source) not in self._maps.keys():

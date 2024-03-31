@@ -239,41 +239,50 @@ class start_factory:
         Returns:
             _type_: _description_
         """
+
+        if self.__storage == None:
+            self.__storage = storage()
+
         if self.__oprions.is_first_start == True:
-            # 1. Формируем и зпоминаем номеклатуру
-            nomenclatures = start_factory.create_nomenclatures()
-            self.__save( storage.nomenclature_key(), nomenclatures )
+
+            try:
+                # 1. Формируем и зпоминаем номеклатуру
+                nomenclatures = start_factory.create_nomenclatures()
+                self.__save( storage.nomenclature_key(), nomenclatures )
+                    
+                # 2. Формируем и запоминаем рецепты
+                items = start_factory.create_receipts(nomenclatures)
+                self.__save( storage.receipt_key(), items)
             
-            # 2. Формируем и запоминаем рецепты
-            items = start_factory.create_receipts(nomenclatures)
-            self.__save( storage.receipt_key(), items)
-      
-            # 3. Формируем и запоминаем единицы измерения
-            items = start_factory.create_units()
-            self.__save( storage.unit_key(), items)
+                # 3. Формируем и запоминаем единицы измерения
+                items = start_factory.create_units()
+                self.__save( storage.unit_key(), items)
+                    
+                # 4. Формируем и запоминаем группы номенклатуры
+                items = start_factory.create_groups()
+                self.__save( storage.group_key(), items)
+                    
+                # 5. Формируем типовые складские проводки
+                items = start_factory.create_storage_transactions( self.storage.data )
+                self.__save( storage.storage_transaction_key(), items)
             
-            # 4. Формируем и запоминаем группы номенклатуры
-            items = start_factory.create_groups()
-            self.__save( storage.group_key(), items)
-            
-            # 5. Формируем типовые складские проводки
-            items = start_factory.create_storage_transactions( self.storage.data )
-            self.__save( storage.storage_transaction_key(), items)
-            
-            return True
-           
-           
+            except Exception as ex:
+                raise operation_exception(f"Ошибка при формировании шаблонных данных!\n{ex}")        
+                    
         else:
             # Другой вариант. Загрузка из источника данных    
-            return False
+            try:
+                self.__storage.load()
+            except Exception as ex:
+                raise operation_exception(f"Ошибка при формировании шаблонных данных!\n{ex}")     
+
+            
+        
+            
+            
+            
+            
         
         
-    
         
         
-        
-        
-    
-    
-    
-    

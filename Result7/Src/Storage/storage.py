@@ -1,4 +1,6 @@
 import json
+import os
+
 from Src.exceptions import operation_exception
 from Src.Logics.convert_factory import convert_factory
 from Src.reference import reference
@@ -41,7 +43,12 @@ class storage():
             operation_exception: _description_
         """
         try:
-            with open(self.__storage_file, "r") as read_file:
+            file_path = os.path.split(__file__)
+            data_file = "%s/%s" % (file_path[0], self.__storage_file)
+            if not os.path.exists(data_file):
+                self._error.set_error( Exception("ERROR: Невозможно загрузить настройки! Не найден файл %s", data_file))
+
+            with open(data_file, "r") as read_file:
                 source =  json.load(read_file)   
                 
                 self.__data = {}
@@ -53,11 +60,8 @@ class storage():
                         for item in source_data:
                             object = self.__mapping[key]
                             instance = object().load(item)
-                            self.__data[key] = instance
-                        
+                            self.__data[key].append(instance)
 
-            return True            
-                  
         except Exception as ex:
             raise operation_exception(f"Ошибка при чтении данных. Файл {self.__storage_file}\n{ex}")
         

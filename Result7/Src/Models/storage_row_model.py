@@ -84,6 +84,7 @@ class storage_row_model(reference):
         """
         return self._unit
     
+    @unit.setter
     def unit(self, value: unit_model) -> unit_model:
         """
             Единица измерения
@@ -96,7 +97,7 @@ class storage_row_model(reference):
         exception_proxy.validate(value, unit_model)
         self._unit = value
     
-        
+    @property    
     def storage(self) -> storage_model:
         """
             Склад
@@ -105,6 +106,7 @@ class storage_row_model(reference):
         """
         return self._storage
     
+    @storage.setter
     def storage(self, value: storage_model) -> storage_model:
         """
             Склад
@@ -176,15 +178,15 @@ class storage_row_model(reference):
             return None
         super().load(source)
         
-        source_fields = ["period", "storage_type",  "nomenclature", "value"  ]
+        source_fields = ["period", "storage_type",  "nomenclature", "value", "unit", "storage"  ]
         if set(source_fields).issubset(list(source.keys())) == False:
             raise operation_exception(f"Невозможно загрузить данные в объект {source}!")   
         
         self._value = source["value"]
         self._period =  datetime.strptime(source["period"], "%Y-%m-%d")
         self._nomenclature = nomenclature_model().load( source["nomenclature"])
-        #self._storage = storage_model().load( source["storage"] )
-        #self._unit = unit_model().load( source["unit"])
+        self._storage = storage_model().load( source["storage"] )
+        self._unit = unit_model().load( source["unit"])
         
         return self
         

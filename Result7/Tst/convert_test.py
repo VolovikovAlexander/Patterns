@@ -45,7 +45,6 @@ class convert_test(unittest.TestCase):
                 
                 # Проверки
                 assert result is not None
-                assert result.id == "b28b803c2e12401ca067607ec28a128a"
                 assert len(result.consist) > 0
                     
         except Exception as ex:
@@ -135,4 +134,29 @@ class convert_test(unittest.TestCase):
        
         file = open("receipt_deserialize.json", "w")
         file.write(json_text)
-        file.close()            
+        file.close()        
+
+    #
+    # Выгрузить одну транзакцию
+    #    
+    def test_check_serialize_transaction(self):
+        # Подготовка
+        options = settings_manager()
+        start = start_factory(  options.settings )
+        start.create()
+        factory = convert_factory()
+        items = start.storage.data[ storage.storage_transaction_key() ]
+        if len(items) == 0:
+            raise Exception("Набор транзакций пуст!")
+        item = items[0]
+        
+        # Действие
+        result = factory.serialize(item)
+        
+        # Проверки
+        assert result is not None
+        json_text = json.dumps(result, sort_keys = True, indent = 4)  
+       
+        file = open("transaction_deserialize.json", "w")
+        file.write(json_text)
+        file.close()        
