@@ -23,12 +23,7 @@ class reference_convertor(convertor):
         
         factory = convert_factory()
         return factory.serialize(object)
-    
-    def deserialize(self, field: str, values: dict, object: reference):
-        super().deserialize(field, values, object)
-        
-        exception_proxy.validate(object, reference)
-        object.load(values)
+   
     
 #
 # Фабрика для конвертация данных
@@ -47,7 +42,6 @@ class convert_factory:
         # Связка для всех моделей
         for  inheritor in reference.__subclasses__():
             self._maps[inheritor] = reference_convertor
-    
         
     def serialize(self, object) -> dict:
         """
@@ -87,7 +81,7 @@ class convert_factory:
                         # Вложенный словарь
                         result[field] = dictionary    
                 except:
-                    raise operation_exception(f"Невозможно сконвертировать объект в набор словарей. Поле {field}, значение: {dictionary}")           
+                    raise operation_exception(f"Невозможно сериализовать объект в набор словарей. Поле {field}, значение: {dictionary}")           
           
         return result  
     
@@ -105,36 +99,16 @@ class convert_factory:
         if cls == None:
             raise argument_exception("Некорректно переданы параметры!")
         
-        annotations: dict = cls.__annotations__ if hasattr(cls, '__annotations__') else None
-        if len(annotations) == 0:
-            raise operation_exception(f"Невозможно провести конвертацию словаря в тип: {cls}!")
-        
-        if issubclass(cls, list):
-            list_type = cls.__args__[0]
-            instance: list = list()
-            for value in source:
-                instance.append(self.deserialize(value, list_type))
-            return instance
-        
-        elif issubclass(cls, dict):
-            key_type = cls.__args__[0]
-            val_type = cls.__args__[1]
-            instance: dict = dict()
+        if isinstance(source, (list, dict)):
+            raise argument_exception("Некорректно переданы параметры!")
             
-            for key, value in source.items():
-                instance.update( self.deserialize(key, key_type), self.deserialize(value, val_type))
+        try:
+            instance = cls().load(source)
             return instance
+        except Exception as ex:
+            raise operation_exception(f"Невозможно десериализовать словарь в объект!\n{ex}")    
         
-        else:
-            instance : cls = cls()
-            for name, value in source.items():
-                field_type = annotations.get(name)
-                if isinstance(value, (dict, tuple, list, set, frozenset)):
-                    setattr(instance, name, self.deserialize(value, field_type))
-            else:
-                setattr(instance, name, value)
-                
-        return instance
+        return None
     
     # Сериализация
     
@@ -179,33 +153,20 @@ class convert_factory:
         if isinstance(source, list):
             result = []
             for item in source:
-                result.append( self.__convert_item( field,  item ))  
+                result.append( self.__serialize_item( field,  item ))  
             
             return result 
         
         # Сконвертировать словарь
         if isinstance(source, dict):
             result = {}
-            for key in source:
-                object = source[key]
-                value = self.__convert_item( key,  object )
+            for item in source.items():
+                key = item[0]
+                object = item[1]
+                
+                value = self.__serialize_item( key,  object )
                 result[key] = value
                 
             return result    
 
-    # Десериализация
-    
-    def __deserialize_item(self, field:str, value:str,  object):
-        if object is None:
-            raise operation_exception("Исходный объект не инициализирован!")
-        
-        if type(object) not in self._maps.keys():
-            raise operation_exception(f"Не возможно подобрать конвертор для типа {type(object)}")
-
-        # Определим конвертор
-        convertor = self._maps[ type(object)]()
-        convertor.deserialize(field, value, object )
-        
-        if not convertor.is_empty:
-            raise operation_exception(f"Ошибка при конвертации данных {convertor.error}")
         

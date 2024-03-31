@@ -66,16 +66,15 @@ class unit_model(reference):
 
         """
         super().load(source)
+        if source is None:
+            return None
         
         source_fields = ["coefficient", "base_unit"]
         if set(source_fields).issubset(list(source.keys())) == False:
             raise operation_exception(f"Невозможно загрузить данные в объект {self}!")
         
         self.__coefficient = source["coefficient"]
-        base_unit = source["base_unit"]
-        
-        if base_unit is not None:
-            self.__base_unit = unit_model().load(base_unit)
+        self.__base_unit = unit_model().load(source["base_unit"])
             
         return self    
              

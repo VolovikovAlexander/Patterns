@@ -58,6 +58,9 @@ class reference(ABC):
         Args:
             source (dict): исходный слова
         """
+        if source is None:
+            return None
+        
         if len(source) == 0:
             raise argument_exception("Некорректно переданы параметры!")
         

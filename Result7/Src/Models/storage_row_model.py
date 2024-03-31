@@ -165,6 +165,31 @@ class storage_row_model(reference):
         exception_proxy.validate(value, datetime)
         self._period = value
         
+        
+    def load(self, source: dict):
+        """
+            Десериализовать свойства 
+        Args:
+            source (dict): исходный слова
+        """
+        if source is None:
+            return None
+        super().load(source)
+        
+        source_fields = ["period", "storage_type", "storage","unit", "nomenclature", "value"  ]
+        if set(source_fields).issubset(list(source.keys())) == False:
+            raise operation_exception(f"Невозможно загрузить данные в объект {self}!")   
+        
+        self._value = source["value"]
+        self._period =  datetime.strptime(source["period"], "%Y-%m-%d")
+        self._nomenclature = nomenclature_model().load( source["nomenclature"])
+        self._storage = storage_model().load( source["storage"] )
+        self._unit = unit_model().load( source["unit"])
+        
+        return self
+        
+    # Фабричные методы    
+        
     @staticmethod    
     def create_credit_row(nomenclature_name: str, quantity, unit_name: str, data: dict, _storage: storage_model) -> reference:
         """

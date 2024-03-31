@@ -59,19 +59,15 @@ class nomenclature_model(reference):
             source (dict): исходный словарь
         """
         super().load(source)
+        if source is None:
+            return None
         
         source_fields = ["unit", "group"]
         if set(source_fields).issubset(list(source.keys())) == False:
             raise operation_exception(f"Невозможно загрузить данные в объект {self}!")
         
-        
-        group = source["group"]
-        if group is not None:
-            self._group = group_model().load(group)
-            
-        unit = source["unit"]
-        if unit is not None:
-            self._unit = unit_model().load(unit)    
+        self._group = group_model().load(source["group"])
+        self._unit = unit_model().load(source["unit"])    
         
         return self
         

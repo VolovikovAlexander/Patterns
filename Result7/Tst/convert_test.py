@@ -1,16 +1,17 @@
 from Src.Logics.start_factory import start_factory
 from Src.Logics.convert_factory import convert_factory
 from Src.Models.nomenclature_model import nomenclature_model
+from Src.Models.receipe_model import receipe_model
 
 import unittest
 import json
 
 class convert_test(unittest.TestCase):
-    
+
+    #
+    # Проверить загрузку одного элемента номенклатуры в объект
+    #
     def test_check_load_nomenclature(self):
-        """
-            Проверить загрузку одного элемента номенклатуры в объект
-        """
         try:
             with open("nomenclature_deserialize.json", "r") as read_file:
                 # Подготовка
@@ -26,7 +27,26 @@ class convert_test(unittest.TestCase):
                     
         except Exception as ex:
             raise Exception(f"Ошибка: {ex}")   
-          
+        
+    #
+    # Проверить загрузку элемента рецепта в объект
+    #      
+    def test_check_load_receipt(self):
+        try:
+            with open("receipt_deserialize.json", "r") as read_file:
+                # Подготовка
+                source = json.load(read_file) 
+                receipt = receipe_model()
+                
+                # Действие
+                result = receipt.load(source)
+                
+                # Проверки
+                assert result is not None
+                assert result.id == "0b29b2131848448dba9fc4215f7fa02c"
+                    
+        except Exception as ex:
+            raise Exception(f"Ошибка: {ex}")       
 
     #
     # Проверить формирование словаря и преобразование в json номенклатуры
@@ -89,3 +109,22 @@ class convert_test(unittest.TestCase):
         file.write(json_text)
         file.close()
                 
+    #
+    # Выгрузить один рецепт
+    #            
+    def test_check_serialize_receipt(self):
+        # Подготовка
+        items = start_factory.create_receipts()
+        factory = convert_factory()
+        item = items[0]
+        
+        # Действие
+        result = factory.serialize(item)
+        
+        # Проверки
+        assert result is not None
+        json_text = json.dumps(result, sort_keys = True, indent = 4)  
+       
+        file = open("receipt.json", "w")
+        file.write(json_text)
+        file.close()            

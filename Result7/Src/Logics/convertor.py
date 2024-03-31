@@ -18,21 +18,6 @@ class convertor(error_proxy):
         exception_proxy.validate(field, str)
         self.clear()
         
-    @abc.abstractmethod    
-    def deserialize(self, field: str, value: dict, object):
-        """
-            Десериализовать элемент в объект
-        Args:
-            field (str): наименование поля
-            value (str): значение
-            object (_type_): исходный тип
-        """
-        
-        exception_proxy.validate(field, str)
-        if object is None:
-            raise argument_exception("Некорректно переданы параметры!")
-        
-        self.clear()
             
          
         

@@ -25,20 +25,3 @@ class datetime_convertor(convertor):
         except Exception as ex:
             self.set_error(ex)    
         
-    def deserialize(self, field: str, value: dict, object):
-        """
-            Десериализовать значение
-        Args:
-            field (str): название поля
-            value (str): значение
-            object (_type_): исходный объект
-        """
-        super().deserialize(field, value, object)    
-        if value == "":
-            return
-        
-        try:
-            date = datetime.strptime(value, "%Y-%m-%d")
-            setattr(object, field, date)
-        except Exception as ex:
-            self.set_error(ex)

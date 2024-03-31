@@ -134,6 +134,34 @@ class receipe_model(reference):
             
         return result
     
+    def load(self,  source: dict):
+        """
+            Загрузить данные из словаря
+        Args:
+            source (dict): исходный словарь
+
+        """
+        super().load(source)
+        if source is None:
+            return None
+        
+        source_fields = ["comments", "consist", "instructions","netto", "brutto"]
+        if set(source_fields).issubset(list(source.keys())) == False:
+            raise operation_exception(f"Невозможно загрузить данные в объект {self}!")
+        
+        self._netto = source["netto"]
+        self._brutto = source["brutto"]
+        
+        # Загрузим состав
+        for item in source["consist"].items():
+            value = receipe_row_model().load(item[1])
+            self.add(value)
+            
+        # Загрузим инструкции
+        self._instructions = source["instructions"]
+        return self
+            
+    
     
     @staticmethod
     def create_receipt(name: str, comments: str, items: list, data: list):
@@ -175,7 +203,10 @@ class receipe_model(reference):
                 unit = nomenclature.unit.base_unit    
             
             # Создаем запись в рецепте
-            row = receipe_row_model(nomenclature, size, unit)
+            row = receipe_row_model()
+            row.nomenclature = nomenclature
+            row.size = size
+            row.unit = unit
             receipt.add(row)
         
         return receipt
