@@ -150,3 +150,21 @@ class storage():
                 keys.append(method())
         return keys
     
+
+    def Ok( app):
+        """"
+            Сформировать данные для сервера
+        """
+        if app is None:
+            raise operation_exception("Некорректно переданы параметры!")
+
+        json_text = json.dumps({"status" : "ok"}, sort_keys = True, indent = 4,  ensure_ascii = False)  
+
+        # Подготовить ответ    
+        result = app.response_class(
+            response =   f"{json_text}",
+            status = 200,
+            mimetype = "application/json; charset=utf-8"
+        )
+        
+        return result

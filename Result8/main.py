@@ -22,8 +22,6 @@ start.create()
 def get_report(storage_key: str):
     """
         Сформировать отчет
-    Args:
-        storage_key (str): Ключ - тип данных: номенклатура, группы и т.д.
     """
     
     keys = storage.storage_keys( start.storage )
@@ -43,6 +41,10 @@ def get_report(storage_key: str):
 
 @app.route("/api/storage/turns", methods = ["GET"] )
 def get_turns():
+    """
+        Получить обороты за период
+    """
+
     # Получить параметры
     args = request.args
     if "start_period" not in args.keys():
@@ -61,20 +63,23 @@ def get_turns():
       
 @app.route("/api/storage/<nomenclature_id>/turns", methods = ["GET"] )
 def get_turns_nomenclature(nomenclature_id):
+    """
+        Получить обороты за период и по коду номенклатукры
+    """
     
     # Получить параметры
     args = request.args
     if "start_period" not in args.keys():
-        return error_proxy.create_error_response(app, "Необходимо передать параметры: start_period, stop_period!")
+        return error_proxy.create_error_response(app, "Необходимо передать параметры: start_period, stop_period!", 400)
 
     if "stop_period" not in args.keys():
-        return error_proxy.create_error_response(app, "Необходимо передать параметры: start_period, stop_period!")
+        return error_proxy.create_error_response(app, "Необходимо передать параметры: start_period, stop_period!", 400)
 
     try:
         start_date = datetime.strptime(args["start_period"], "%Y-%m-%d")
         stop_date = datetime.strptime(args["stop_period"], "%Y-%m-%d")
     except:
-        return error_proxy.create_error_response(app, "Некорректно перпеданы параметры: start_period, stop_period")    
+        return error_proxy.create_error_response(app, "Некорректно перпеданы параметры: start_period, stop_period", 400)    
 
     transactions_data = start.storage.data[  storage.storage_transaction_key()   ]   
     nomenclature_data =  start.storage.data[  storage.nomenclature_key()   ]   
@@ -82,13 +87,24 @@ def get_turns_nomenclature(nomenclature_id):
     nomenclatures =  nomenclature_model.create_dictionary( nomenclature_data )
     ids = [item.id for item in nomenclatures.values()]
     if nomenclature_id not in ids:
-        return error_proxy.create_error_response(app, "Некорректно передан код номенклатуры!")
+        return error_proxy.create_error_response(app, "Некорректно передан код номенклатуры!", 400)
     
     nomenclature = nomenclatures[nomenclature_id]
       
     data = storage_service( transactions_data  ).create_turns_by_nomenclature( start_date, stop_date, nomenclature )      
     result = storage_service.create_response( data, app )
     return result      
+
+@app.route("/api/nomenclature", methods = ["POST"])
+def add_nomenclature():
+    """
+        Добавить номерклатуру
+    """
+    data = request.get_json()
+    item = nomenclature_model().load(data)
+    start.storage.data[  storage.nomenclature_key() ].append(item)
+
+    return storage.Ok(app)
 
 if __name__ == "__main__":
     app.run(debug = True)
