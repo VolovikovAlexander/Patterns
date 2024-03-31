@@ -25,18 +25,3 @@ class basic_convertor(convertor):
             
       return None        
         
-   def deserialize(self, field: str, value: str, object):
-         """
-            Десериализовать обычный тип данных      
-         Args:
-             field (str): поле объекта
-             value (str): значение
-             object (_type_): объект
-         """
-         super().deserialize(field, value, object) 
-            
-         try:
-            setattr(object, field, value)
-         except Exception as ex:
-            self.set_error(ex)  
-    

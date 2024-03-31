@@ -52,6 +52,28 @@ class nomenclature_model(reference):
         exception_proxy.validate(value, reference)
         self._unit = value
         
+    def load(self, source: dict):
+        """
+            Загрузить данные
+        Args:
+            source (dict): исходный словарь
+        """
+        super().load(source)
+        
+        source_fields = ["unit", "group"]
+        if set(source_fields).issubset(list(source.keys())) == False:
+            raise operation_exception(f"Невозможно загрузить данные в объект {self}!")
+        
+        
+        group = source["group"]
+        if group is not None:
+            self._group = group_model().load(group)
+            
+        unit = source["unit"]
+        if unit is not None:
+            self._unit = unit_model().load(unit)    
+        
+        return self
         
     # Фабричные методы
     

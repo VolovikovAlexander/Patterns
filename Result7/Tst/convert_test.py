@@ -7,28 +7,27 @@ import json
 
 class convert_test(unittest.TestCase):
     
-    def test_check_deserialize_nomenclature(self):
-        
+    def test_check_load_nomenclature(self):
+        """
+            Проверить загрузку одного элемента номенклатуры в объект
+        """
         try:
-            with open("nomenclature.json", "r") as read_file:
+            with open("nomenclature_deserialize.json", "r") as read_file:
                 # Подготовка
                 source = json.load(read_file) 
-                factory = convert_factory()
+                nomenclature = nomenclature_model()
                 
                 # Действие
-                result = factory.deserialize(source, nomenclature_model )
+                result = nomenclature.load(source)
                 
                 # Проверки
                 assert result is not None
+                assert result.id == "8446fdc4ce4441d8b1dcaeedb6a676c4"
                     
         except Exception as ex:
             raise Exception(f"Ошибка: {ex}")   
           
 
-        
-        
-    
-    
     #
     # Проверить формирование словаря и преобразование в json номенклатуры
     #

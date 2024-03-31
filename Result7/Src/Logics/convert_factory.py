@@ -24,6 +24,12 @@ class reference_convertor(convertor):
         factory = convert_factory()
         return factory.serialize(object)
     
+    def deserialize(self, field: str, values: dict, object: reference):
+        super().deserialize(field, values, object)
+        
+        exception_proxy.validate(object, reference)
+        object.load(values)
+    
 #
 # Фабрика для конвертация данных
 #

@@ -19,7 +19,7 @@ class convertor(error_proxy):
         self.clear()
         
     @abc.abstractmethod    
-    def deserialize(self, field: str, value: str, object):
+    def deserialize(self, field: str, value: dict, object):
         """
             Десериализовать элемент в объект
         Args:

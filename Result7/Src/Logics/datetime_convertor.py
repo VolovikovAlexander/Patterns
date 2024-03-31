@@ -25,7 +25,7 @@ class datetime_convertor(convertor):
         except Exception as ex:
             self.set_error(ex)    
         
-    def deserialize(self, field: str, value: str, object):
+    def deserialize(self, field: str, value: dict, object):
         """
             Десериализовать значение
         Args:
