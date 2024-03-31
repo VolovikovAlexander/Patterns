@@ -164,7 +164,7 @@ class convert_factory:
                 key = item[0]
                 object = item[1]
                 
-                value = self.__serialize_item( key,  object )
+                value = self.__serialize_list( key,  object )
                 result[key] = value
                 
             return result    
