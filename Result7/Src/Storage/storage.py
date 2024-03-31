@@ -1,6 +1,8 @@
 import json
 from Src.exceptions import operation_exception
 from Src.Logics.convert_factory import convert_factory
+from Src.reference import reference
+
 
 #
 # Класс хранилище данных
@@ -8,11 +10,19 @@ from Src.Logics.convert_factory import convert_factory
 class storage():
     __data = {}
     __storage_file = "storage.json"
+    __mapping = {}
     
     def __new__(cls):
         if not hasattr(cls, 'instance'):
             cls.instance = super(storage, cls).__new__(cls)
+
         return cls.instance  
+    
+    def __init__(self) -> None:
+        # Связка для всех моделей
+        for  inheritor in reference.__subclasses__():
+            self.__mapping[inheritor.__name__] = inheritor
+
     
     @property
     def data(self) -> dict:
@@ -32,18 +42,24 @@ class storage():
         """
         try:
             with open(self.__storage_file, "r") as read_file:
-                source = json.load(read_file)   
+                source =  json.load(read_file)   
                 
+                self.__data = {}
                 for key in storage.storage_keys(storage):
-                    source_data = source[key]
-                    source[key] = []
-                    
-                    for item in source_data:
-                        object = key().load( item )
-                        source[key].append(object)
+                    if key in source.keys():
+                        source_data = source[key]
+                        self.__data[key] = []
+                        
+                        for item in source_data:
+                            object = self.__mapping[key]
+                            instance = object().load(item)
+                            self.__data[key] = instance
+                        
+
+            return True            
                   
         except Exception as ex:
-            raise operation_exception(f"Ошибка при чтении файла {self.__storage_file}\n{ex}")
+            raise operation_exception(f"Ошибка при чтении данных. Файл {self.__storage_file}\n{ex}")
         
         
     def save(self):
@@ -57,7 +73,7 @@ class storage():
             with open(self.__storage_file, "w") as write_file:
                 data = factory.serialize( self.data )
                 json_text = json.dumps(data, sort_keys = True, indent = 4, ensure_ascii = False)  
-                write_file.write(json)
+                write_file.write(json_text)
                 
                 return True
         except Exception as ex:

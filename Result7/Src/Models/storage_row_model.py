@@ -176,15 +176,15 @@ class storage_row_model(reference):
             return None
         super().load(source)
         
-        source_fields = ["period", "storage_type", "storage","unit", "nomenclature", "value"  ]
+        source_fields = ["period", "storage_type",  "nomenclature", "value"  ]
         if set(source_fields).issubset(list(source.keys())) == False:
-            raise operation_exception(f"Невозможно загрузить данные в объект {self}!")   
+            raise operation_exception(f"Невозможно загрузить данные в объект {source}!")   
         
         self._value = source["value"]
         self._period =  datetime.strptime(source["period"], "%Y-%m-%d")
         self._nomenclature = nomenclature_model().load( source["nomenclature"])
-        self._storage = storage_model().load( source["storage"] )
-        self._unit = unit_model().load( source["unit"])
+        #self._storage = storage_model().load( source["storage"] )
+        #self._unit = unit_model().load( source["unit"])
         
         return self
         

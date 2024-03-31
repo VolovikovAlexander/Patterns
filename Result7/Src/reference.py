@@ -66,7 +66,7 @@ class reference(ABC):
         
         source_fields = ["id", "name", "description"]
         if set(source_fields).issubset(list(source.keys())) == False:
-            raise operation_exception(f"Невозможно загрузить данные в объект {self}!")
+            raise operation_exception(f"Невозможно загрузить данные в объект. {source}!")
         
         self._id = uuid.UUID(  source["id"]) 
         self._name = source["name"]

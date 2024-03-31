@@ -40,7 +40,7 @@ class storage_model(reference):
         
         source_fields = ["address"]
         if set(source_fields).issubset(list(source.keys())) == False:
-            raise operation_exception(f"Невозможно загрузить данные в объект {self}!")
+            raise operation_exception(f"Невозможно загрузить данные в объект {source}!")
         
         self._id = source["address"]
         

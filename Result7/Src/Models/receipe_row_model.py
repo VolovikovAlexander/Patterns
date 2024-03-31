@@ -78,7 +78,7 @@ class receipe_row_model(reference):
         
         source_fields = ["unit", "size", "nomenclature"]
         if set(source_fields).issubset(list(source.keys())) == False:
-            raise operation_exception(f"Невозможно загрузить данные в объект {self}!")
+            raise operation_exception(f"Невозможно загрузить данные в объект {source}!")
         
         self.__size = source["size"]
         self.__nomenclature = nomenclature_model().load( source[ "nomenclature"])

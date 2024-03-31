@@ -71,7 +71,7 @@ class unit_model(reference):
         
         source_fields = ["coefficient", "base_unit"]
         if set(source_fields).issubset(list(source.keys())) == False:
-            raise operation_exception(f"Невозможно загрузить данные в объект {self}!")
+            raise operation_exception(f"Невозможно загрузить данные в объект {source}!")
         
         self.__coefficient = source["coefficient"]
         self.__base_unit = unit_model().load(source["base_unit"])

@@ -85,30 +85,6 @@ class convert_factory:
           
         return result  
     
-    def deserialize(self, source: dict, cls):
-        """
-            По словарю сформировать объект
-        Args:
-            source (dict): исходный словарь
-            cls: исходный класс для десериализации
-
-        Returns:
-            _type_: _description_
-        """
-        exception_proxy.validate(source, dict)
-        if cls == None:
-            raise argument_exception("Некорректно переданы параметры!")
-        
-        if isinstance(source, (list, dict)):
-            raise argument_exception("Некорректно переданы параметры!")
-            
-        try:
-            instance = cls().load(source)
-            return instance
-        except Exception as ex:
-            raise operation_exception(f"Невозможно десериализовать словарь в объект!\n{ex}")    
-        
-        return None
     
     # Сериализация
     
@@ -125,6 +101,9 @@ class convert_factory:
         exception_proxy.validate(field, str)
         if source is None:
             return {field: None}
+        
+        if isinstance(source, list):
+            return self.__serialize_list(field, source)
         
         if type(source) not in self._maps.keys():
             raise operation_exception(f"Не возможно подобрать конвертор для типа {type(source)}")
