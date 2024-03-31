@@ -2,6 +2,8 @@ from Src.Logics.start_factory import start_factory
 from Src.Logics.convert_factory import convert_factory
 from Src.Models.nomenclature_model import nomenclature_model
 from Src.Models.receipe_model import receipe_model
+from Src.Storage.storage import storage
+from Src.settings_manager import settings_manager
 
 import unittest
 import json
@@ -43,7 +45,8 @@ class convert_test(unittest.TestCase):
                 
                 # Проверки
                 assert result is not None
-                assert result.id == "0b29b2131848448dba9fc4215f7fa02c"
+                assert result.id == "b28b803c2e12401ca067607ec28a128a"
+                assert len(result.consist) > 0
                     
         except Exception as ex:
             raise Exception(f"Ошибка: {ex}")       
@@ -114,8 +117,13 @@ class convert_test(unittest.TestCase):
     #            
     def test_check_serialize_receipt(self):
         # Подготовка
-        items = start_factory.create_receipts()
+        options = settings_manager()
+        start = start_factory(  options.settings )
+        start.create()
         factory = convert_factory()
+        items = start.storage.data[ storage.receipt_key() ]
+        if len(items) == 0:
+            raise Exception("Набор рецептов пуст!")
         item = items[0]
         
         # Действие
@@ -125,6 +133,6 @@ class convert_test(unittest.TestCase):
         assert result is not None
         json_text = json.dumps(result, sort_keys = True, indent = 4)  
        
-        file = open("receipt.json", "w")
+        file = open("receipt_deserialize.json", "w")
         file.write(json_text)
         file.close()            

@@ -154,8 +154,10 @@ class receipe_model(reference):
         
         # Загрузим состав
         for item in source["consist"].items():
-            value = receipe_row_model().load(item[1])
-            self.add(value)
+            row = item[1]
+            if row is not None:
+                value = receipe_row_model().load(row)
+                self.add(value)
             
         # Загрузим инструкции
         self._instructions = source["instructions"]
