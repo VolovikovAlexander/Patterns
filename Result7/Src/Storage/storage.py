@@ -46,7 +46,7 @@ class storage():
             file_path = os.path.split(__file__)
             data_file = "%s/%s" % (file_path[0], self.__storage_file)
             if not os.path.exists(data_file):
-                self._error.set_error( Exception("ERROR: Невозможно загрузить настройки! Не найден файл %s", data_file))
+                raise operation_exception(f"Невозможно загрузить данные! Не найден файл {data_file}")
 
             with open(data_file, "r") as read_file:
                 source =  json.load(read_file)   
