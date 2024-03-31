@@ -1348,7 +1348,7 @@
                 "is_error": true,
                 "name": "default"
             },
-            "storage_type": false,
+            "storage_type": true,
             "unit": {
                 "base_unit": {
                     "base_unit": null,
@@ -1399,7 +1399,7 @@
                 "is_error": true,
                 "name": "default"
             },
-            "storage_type": false,
+            "storage_type": true,
             "unit": {
                 "base_unit": null,
                 "coefficient": 1,
@@ -1450,7 +1450,7 @@
                 "is_error": true,
                 "name": "default"
             },
-            "storage_type": false,
+            "storage_type": true,
             "unit": {
                 "base_unit": {
                     "base_unit": null,
@@ -1501,7 +1501,7 @@
                 "is_error": true,
                 "name": "default"
             },
-            "storage_type": false,
+            "storage_type": true,
             "unit": {
                 "base_unit": null,
                 "coefficient": 1,
@@ -1552,7 +1552,7 @@
                 "is_error": true,
                 "name": "default"
             },
-            "storage_type": false,
+            "storage_type": true,
             "unit": {
                 "base_unit": {
                     "base_unit": null,
@@ -1610,7 +1610,7 @@
                 "is_error": true,
                 "name": "default"
             },
-            "storage_type": false,
+            "storage_type": true,
             "unit": {
                 "base_unit": {
                     "base_unit": null,
@@ -1661,7 +1661,7 @@
                 "is_error": true,
                 "name": "default"
             },
-            "storage_type": false,
+            "storage_type": true,
             "unit": {
                 "base_unit": null,
                 "coefficient": 1,
@@ -1712,7 +1712,7 @@
                 "is_error": true,
                 "name": "default"
             },
-            "storage_type": false,
+            "storage_type": true,
             "unit": {
                 "base_unit": null,
                 "coefficient": 1,
@@ -1763,7 +1763,7 @@
                 "is_error": true,
                 "name": "default"
             },
-            "storage_type": false,
+            "storage_type": true,
             "unit": {
                 "base_unit": {
                     "base_unit": null,
@@ -1814,7 +1814,7 @@
                 "is_error": true,
                 "name": "default"
             },
-            "storage_type": false,
+            "storage_type": true,
             "unit": {
                 "base_unit": {
                     "base_unit": null,
@@ -1865,7 +1865,7 @@
                 "is_error": true,
                 "name": "default"
             },
-            "storage_type": false,
+            "storage_type": true,
             "unit": {
                 "base_unit": null,
                 "coefficient": 1,
@@ -1916,7 +1916,7 @@
                 "is_error": true,
                 "name": "default"
             },
-            "storage_type": false,
+            "storage_type": true,
             "unit": {
                 "base_unit": {
                     "base_unit": null,
@@ -1974,7 +1974,7 @@
                 "is_error": true,
                 "name": "default"
             },
-            "storage_type": false,
+            "storage_type": true,
             "unit": {
                 "base_unit": {
                     "base_unit": null,
@@ -2032,7 +2032,7 @@
                 "is_error": true,
                 "name": "default"
             },
-            "storage_type": false,
+            "storage_type": true,
             "unit": {
                 "base_unit": {
                     "base_unit": null,
@@ -2090,7 +2090,7 @@
                 "is_error": true,
                 "name": "default"
             },
-            "storage_type": false,
+            "storage_type": true,
             "unit": {
                 "base_unit": {
                     "base_unit": null,
@@ -2141,7 +2141,7 @@
                 "is_error": true,
                 "name": "default"
             },
-            "storage_type": false,
+            "storage_type": true,
             "unit": {
                 "base_unit": null,
                 "coefficient": 1,
@@ -2192,7 +2192,7 @@
                 "is_error": true,
                 "name": "default"
             },
-            "storage_type": false,
+            "storage_type": true,
             "unit": {
                 "base_unit": {
                     "base_unit": null,

@@ -23,7 +23,7 @@ class turn_processing(processing):
 
         grouped_transactions = {}
         for transaction in source:
-            key = (transaction.nomenclature, transaction.storage,transaction.unit )
+            key = f"{transaction.nomenclature.id}_{transaction.storage.id}_{transaction.unit.id}"
             if key not in grouped_transactions.keys():
                 grouped_transactions[key] = []
                 

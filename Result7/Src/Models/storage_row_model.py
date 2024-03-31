@@ -187,6 +187,7 @@ class storage_row_model(reference):
         self._nomenclature = nomenclature_model().load( source["nomenclature"])
         self._storage = storage_model().load( source["storage"] )
         self._unit = unit_model().load( source["unit"])
+        self._storage_type = source["storage_type"]
         
         return self
         

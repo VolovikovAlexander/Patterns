@@ -38,7 +38,7 @@
         "is_error": false,
         "name": "default"
     },
-    "storage_type": false,
+    "storage_type": true,
     "unit": {
         "base_unit": {
             "base_unit": null,
