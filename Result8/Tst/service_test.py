@@ -4,6 +4,8 @@ from Src.settings_manager import settings_manager
 from Src.Storage.storage import storage
 from Src.exceptions import operation_exception
 from Src.Logics.Services.reference_service import reference_service
+from Src.Logics.convert_factory import convert_factory
+from Src.Models.nomenclature_model import nomenclature_model
 
 from datetime import datetime
 import unittest
@@ -21,12 +23,16 @@ class service_test(unittest.TestCase):
         start.create()
         key = storage.nomenclature_key()
         data = start.storage.data[ key ]
+        convert = convert_factory()
 
         if len(data) == 0:
             raise operation_exception("Некорректно сформирован набор данных!")
         
-        item = data[0]
+        # Создаем новый элемент номенклатуры
+        dict =  convert.serialize( data[0] )
+        item = nomenclature_model().load(dict)
         item.id = uuid.uuid4()
+
         service = reference_service(data)
         start_len = len(data)
 
@@ -37,6 +43,35 @@ class service_test(unittest.TestCase):
         assert result == True
         assert len(data) - 1 == start_len
 
+    # 
+    # Проверить изменение reference (номенклатуры)
+    #
+    def test_check_change_item_referance(self):
+        # Подготовка
+        manager = settings_manager()
+        start = start_factory(manager.settings)
+        start.create()
+        key = storage.nomenclature_key()
+        data = start.storage.data[ key ]
+        convert = convert_factory()
+
+        if len(data) == 0:
+            raise operation_exception("Некорректно сформирован набор данных!")
+        
+        # Создаем новый элемент номенклатуры
+        dict =  convert.serialize( data[0] )
+        item = nomenclature_model().load(dict)
+        item.name = "test"
+
+        service = reference_service(data)
+        start_len = len(data)
+
+        # Действие
+        result = service.change( item )
+
+        # Проверка
+        assert result == True
+        assert len(data) == start_len
 
 
     #

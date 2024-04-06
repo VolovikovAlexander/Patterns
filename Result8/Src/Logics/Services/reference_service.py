@@ -12,7 +12,7 @@ class reference_service(service):
             Добавить новый элемент
         """
         exception_proxy.validate(item, reference)
-        found = list(filter(lambda x: not x.id == item.id , self.data))     
+        found = list(filter(lambda x: x.id == item.id , self.data))     
         if len(found) > 0:
             return False
         
@@ -24,11 +24,11 @@ class reference_service(service):
             Удалить элемент
         """
         exception_proxy.validate(item, reference)
-        found = list(filter(lambda x: not x.id == item.id , self.data))     
+        found = list(filter(lambda x: x.id == item.id , self.data))     
         if len(found) == 0:
             return False
         
-        self.data.remove(item)
+        self.data.remove(found[0])
         return True
 
     def change(self, item:reference) -> bool:
@@ -36,7 +36,7 @@ class reference_service(service):
             Изменить элемент
         """
         exception_proxy.validate(item, reference)
-        found = list(filter(lambda x: not x.id == item.id , self.data))     
+        found = list(filter(lambda x: x.id == item.id , self.data))     
         if len(found) == 0:
             return False
         
