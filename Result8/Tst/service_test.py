@@ -1,14 +1,44 @@
-from Src.Logics.storage_service import storage_service
+from Src.Logics.Services.storage_service import storage_service
 from Src.Logics.start_factory import start_factory
 from Src.settings_manager import settings_manager
 from Src.Storage.storage import storage
 from Src.exceptions import operation_exception
+from Src.Logics.Services.reference_service import reference_service
 
 from datetime import datetime
 import unittest
+import uuid
 
 class service_test(unittest.TestCase):
     
+    #
+    # Проверить добавление reference (номенклатура)
+    #
+    def test_check_add_item_reference(self):
+        # Подготовка
+        manager = settings_manager()
+        start = start_factory(manager.settings)
+        start.create()
+        key = storage.nomenclature_key()
+        data = start.storage.data[ key ]
+
+        if len(data) == 0:
+            raise operation_exception("Некорректно сформирован набор данных!")
+        
+        item = data[0]
+        item.id = uuid.uuid4()
+        service = reference_service(data)
+        start_len = len(data)
+
+        # Действие
+        result = service.add( item )
+
+        # Проверка
+        assert result == True
+        assert len(data) - 1 == start_len
+
+
+
     #
     # Проверить работу метода create_turns
     #

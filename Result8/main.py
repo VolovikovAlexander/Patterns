@@ -5,8 +5,9 @@ from Src.errors import error_proxy
 from Src.Logics.report_factory import report_factory
 from Src.Logics.start_factory import start_factory
 from datetime import datetime
-from Src.Logics.storage_service import storage_service
+from Src.Logics.Services.storage_service import storage_service
 from Src.Models.nomenclature_model import nomenclature_model
+from Src.Logics.Services.service import service
 
 
 app = Flask(__name__)
@@ -58,7 +59,7 @@ def get_turns():
           
     source_data = start.storage.data[  storage.storage_transaction_key()   ]      
     data = storage_service( source_data   ).create_turns( start_date, stop_date )      
-    result = storage_service.create_response( data, app )
+    result = service.create_response( data, app )
     return result
       
 @app.route("/api/storage/<nomenclature_id>/turns", methods = ["GET"] )
@@ -92,7 +93,7 @@ def get_turns_nomenclature(nomenclature_id):
     nomenclature = nomenclatures[nomenclature_id]
       
     data = storage_service( transactions_data  ).create_turns_by_nomenclature( start_date, stop_date, nomenclature )      
-    result = storage_service.create_response( data, app )
+    result = service.create_response( data, app )
     return result      
 
 @app.route("/api/nomenclature", methods = ["POST"])

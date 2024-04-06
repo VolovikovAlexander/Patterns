@@ -46,6 +46,12 @@ class reference(ABC):
     def id(self):
         " Уникальный код записи "
         return str(self._id.hex)  
+    
+    @id.setter
+    def id(self, value:uuid.UUID ):
+        " Уникальный код записи "
+        exception_proxy.validate(value, uuid.UUID)
+        self._id = value
 
     @property
     def is_error(self):
