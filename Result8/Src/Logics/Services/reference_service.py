@@ -1,5 +1,5 @@
 from Src.Logics.Services.service import service
-from Src.exceptions import exception_proxy
+from Src.exceptions import exception_proxy, operation_exception
 from Src.reference import reference
 
 #
@@ -43,6 +43,23 @@ class reference_service(service):
         self.delete(item)
         self.add(item)
         return True
+    
+    def get(self) -> list:
+        """
+            Вернуть список 
+        """
+        return self.data
+    
+    def get_item(self, id: str) -> reference:
+        """
+            Вернуть элемент
+        """
+        exception_proxy.validate(id, str)
+        found = list(filter(lambda x: x.id == id , self.data))     
+        if len(found) == 0:
+            raise operation_exception(f"Не найден элемент с кодом {id}!")
+        
+        return found
     
 
     

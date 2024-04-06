@@ -8,6 +8,8 @@ from datetime import datetime
 from Src.Logics.Services.storage_service import storage_service
 from Src.Models.nomenclature_model import nomenclature_model
 from Src.Logics.Services.service import service
+from Src.Logics.Services.reference_service import reference_service
+
 
 
 app = Flask(__name__)
@@ -18,6 +20,8 @@ options = settings_manager()
 start = start_factory(options.settings)
 start.create()
 
+
+# Отчетность
 
 @app.route("/api/report/<storage_key>", methods = ["GET"])
 def get_report(storage_key: str):
@@ -39,6 +43,10 @@ def get_report(storage_key: str):
         return result
     except Exception as ex:
         return error_proxy.create_error_response(app, f"Ошибка при формировании отчета {ex}", 500)
+
+# Отчетность
+
+# Складские операции
 
 @app.route("/api/storage/turns", methods = ["GET"] )
 def get_turns():
@@ -96,16 +104,71 @@ def get_turns_nomenclature(nomenclature_id):
     result = service.create_response( data, app )
     return result      
 
-@app.route("/api/nomenclature", methods = ["POST"])
+# Складские операции
+
+# Номерклатура
+@app.route("/api/nomenclature", methods = ["PUT"])
 def add_nomenclature():
     """
         Добавить номерклатуру
     """
-    data = request.get_json()
-    item = nomenclature_model().load(data)
-    start.storage.data[  storage.nomenclature_key() ].append(item)
+    try:
+        data = request.get_json()
+        item = nomenclature_model().load(data)
+        result = reference_service( start.storage.data[  storage.nomenclature_key() ] ).add( item )
+        return service.create_response( {"result": result} )
+    except Exception as ex:
+        return error_proxy.create_error_response(app,   f"Ошибка при добавлении данных!\n {ex}")
 
-    return storage.Ok(app)
+
+@app.route("/api/nomenclature", methods = ["DELETE"])
+def delete_nomenclature():
+    """
+        Удалить номенклатуру
+    """
+    try:
+        data = request.get_json()
+        item = nomenclature_model().load(data)
+        result = reference_service( start.storage.data[  storage.nomenclature_key() ] ).delete( item )
+        return service.create_response( {"result": result} )
+    except Exception as ex:
+        return error_proxy.create_error_response(app,   f"Ошибка при удалении данных!\n {ex}")
+
+
+@app.route("/api/nomenclature", methods = ["PATH"])
+def change_nomenclature():
+    """
+        Изменить номенклатуру
+    """
+    try:
+        data = request.get_json()
+        item = nomenclature_model().load(data)
+        result = reference_service( start.storage.data[  storage.nomenclature_key() ] ).change( item )
+        return service.create_response( {"result": result} )
+    except Exception as ex:
+        return error_proxy.create_error_response(app,   f"Ошибка при изменении данных!\n {ex}")
+    
+@app.route("/api/nomenclature", methods = ["GET"])
+def get_nomenclature():
+    """
+        Получить список номенклатуры
+    """
+    result = reference_service( start.storage.data[  storage.nomenclature_key() ] ).get()
+    return service.create_response(app, result)
+
+@app.route("/api/nomenclature/<nomenclature_id>", methods = ["GET"])
+def get_nomenclature(nomenclature_id: str):
+    """
+        Получить список номенклатуры
+    """
+    try:
+        result = reference_service( start.storage.data[  storage.nomenclature_key() ] ).get_item(nomenclature_id)
+        return service.create_response(app, result)
+    except Exception as ex:
+        return error_proxy.create_error_response(app,   f"Ошибка при получении данных!\n {ex}")
+
+
+# Номенклатура
 
 if __name__ == "__main__":
     app.run(debug = True)
