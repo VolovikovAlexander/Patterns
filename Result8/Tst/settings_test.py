@@ -1,5 +1,6 @@
 from Src.settings_manager import settings_manager 
 import unittest
+from datetime import datetime
 
 
 #
@@ -7,7 +8,20 @@ import unittest
 #
 class settings_test(unittest.TestCase):
     
- 
+    #
+    # Проверить сохранение настроек
+    #
+    def test_save_settings(self):
+        # Подготовка
+        manager = settings_manager()
+        manager.settings.block_period = datetime.strptime("2021-01-01", "%Y-%m-%d")
+
+        # Действие
+        result = manager.save()
+
+        # Проверки
+        assert result == True
+    
     
     #
     # Проверить на корректность создания и загрузки файла с настройками

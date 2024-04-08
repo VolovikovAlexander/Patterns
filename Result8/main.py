@@ -153,22 +153,38 @@ def get_nomenclature():
     """
         Получить список номенклатуры
     """
-    result = reference_service( start.storage.data[  storage.nomenclature_key() ] ).get()
-    return service.create_response(app, result)
-
-@app.route("/api/nomenclature/<nomenclature_id>", methods = ["GET"])
-def get_nomenclature(nomenclature_id: str):
-    """
-        Получить список номенклатуры
-    """
-    try:
-        result = reference_service( start.storage.data[  storage.nomenclature_key() ] ).get_item(nomenclature_id)
+    args = request.args
+    if "id" not in args.keys():
+        # Вывод всех элементов
+        result = reference_service( start.storage.data[  storage.nomenclature_key() ] ).get()
         return service.create_response(app, result)
-    except Exception as ex:
-        return error_proxy.create_error_response(app,   f"Ошибка при получении данных!\n {ex}")
+    else:
+        # Вывод конкретного элемента
+        try:
+
+            result = reference_service( start.storage.data[  storage.nomenclature_key() ] ).get_item(args["id"])
+            return service.create_response(app, result)
+        except Exception as ex:
+            return error_proxy.create_error_response(app,   f"Ошибка при получении данных!\n {ex}")
 
 
 # Номенклатура
+
+@app.route("/api/block_period", methods=["GET"])
+def get_block_period():
+    args = request.args
+    if "period" in args.keys():
+
+        try:
+            period = datetime.strptime(args["period"], "%Y-%m-%d")
+            options.settings.block_period = period
+            options.save()
+        except:
+           return error_proxy.create_error_response(app, "Некорректно перпеданы параметры: period", 400)    
+
+    result = [options.settings.block_period.strftime('%Y-%m-%d')]
+    return service.create_response(app, result)
+
 
 if __name__ == "__main__":
     app.run(debug = True)
