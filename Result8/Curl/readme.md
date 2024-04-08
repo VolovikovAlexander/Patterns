@@ -17,7 +17,7 @@ curl http://127.0.0.1:5000/api/nomenclature?id=cdbbecb3fa594a799e5b4c6a14058c42
 curl http://127.0.0.1:5000/api/block_period
 ```
 
-4. Изменить блокирующий периолд
+4. Изменить блокирующий период
 ```
 curl http://127.0.0.1:5000/api/block_period?period=2022-01-01
 ```
