@@ -42,12 +42,13 @@ class storage():
         Raises:
             operation_exception: _description_
         """
-        try:
-            file_path = os.path.split(__file__)
-            data_file = "%s/%s" % (file_path[0], self.__storage_file)
-            if not os.path.exists(data_file):
-                raise operation_exception(f"Невозможно загрузить данные! Не найден файл {data_file}")
+           
+        file_path = os.path.split(__file__)
+        data_file = "%s/%s" % (file_path[0], self.__storage_file)
+        if not os.path.exists(data_file):
+            self._error.set_error( Exception("ERROR: Невозможно загрузить / сохранить данные! Не найден файл %s", settings_file))
 
+        try:
             with open(data_file, "r") as read_file:
                 source =  json.load(read_file)   
                 
@@ -72,9 +73,15 @@ class storage():
         Raises:
             operation_exception: _description_
         """
+        
+        file_path = os.path.split(__file__)
+        data_file = "%s/%s" % (file_path[0], self.__storage_file)
+        if not os.path.exists(data_file):
+            self._error.set_error( Exception("ERROR: Невозможно загрузить / сохранить данные! Не найден файл %s", settings_file))
+
         try:
             factory = convert_factory()
-            with open(self.__storage_file, "w") as write_file:
+            with open(data_file, "w") as write_file:
                 data = factory.serialize( self.data )
                 json_text = json.dumps(data, sort_keys = True, indent = 4, ensure_ascii = False)  
                 write_file.write(json_text)

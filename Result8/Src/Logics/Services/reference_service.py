@@ -40,7 +40,7 @@ class reference_service(service):
         if len(found) == 0:
             return False
         
-        self.delete(item)
+        self.delete(found[0])
         self.add(item)
         return True
     

@@ -46,7 +46,7 @@ class service_test(unittest.TestCase):
     # 
     # Проверить изменение reference (номенклатуры)
     #
-    def test_check_change_item_referance(self):
+    def test_check_change_item_reference(self):
         # Подготовка
         manager = settings_manager()
         start = start_factory(manager.settings)

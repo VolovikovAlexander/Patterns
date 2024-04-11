@@ -115,7 +115,8 @@ def add_nomenclature():
     try:
         data = request.get_json()
         item = nomenclature_model().load(data)
-        result = reference_service( start.storage.data[  storage.nomenclature_key() ] ).add( item )
+        source_data = start.storage.data[  storage.nomenclature_key() ]
+        result = reference_service( source_data ).add( item )
         return service.create_response( {"result": result} )
     except Exception as ex:
         return error_proxy.create_error_response(app,   f"Ошибка при добавлении данных!\n {ex}")
@@ -129,7 +130,8 @@ def delete_nomenclature():
     try:
         data = request.get_json()
         item = nomenclature_model().load(data)
-        result = reference_service( start.storage.data[  storage.nomenclature_key() ] ).delete( item )
+        source_data = start.storage.data[  storage.nomenclature_key() ]
+        result = reference_service( source_data ).delete( item )
         return service.create_response( {"result": result} )
     except Exception as ex:
         return error_proxy.create_error_response(app,   f"Ошибка при удалении данных!\n {ex}")
@@ -143,7 +145,8 @@ def change_nomenclature():
     try:
         data = request.get_json()
         item = nomenclature_model().load(data)
-        result = reference_service( start.storage.data[  storage.nomenclature_key() ] ).change( item )
+        source_data = start.storage.data[  storage.nomenclature_key() ]
+        result = reference_service( source_data ).change( item )
         return service.create_response( {"result": result} )
     except Exception as ex:
         return error_proxy.create_error_response(app,   f"Ошибка при изменении данных!\n {ex}")
@@ -156,13 +159,14 @@ def get_nomenclature():
     args = request.args
     if "id" not in args.keys():
         # Вывод всех элементов
-        result = reference_service( start.storage.data[  storage.nomenclature_key() ] ).get()
+        source_data = start.storage.data[  storage.nomenclature_key() ]
+        result = reference_service(source_data ).get()
         return service.create_response(app, result)
     else:
         # Вывод конкретного элемента
         try:
-
-            result = reference_service( start.storage.data[  storage.nomenclature_key() ] ).get_item(args["id"])
+            source_data = start.storage.data[  storage.nomenclature_key() ]
+            result = reference_service(source_data ).get_item(args["id"])
             return service.create_response(app, result)
         except Exception as ex:
             return error_proxy.create_error_response(app,   f"Ошибка при получении данных!\n {ex}")

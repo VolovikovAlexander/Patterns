@@ -2,11 +2,11 @@
     "description": "",
     "group": {
         "description": "",
-        "id": "3b4a09cea29349fab69c85e3ee6855c7",
+        "id": "86454ecdbf8b4361a8fdbcb5305b27ba",
         "is_error": false,
         "name": "\u0418\u043d\u0433\u0440\u0435\u0434\u0438\u0435\u043d\u0442\u044b"
     },
-    "id": "cbe39dcb29d147c6abc54e3ae560a91c",
+    "id": "fda659eabf184e0d8abeeb5d838b0b9d",
     "is_error": false,
     "name": "\u041c\u0443\u043a\u0430 \u043f\u0448\u0435\u043d\u0438\u0447\u043d\u0430\u044f",
     "unit": {
@@ -14,13 +14,13 @@
             "base_unit": null,
             "coefficient": 1,
             "description": "",
-            "id": "70f6829680e247b2bd97597e59939c4d",
+            "id": "375111f81ee54fb180d2745fceb16806",
             "is_error": false,
             "name": "\u0433\u0440\u0430\u043c\u043c"
         },
         "coefficient": 1000,
         "description": "",
-        "id": "6e0e8f5613b94c8caa33596e1634258c",
+        "id": "12fc7883c6f147cf97cdead1c1280989",
         "is_error": false,
         "name": "\u043a\u0438\u043b\u043b\u043e\u0433\u0440\u0430\u043c\u043c"
     }

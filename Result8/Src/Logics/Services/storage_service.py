@@ -12,6 +12,7 @@ from datetime import datetime
 # Сервис для работы со складскими операциями
 #
 class storage_service(service):
+    
     def __processing(self, data: list) -> list:
         """
             Сформировать обороты
@@ -56,7 +57,6 @@ class storage_service(service):
         filter = prototype.filter_by_period( start_period, stop_period)
         
         return self.__processing( filter. data )
-            
         
     def create_turns_by_nomenclature(self, start_period: datetime, stop_period: datetime, nomenclature: nomenclature_model) -> list:
         """
@@ -128,7 +128,6 @@ class storage_service(service):
             filter.data = self.data        
             
         return self.__processing( transactions )     
-            
     
     def build_debits_by_receipt(self, receipt: receipe_model) -> list:
         """

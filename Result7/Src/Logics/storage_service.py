@@ -64,8 +64,7 @@ class storage_service:
         filter = prototype.filter_by_period( start_period, stop_period)
         
         return self.__processing( filter. data )
-            
-        
+           
     def create_turns_by_nomenclature(self, start_period: datetime, stop_period: datetime, nomenclature: nomenclature_model) -> list:
         """
             Получить обороты за период по конкретной номенклатуры
@@ -136,7 +135,6 @@ class storage_service:
             filter.data = self.__data        
             
         return self.__processing( transactions )     
-            
     
     def build_debits_by_receipt(self, receipt: receipe_model) -> list:
         """
