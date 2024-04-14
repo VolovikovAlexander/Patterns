@@ -21,7 +21,7 @@ class aggregate_processing(processing):
         """
             Сформировать агрегацию оборотов
         Args:
-            transactions (list): Список полученных оборотов
+            source (list): Список расчитанных оборотов
 
         Returns:
             list: _description_

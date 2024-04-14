@@ -231,7 +231,7 @@ class service_test(unittest.TestCase):
         # Проверка (транзакций должно быть больше)   
         assert start_len_transaction < stop_len_transaction   
         
-            
+      
         
             
             
