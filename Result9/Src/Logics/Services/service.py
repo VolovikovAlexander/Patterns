@@ -61,8 +61,8 @@ class service(ABC):
         exception_proxy.validate(data, list)
 
         # Преоброзование
-        data = convert_factory().serialize( data )
-        json_text = json.dumps( data, sort_keys = True, indent = 4,  ensure_ascii = False)  
+        dest_data = convert_factory().serialize( data )
+        json_text = json.dumps( dest_data, sort_keys = True, indent = 4,  ensure_ascii = False)  
    
         # Подготовить ответ    
         result = app.response_class(

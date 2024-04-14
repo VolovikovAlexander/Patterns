@@ -68,7 +68,7 @@ class aggregate_processing(processing):
                 
         # Формируем результат
         for  grouped_source_data_key in grouped_source_data.keys():
-            result.append(   grouped_source_data[ grouped_source_data_key ] )   
+            result.append(   grouped_source_data[ grouped_source_data_key ][0] )   
         
         return result    
             

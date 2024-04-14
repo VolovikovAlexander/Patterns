@@ -22,4 +22,7 @@ curl http://127.0.0.1:5000/api/block_period
 curl http://127.0.0.1:5000/api/block_period?period=2022-01-01
 ```
 
-
+5. Получить текущие обороты
+```
+curl http://127.0.0.1:5000/api/storage/turns?start_period=1900-01-01&stop_period=2025-01-01
+```

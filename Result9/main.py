@@ -67,7 +67,7 @@ def get_turns():
           
     source_data = start.storage.data[  storage.storage_transaction_key()   ]      
     data = storage_service( source_data   ).create_turns( start_date, stop_date )      
-    result = service.create_response( data, app )
+    result = service.create_response( app, data )
     return result
       
 @app.route("/api/storage/<nomenclature_id>/turns", methods = ["GET"] )
