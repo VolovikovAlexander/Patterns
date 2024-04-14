@@ -6,6 +6,7 @@ from Src.Models.receipe_model import receipe_model
 from Src.Storage.storage import storage
 from Src.Logics.Services.service import service
 
+
 from datetime import datetime
 
 #
@@ -79,6 +80,12 @@ class storage_service(service):
         # Рассчитанные обороты
         calculated_turns = self.__build_turns( filter. data )
         
+        # Сформируем результат
+        aggregate_key = process_factory.aggregate_key()
+        processing = process_factory().create( aggregate_key  )
+        return processing().process( calculated_turns )
+        
+        
         
     def create_turns_by_nomenclature(self, start_period: datetime, stop_period: datetime, nomenclature: nomenclature_model) -> list:
         """
@@ -98,14 +105,22 @@ class storage_service(service):
         if start_period > stop_period:
             raise argument_exception("Некорректно переданы параметры!")
         
+        block_period = self.settings.block_period
+        
         # Фильтруем      
         prototype = storage_prototype(  self.data )  
-        filter = prototype.filter_by_period( start_period, stop_period)
+        filter = prototype.filter_by_period( block_period, stop_period)
         filter = filter.filter_by_nomenclature( nomenclature )
         if not filter.is_empty:
             raise operation_exception(f"Невозможно сформировать обороты по указанным данных: {filter.error}")
-            
-        return self.__processing( filter. data )    
+        
+        # Рассчитанные обороты    
+        calculated_turns =  self.__build_turns( filter. data )   
+        
+        # Сформируем результат
+        aggregate_key = process_factory.aggregate_key()
+        processing = process_factory().create( aggregate_key  )
+        return processing().process( calculated_turns ) 
     
     def create_turns_only_nomenclature(self, nomenclature: nomenclature_model) -> list:
         """
@@ -122,7 +137,7 @@ class storage_service(service):
         if not filter.is_empty:
             raise operation_exception(f"Невозможно сформировать обороты по указанным данных: {filter.error}")
          
-        return self.__processing( filter. data )   
+        return self.__build_turns( filter. data )   
     
     def create_turns_by_receipt(self, receipt: receipe_model) -> list:
         """
@@ -149,7 +164,7 @@ class storage_service(service):
                     
             filter.data = self.data        
             
-        return self.__processing( transactions )     
+        return self.__build_turns( transactions )     
     
     def build_debits_by_receipt(self, receipt: receipe_model) -> list:
         """

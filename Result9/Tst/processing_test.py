@@ -3,7 +3,7 @@ from Src.Logics.start_factory import start_factory
 from Src.settings_manager import settings_manager
 from Src.Logics.process_factory import process_factory
 from Src.Storage.storage import storage
-from Src.Logics.processing import processing
+from Src.Logics.Processings.processing import processing
 
 #
 # Набор содульных тестов для проверки процессов обработки данных

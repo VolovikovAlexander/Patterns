@@ -1,8 +1,8 @@
-from Src.Logics.processing import processing
-from Src.Logics.turn_processing import turn_processing
+from Src.Logics.Processings.processing import processing
+from Src.Logics.Processings.turn_processing import turn_processing
 from Src.exceptions import exception_proxy, argument_exception, operation_exception
-from Src.Logics.debit_processing import debit_processing
-
+from Src.Logics.Processings.debit_processing import debit_processing
+from Src.Logics.Processings.aggregate_processing import aggregate_processing
 #
 # Фабрика процессов обработки складских транзакций
 #
@@ -18,6 +18,7 @@ class process_factory:
         """
         self.__maps[ process_factory.turn_key()]  = turn_processing
         self.__maps[ process_factory.debit_key()] = debit_processing
+        self.__maps[ process_factory.aggregate_key()] = aggregate_processing
         
     
     def create(self, process_key:str) -> processing:
@@ -40,6 +41,15 @@ class process_factory:
         return current_processing
     
     # Статические методы
+    
+    @staticmethod
+    def aggregate_key() -> str:
+        """
+            Сформировать агрегацию оборотов
+        Returns:
+            str: _description_
+        """
+        return "aggregate"
         
     @staticmethod
     def turn_key() -> str:

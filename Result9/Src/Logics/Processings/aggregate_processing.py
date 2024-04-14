@@ -1,6 +1,8 @@
 from Src.Logics.Processings.processing import processing
 from Src.Models.receipe_row_model import receipe_row_model
 from Src.Storage.storage import storage
+from Src.settings import settings
+from Src.settings_manager import settings_manager
 
 #
 # Процесс агрегации сохраненных оборотов и рассчитанных
@@ -25,10 +27,14 @@ class aggregate_processing(processing):
             list: _description_
         """
         super().process(source)
+        result = []
         
         # Сохране обороты
-        object = storage()
-        saved_turns = object.data[ storage.blocked_turns_key() ]
+        storage_object = storage()
+        if storage.blocked_turns_key() not in storage_object.data.keys():
+            storage_object.data[ storage.blocked_turns_key() ] = []
+            
+        saved_turns = storage_object.data[ storage.blocked_turns_key() ]
         
        
         # Группируем исходные данные 
@@ -49,7 +55,24 @@ class aggregate_processing(processing):
                 
             group_saved_data[key].append(transaction)
             
-        # Рассчитывает значения
+        # Рассчитываем значения
+        for grouped_source_data_key in grouped_source_data.keys():
+            if grouped_source_data_key in group_saved_data.keys():
+                # Данные есть и в расчетных оборотах и в сохраненных. Добавляем оборот.
+                grouped_source_data[ grouped_source_data_key ].value += group_saved_data[grouped_source_data_key ]
+                
+        for group_saved_data_key in group_saved_data.keys():
+            if group_saved_data_key not in grouped_source_data.keys():
+                # В сохраненных данных есть оборот которого нет в расчетных оборотах         
+                grouped_source_data[ group_saved_data_key ] = group_saved_data[group_saved_data_key ]
+                
+        # Формируем результат
+        for  grouped_source_data_key in grouped_source_data.keys():
+            result.append(   grouped_source_data[ grouped_source_data_key ] )   
+        
+        return result    
+            
+            
             
                     
 

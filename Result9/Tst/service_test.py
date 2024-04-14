@@ -12,7 +12,6 @@ import unittest
 import uuid
 
 class service_test(unittest.TestCase):
-    
     #
     # Проверить добавление reference (номенклатура)
     #
