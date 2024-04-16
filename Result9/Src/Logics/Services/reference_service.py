@@ -1,12 +1,17 @@
 from Src.Logics.Services.service import service
 from Src.exceptions import exception_proxy, operation_exception
 from Src.reference import reference
+from Src.Logics.storage_observer import storage_observer
 
 #
 # Сервис для выполнения CRUD операций
 #
 class reference_service(service):
 
+    def __init__(self, data: list) -> None:
+        super().__init__(data)
+        storage_observer.observers.append(self)
+        
     def add(self, item: reference) -> bool:
         """
             Добавить новый элемент
@@ -61,8 +66,13 @@ class reference_service(service):
         
         return found
     
-
-    
+    def handle_event(self, handle_type: str):
+        """
+            Обработать событие
+        Args:
+            handle_type (str): _description_
+        """
+        super().handle_event(handle_type)
 
 
 

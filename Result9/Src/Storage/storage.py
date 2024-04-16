@@ -72,9 +72,15 @@ class storage():
         Raises:
             operation_exception: _description_
         """
+        file_path = os.path.split(__file__)
+        data_file = "%s/%s" % (file_path[0], self.__storage_file)
+        if not os.path.exists(data_file):
+            raise operation_exception(f"Невозможно загрузить данные! Не найден файл {data_file}")
+
+
         try:
             factory = convert_factory()
-            with open(self.__storage_file, "w") as write_file:
+            with open(data_file, "w") as write_file:
                 data = factory.serialize( self.data )
                 json_text = json.dumps(data, sort_keys = True, indent = 4, ensure_ascii = False)  
                 write_file.write(json_text)
@@ -93,16 +99,9 @@ class storage():
         exception_proxy.validate(turns, list)
         if len(turns) > 0:
             self.__data[ storage.blocked_turns_key() ] = turns
+            self.save()
             
             
-    @staticmethod        
-    def  save_blocked_turns(turns:list):
-        """
-            Сохранить новый список заблокированных оборотов (статический вызов)
-        """       
-        object = storage()
-        object.save_blocked_turns(turns) 
-        
     @staticmethod
     def blocked_turns_key():
         """

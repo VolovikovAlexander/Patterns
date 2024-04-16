@@ -5,6 +5,8 @@ from Src.Models.nomenclature_model import nomenclature_model
 from Src.Models.receipe_model import receipe_model
 from Src.Storage.storage import storage
 from Src.Logics.Services.service import service
+from Src.Models.event_type import event_type
+from Src.Logics.storage_observer import storage_observer
 
 
 from datetime import datetime
@@ -13,6 +15,10 @@ from datetime import datetime
 # Сервис для работы со складскими операциями
 #
 class storage_service(service):
+    
+    def __init__(self, data: list) -> None:
+        super().__init__(data)
+        storage_observer.observers.append(self)
     
     def __build_turns(self, data: list) -> list:
         """
@@ -44,14 +50,14 @@ class storage_service(service):
         # Фильтруем по периоду
         prototype = storage_prototype(  self.data )  
         filter = prototype.filter_by_period( start_period, stop_period)
+        if len(filter.data) == 0:
+            storage().save_blocked_turns( [] )
+        else:    
+            # Расчитываем 
+            calculated_turns = self.__build_turns(filter.data)
         
-        # Расчитываем 
-        calculated_turns = self.__build_turns(filter.data)
-        
-        # Сохраняем данные
-        storage.save_blocked_turns(calculated_turns)
-        
-          
+            # Сохраняем данные
+            storage().save_blocked_turns(calculated_turns)
         
     # Набор основных методов    
         
@@ -84,8 +90,6 @@ class storage_service(service):
         aggregate_key = process_factory.aggregate_key()
         processing = process_factory().create( aggregate_key  )
         return processing().process( calculated_turns )
-        
-        
         
     def create_turns_by_nomenclature(self, start_period: datetime, stop_period: datetime, nomenclature: nomenclature_model) -> list:
         """
@@ -195,5 +199,19 @@ class storage_service(service):
         data = storage().data[ key ]
         for transaction in transactions:
             data.append ( transaction )
+    
+    # Набор основных методов   
+        
+    def handle_event(self, handle_type: str):
+        """
+            Обработать событие
+        Args:
+            handle_type (str): _description_
+        """
+        super().handle_event(handle_type)
+        
+        if handle_type == event_type.changed_block_period():
+            self.__build_blocked_turns()
+        
     
   

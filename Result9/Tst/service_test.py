@@ -6,6 +6,8 @@ from Src.exceptions import operation_exception
 from Src.Logics.Services.reference_service import reference_service
 from Src.Logics.convert_factory import convert_factory
 from Src.Models.nomenclature_model import nomenclature_model
+from Src.Logics.storage_observer import storage_observer
+from Src.Models.event_type import event_type
 
 from datetime import datetime
 import unittest
@@ -231,9 +233,26 @@ class service_test(unittest.TestCase):
         # Проверка (транзакций должно быть больше)   
         assert start_len_transaction < stop_len_transaction   
         
-      
+    
+    def test_check_observer_blocked_period(self):
+        # Подготовка
+        manager = settings_manager()
+        start = start_factory(manager.settings)
+        start.create()
+        key = storage.storage_transaction_key()
+        transactions_data = start.storage.data[ key ]
+        service = storage_service(transactions_data)
+          
         
+        # Действие
+        try:
+            storage_observer.raise_event(  event_type.changed_block_period()  )
+            pass
+        except Exception as ex:
+            print(f"{ex}")
             
+        
+             
             
         
         
