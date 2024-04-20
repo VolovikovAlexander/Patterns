@@ -32,7 +32,7 @@ class reference_service(service):
         found = list(filter(lambda x: x.id == item.id , self.data))     
         if len(found) == 0:
             return False
-        
+         
         self.data.remove(found[0])
         return True
 

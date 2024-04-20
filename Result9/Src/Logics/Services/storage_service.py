@@ -7,6 +7,7 @@ from Src.Storage.storage import storage
 from Src.Logics.Services.service import service
 from Src.Models.event_type import event_type
 from Src.Logics.storage_observer import storage_observer
+from Src.reference import reference
 
 
 from datetime import datetime
@@ -202,7 +203,7 @@ class storage_service(service):
     
     # Набор основных методов   
         
-    def handle_event(self, handle_type: str):
+    def handle_event(self,  handle_type:  str):
         """
             Обработать событие
         Args:

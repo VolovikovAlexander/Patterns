@@ -21,7 +21,7 @@ class settings_test(unittest.TestCase):
         start.create()
         key = storage.storage_transaction_key()
         transactions_data = start.storage.data[ key ]
-        service = storage_service(transactions_data)
+        storage_service(transactions_data)
         
         # Действие
         try:

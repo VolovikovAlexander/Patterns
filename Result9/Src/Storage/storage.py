@@ -99,7 +99,7 @@ class storage():
         exception_proxy.validate(turns, list)
         if len(turns) > 0:
             self.__data[ storage.blocked_turns_key() ] = turns
-            self.save()
+            # self.save()
             
             
     @staticmethod
