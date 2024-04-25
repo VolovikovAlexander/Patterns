@@ -47,7 +47,7 @@ class service(ABC):
         """
             Обработать событие
         Args:
-            handle_type (str): _description_
+            handle_type (str): Ключ
         """
         exception_proxy.validate(handle_type, str )
         pass

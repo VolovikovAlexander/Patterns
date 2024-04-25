@@ -14,6 +14,73 @@ import unittest
 import uuid
 
 class service_test(unittest.TestCase):
+    
+    #
+    # Тест на удаление номенклатуры
+    #
+    def test_check_delete_item_reference(self):
+        # Подготовка
+        manager = settings_manager()
+        start = start_factory(manager.settings)
+        start.create()
+        key = storage.nomenclature_key()
+        data = start.storage.data[ key ]
+        if len(data) == 0:
+            raise operation_exception("Некорректно сформирован набор данных!")
+        service = reference_service(data)
+        start_len = len(data)
+        item = data[0]
+        
+        # Действие
+        result = service.delete( item )
+                
+        # Проверки
+        assert result == True  
+        
+    #
+    # Тест на удаление номенклатуры из рецепта
+    #    
+    def test_check_delere_nomenclature_from_receipt(self):
+        # Подготовка
+        manager = settings_manager()
+        start = start_factory(manager.settings)
+        start.create()
+        key = storage.receipt_key()
+        receipt_data = start.storage.data[ key ]
+        if len(receipt_data) == 0:
+            raise operation_exception("Некорректно сформирован набор данных!")
+        
+        # Номенклатура первая из первого рецепта
+        len_receipt_row = len( receipt_data[0].consist )
+        receipt_row = receipt_data[0].consist[ list(receipt_data[0].consist.keys())[0] ]
+        item = receipt_row.nomenclature
+        
+        key = storage.nomenclature_key()
+        data = start.storage.data[ key ]
+        if len(data) == 0:
+            raise operation_exception("Некорректно сформирован набор данных!")
+        
+        service = reference_service(data)
+        
+        # Действие
+        result = service.delete( item ) 
+        
+        # Проверки
+        assert result == True     
+        
+        key = storage.receipt_key()
+        receipt_data = start.storage.data[ key ]
+        if len(receipt_data) == 0:
+            raise operation_exception("Некорректно сформирован набор данных!")
+        
+        # Номенклатура первая из первого рецепта
+        len_receipt_row_new = len( receipt_data[0].consist )
+        
+        assert len_receipt_row != len_receipt_row_new
+        
+        
+        
+    
     #
     # Проверить добавление reference (номенклатура)
     #
