@@ -37,11 +37,13 @@ class reference_service(service):
         if len(found) == 0:
             return False
         item = found[0]
-        
+       
+        # Найти нужный наблюдатель и вызвать событие        
         observer_item = storage_observer.get( storage_observer.post_processing_service_key() )
         observer_item.nomenclature = item
-        
         storage_observer.raise_event(  event_type.deleted_nomenclature()  )    
+
+	# Удалить элемент
         self.data.remove(item)
         return True
 
