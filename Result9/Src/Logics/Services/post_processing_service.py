@@ -4,6 +4,7 @@ from Src.Models.nomenclature_model import nomenclature_model
 from Src.exceptions import exception_proxy 
 from Src.Logics.storage_observer import storage_observer
 from Src.Models.nomenclature_model import nomenclature_model
+from Src.Storage.storage import storage
 
 #
 # Пост процессинг для наблюдения за сервисами
@@ -25,14 +26,26 @@ class post_processing_service(service):
         exception_proxy.validate(source, nomenclature_model)
         self.__nomenclature = source 
     
-    def __observe_deleted_nomenclature(self, object:nomenclature_model):
+    def __observe_deleted_nomenclature(self):
         """
             Удалить номенклатуру во всех рецептам
         Args:
             object (nomenclature_model): _description_
         """
-        exception_proxy.validate(object, nomenclature_model)
-        pass     
+        if self.__nomenclature is None:
+            return
+        
+        data_storage = storage()
+        key = storage.receipt_key()
+        receipts = data_storage.data[key]
+
+        for receipt in receipts:
+            keys = list( receipt.consist.keys())
+            for key in keys:
+                row = receipt.consist[key]
+                if row.nomenclature.id == self.__nomenclature.id:
+                    receipt.delete(row)
+                    
          
     def handle_event(self,  handle_type:  str):
         """
@@ -42,8 +55,8 @@ class post_processing_service(service):
         """
         super().handle_event(handle_type)
         
-        if handle_type == event_type.deleted_nomenclature:
-            self.__observe_deleted_nomenclature(None)
+        if handle_type == event_type.deleted_nomenclature():
+            self.__observe_deleted_nomenclature()
         
         
             
