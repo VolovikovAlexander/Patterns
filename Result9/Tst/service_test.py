@@ -38,7 +38,7 @@ class service_test(unittest.TestCase):
         assert result == True  
         
     #
-    # Тест на удаление номенклатуры из рецепта
+    # Тест на удаление номенклатуры из рецепта при удалении карточки номенклатуры
     #    
     def test_check_delere_nomenclature_from_receipt(self):
         # Подготовка
