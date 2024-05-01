@@ -1,5 +1,5 @@
 from Src.Logics.Services.service import service
-from Src.exceptions import exception_proxy, operation_exception
+from Src.exceptions import exception_proxy, operation_exception, error_proxy
 from Src.reference import reference
 from Src.Logics.storage_observer import storage_observer
 from Src.Models.event_type import event_type
@@ -26,6 +26,8 @@ class reference_service(service):
             return False
         
         self.data.append(item)
+        error_proxy.write_log(f"Добавлен новый объект. Модель {type(item).__name__}") 
+
         return True
     
     def delete(self, item:reference) -> bool:
@@ -43,9 +45,10 @@ class reference_service(service):
         if observer_item is not None:
             observer_item.item = item
             storage_observer.raise_event(  event_type.deleted_nomenclature()  )    
-
-	# Удалить элемент
+            
+	    # Удалить элемент
         self.data.remove(item)
+        error_proxy.write_log(f"Удален объект. Модель {type(item).__name__}") 
         return True
 
     def change(self, item:reference) -> bool:
@@ -59,6 +62,8 @@ class reference_service(service):
         
         self.delete(found[0])
         self.add(item)
+
+        error_proxy.write_log(f"Изменен объект. Модель {type(item).__name__}") 
         return True
     
     def get(self) -> list:
