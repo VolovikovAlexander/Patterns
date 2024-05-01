@@ -6,11 +6,12 @@ from Src.errors import error_proxy
 # Абстрактный класс для наследования
 #
 class exception_proxy(Exception):
-    _error : error_proxy = error_proxy()
+    __error : error_proxy = error_proxy()
     
     def __init__(self, *args: object) -> None:
         super().__init__(*args)
-        self._error.set_error(self)
+        self.__error.set_error(self)
+
         
     @property    
     def error(self):
@@ -19,7 +20,7 @@ class exception_proxy(Exception):
         Returns:
             _type_: _description_
         """
-        return self._error    
+        return self.__error    
     
     # -> Источник: https://github.com/zhbr112/Restaurant-automation/blob/b2db73872c4c126155ad52b82db79223943aca29/src/abstract_reference.py#L16
     

@@ -1,8 +1,9 @@
 from Src.Logics.basic_convertor import basic_convertor
 from Src.Logics.datetime_convertor import datetime_convertor
-from Src.exceptions import exception_proxy, operation_exception, argument_exception
+from Src.exceptions import exception_proxy, operation_exception
 from Src.reference import reference
 from Src.Logics.convertor import convertor
+from Src.errors import error_proxy
 
 
 import datetime
@@ -38,6 +39,7 @@ class convert_factory:
         self._maps[float] = basic_convertor
         self._maps[str] = basic_convertor
         self._maps[bool] = basic_convertor
+        self._maps[error_proxy] = reference_convertor
         
         # Связка для всех моделей
         for  inheritor in reference.__subclasses__():

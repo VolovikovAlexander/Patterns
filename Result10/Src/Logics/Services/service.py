@@ -2,6 +2,8 @@ from Src.exceptions import argument_exception, exception_proxy
 from Src.Logics.convert_factory import convert_factory
 from Src.settings import settings
 from Src.settings_manager import settings_manager
+from Src.Logics.storage_observer import storage_observer
+from Src.Models.event_type import event_type
 
 from abc import ABC, abstractclassmethod
 import json
@@ -66,11 +68,12 @@ class service(ABC):
             raise argument_exception("Некорректно переданы параметры!")
         
         exception_proxy.validate(data, list)
-
+        
         # Преоброзование
         dest_data = convert_factory().serialize( data )
         json_text = json.dumps( dest_data, sort_keys = True, indent = 4,  ensure_ascii = False)  
-   
+        storage_observer.write_log(f"Сформирован ответ от сервера. Содержание:\n{json_text}") 
+        
         # Подготовить ответ    
         result = app.response_class(
             response = f"{json_text}",

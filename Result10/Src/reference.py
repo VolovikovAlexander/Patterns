@@ -1,6 +1,5 @@
 import uuid
 from abc import ABC
-from Src.errors import error_proxy
 from Src.exceptions import exception_proxy, argument_exception, operation_exception
 
 #
@@ -13,8 +12,6 @@ class reference(ABC):
     _name = ""
     " Описание "
     _description = ""
-    " Информация об ошибке "
-    _error = error_proxy()
     
     def __init__(self, name = None):
         self._id = uuid.uuid4()
@@ -53,11 +50,6 @@ class reference(ABC):
         exception_proxy.validate(value, uuid.UUID)
         self._id = value
 
-    @property
-    def is_error(self):
-        " Флаг. Есть ошибка "
-        return self._error.error != ""  
-    
     def load(self, source: dict):
         """
             Десериализовать свойства 

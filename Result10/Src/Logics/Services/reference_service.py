@@ -40,7 +40,7 @@ class reference_service(service):
        
         # Найти нужный наблюдатель и вызвать событие        
         observer_item = storage_observer.get( storage_observer.post_processing_service_key() )
-        observer_item.nomenclature = item
+        observer_item.item = item
         storage_observer.raise_event(  event_type.deleted_nomenclature()  )    
 
 	# Удалить элемент

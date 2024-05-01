@@ -1,10 +1,3 @@
-from Src.Models.event_type import event_type
-from Src.exceptions import exception_proxy, argument_exception, operation_exception
-
-
-
-from Src.reference import reference
-
 
 #
 # Наблюдатель для складских операций
@@ -19,7 +12,10 @@ class storage_observer:
         Args:
             handle_event (str): _description_
         """
-        exception_proxy.validate(handle_event, str)
+
+        if handle_event.strip() == "":
+            return
+        
         for object in storage_observer.observers:
             
             if object is not None:
@@ -55,9 +51,6 @@ class storage_observer:
                 result =  item
                 break
             
-        if result == None:
-              raise operation_exception(f"Невозможно получить наблюдетель по ключу  {observer_name}!")
-        
         return result    
                 
     @staticmethod            
@@ -67,6 +60,16 @@ class storage_observer:
         Returns:
             str: _description_
         """
-        return "post_processing_service"            
+        return "post_processing_service"    
 
-            
+
+    @staticmethod     
+    def log_service_key() -> str:
+        """
+            Ключ log_service
+        Returns:
+            str: _description_
+        """
+        return "log_service"
+
+   

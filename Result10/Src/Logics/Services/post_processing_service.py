@@ -1,9 +1,8 @@
 from Src.Logics.Services.service import service
 from Src.Models.event_type import event_type
-from Src.Models.nomenclature_model import nomenclature_model
+from Src.reference import reference
 from Src.exceptions import exception_proxy 
 from Src.Logics.storage_observer import storage_observer
-from Src.Models.nomenclature_model import nomenclature_model
 from Src.Storage.storage import storage
 
 #
@@ -11,20 +10,20 @@ from Src.Storage.storage import storage
 #
 class post_processing_service(service):
     
-    __nomenclature:nomenclature_model = None
+    __item:reference = None
       
     def __init__(self, data: list) -> None:
         super().__init__(data)
         storage_observer.observers.append(self)
     
     @property
-    def nomenclature(self) -> nomenclature_model:
-        return self.__nomenclature
+    def item(self) -> reference:
+        return self.__item
     
-    @nomenclature.setter
-    def nomenclature(self, source: nomenclature_model):
-        exception_proxy.validate(source, nomenclature_model)
-        self.__nomenclature = source 
+    @item.setter
+    def item(self, source: reference):
+        exception_proxy.validate(source, reference)
+        self.__item = source 
     
     def __observe_deleted_nomenclature(self):
         """
@@ -32,7 +31,7 @@ class post_processing_service(service):
         Args:
             object (nomenclature_model): _description_
         """
-        if self.__nomenclature is None:
+        if self.__item is None:
             return
         
         data_storage = storage()
@@ -43,7 +42,7 @@ class post_processing_service(service):
             keys = list( receipt.consist.keys())
             for key in keys:
                 row = receipt.consist[key]
-                if row.nomenclature.id == self.__nomenclature.id:
+                if row.nomenclature.id == self.__item.id:
                     receipt.delete(row)
                     
          
