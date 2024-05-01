@@ -9,10 +9,14 @@ from Src.Logics.markdown_reporting import markdown_reporting
 from Src.Logics.json_reporting import json_reporting
 from Src.Logics.start_factory import start_factory
 from Src.settings import settings
+from Src.Logics.Services.log_service import log_service
 
 
 class reporting_test(unittest.TestCase):
     
+    def __init__(self, methodName: str = "runTest") -> None:
+        super().__init__(methodName)
+        log_service()
     
     def test_check_json_reporting_build(self):
         # Подготовка

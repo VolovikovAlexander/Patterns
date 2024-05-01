@@ -42,6 +42,7 @@ class start_factory:
         
         if self.__storage == None:
             self.__storage = storage()
+            self.__storage.clear()
             
         self.__storage.data[ key ] = items
         

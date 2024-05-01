@@ -2,6 +2,7 @@ from Src.Models.group_model import group_model
 from Src.Models.nomenclature_model import  nomenclature_model
 from Src.Models.unit_model import unit_model
 from Src.exceptions import argument_exception
+from Src.Logics.Services.log_service import log_service
 
 import unittest
 
@@ -9,6 +10,10 @@ import unittest
 # Набор автотестов для проверки работы моделей связанных с номенклатурой
 #
 class nomenclature_test(unittest.TestCase):
+
+    def __init__(self, methodName: str = "runTest") -> None:
+        super().__init__(methodName)
+        log_service()
 
     # 
     # Проверить создание новой карточки номенклатуры

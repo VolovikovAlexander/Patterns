@@ -3,16 +3,20 @@ from Src.Logics.start_factory import start_factory
 from Src.settings_manager import settings_manager
 from Src.Logics.process_factory import process_factory
 from Src.Storage.storage import storage
-from Src.Logics.Processings.processing import processing
 from Src.Models.storage_row_turn_model import storage_row_turn_model
 from Src.exceptions import operation_exception
 from Src.Models.storage_model import storage_model
 from Src.Models.unit_model import unit_model
+from Src.Logics.Services.log_service import log_service
 
 #
 # Набор содульных тестов для проверки процессов обработки данных
 #
 class processing_test(unittest.TestCase):
+
+    def __init__(self, methodName: str = "runTest") -> None:
+        super().__init__(methodName)
+        log_service()
     
     #
     # Проверить работу фабрики процессов
@@ -62,7 +66,8 @@ class processing_test(unittest.TestCase):
         # Подготовка
         default_storage = storage_model.create_default()
         manager = settings_manager()
-        start = start_factory(manager.settings)
+        options = manager.settings
+        start = start_factory( options )
         start.create()
         nomenclatures = start.storage.data[ storage.nomenclature_key()]
         if len(nomenclatures) == 0:

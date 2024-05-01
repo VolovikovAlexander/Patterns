@@ -72,7 +72,7 @@ class error_proxy:
             self.__error_text = ""
             return
             
-        self.__error_text = "Ошибка! " + str(exception)    
+        self.__error_text = f"Ошибка! {str(exception)}"    
         error_proxy.write_log(self.__error_text, "ERROR")
         storage_observer.raise_event( "save_log" )
 

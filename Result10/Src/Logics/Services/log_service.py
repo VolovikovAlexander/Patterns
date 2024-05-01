@@ -23,7 +23,7 @@ class log_service(service):
         super().__init__(data)
         self.__storage = storage()
         self.__data = []
-        storage_observer.observers.append(self)
+        storage_observer.append(self)
 
     @property
     def item(self) -> error_proxy:

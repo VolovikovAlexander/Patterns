@@ -12,7 +12,7 @@ class reference_service(service):
 
     def __init__(self, data: list) -> None:
         super().__init__(data)
-        storage_observer.observers.append(self)
+        storage_observer.append(self)
         post_processing_service( self.data )
         
         
@@ -40,8 +40,9 @@ class reference_service(service):
        
         # Найти нужный наблюдатель и вызвать событие        
         observer_item = storage_observer.get( storage_observer.post_processing_service_key() )
-        observer_item.item = item
-        storage_observer.raise_event(  event_type.deleted_nomenclature()  )    
+        if observer_item is not None:
+            observer_item.item = item
+            storage_observer.raise_event(  event_type.deleted_nomenclature()  )    
 
 	# Удалить элемент
         self.data.remove(item)

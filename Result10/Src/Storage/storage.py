@@ -28,13 +28,13 @@ class storage():
         for  inheritor in reference.__subclasses__():
             self.__mapping[inheritor.__name__] = inheritor
 
-        self.clear()
-
     def clear(self):
         """
             Очистить данные
         """
         self.__data = {}
+        for key in storage.storage_keys(self):
+            self.__data[ key ] = []
 
     @property
     def data(self) -> dict:

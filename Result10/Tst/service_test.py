@@ -8,6 +8,7 @@ from Src.Logics.convert_factory import convert_factory
 from Src.Models.nomenclature_model import nomenclature_model
 from Src.Logics.storage_observer import storage_observer
 from Src.Models.event_type import event_type
+from Src.Logics.Services.log_service import log_service
 
 from datetime import datetime
 import unittest
@@ -15,6 +16,10 @@ import uuid
 
 class service_test(unittest.TestCase):
     
+    def __init__(self, methodName: str = "runTest") -> None:
+        super().__init__(methodName)
+        log_service()
+
     #
     # Тест на удаление номенклатуры
     #

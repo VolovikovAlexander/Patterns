@@ -14,7 +14,7 @@ class post_processing_service(service):
       
     def __init__(self, data: list) -> None:
         super().__init__(data)
-        storage_observer.observers.append(self)
+        storage_observer.append(self)
     
     @property
     def item(self) -> reference:

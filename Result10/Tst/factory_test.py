@@ -2,6 +2,7 @@ from Src.Logics.start_factory import start_factory
 from Src.settings_manager import settings_manager
 from Src.Storage.storage import storage
 from Src.Logics.report_factory import report_factory
+from Src.Logics.Services.log_service import log_service
 
 import unittest
 
@@ -9,6 +10,10 @@ import unittest
 # Набор автотестов для проверки работы фабричного метода
 # 
 class factory_test(unittest.TestCase):
+
+    def __init__(self, methodName: str = "runTest") -> None:
+        super().__init__(methodName)
+        log_service()
 
     # 
     # Проверить метод storage_keys в хранилище

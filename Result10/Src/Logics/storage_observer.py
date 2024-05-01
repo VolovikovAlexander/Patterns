@@ -21,6 +21,17 @@ class storage_observer:
             if object is not None:
                 object.handle_event(handle_event)
 
+    @staticmethod
+    def append(item):
+        """
+            Добавить наблюдателя
+        """
+        if item is not None:
+            found = storage_observer.get( type(item).__name__ )
+            if found is None:
+                storage_observer.observers.append(item)
+
+
     @staticmethod    
     def keys() -> list:
         """
@@ -61,7 +72,6 @@ class storage_observer:
             str: _description_
         """
         return "post_processing_service"    
-
 
     @staticmethod     
     def log_service_key() -> str:

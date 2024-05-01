@@ -4,11 +4,16 @@ from Src.Models.nomenclature_model import nomenclature_model
 from Src.Models.receipe_model import receipe_model
 from Src.Storage.storage import storage
 from Src.settings_manager import settings_manager
+from Src.Logics.Services.log_service import log_service
 
 import unittest
 import json
 
 class convert_test(unittest.TestCase):
+
+    def __init__(self, methodName: str = "runTest") -> None:
+        super().__init__(methodName)
+        log_service()
 
     #
     # Проверить загрузку одного элемента номенклатуры в объект
