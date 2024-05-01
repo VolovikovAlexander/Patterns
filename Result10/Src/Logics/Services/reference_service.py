@@ -26,7 +26,7 @@ class reference_service(service):
             return False
         
         self.data.append(item)
-        error_proxy.write_log(f"Добавлен новый объект. Модель {type(item).__name__}") 
+        error_proxy.write_log(f"Добавлен новый объект. Модель {type(item).__name__}", "DEBUG") 
 
         return True
     
@@ -48,7 +48,7 @@ class reference_service(service):
             
 	    # Удалить элемент
         self.data.remove(item)
-        error_proxy.write_log(f"Удален объект. Модель {type(item).__name__}") 
+        error_proxy.write_log(f"Удален объект. Модель {type(item).__name__}", "DEBUG") 
         return True
 
     def change(self, item:reference) -> bool:
@@ -63,7 +63,7 @@ class reference_service(service):
         self.delete(found[0])
         self.add(item)
 
-        error_proxy.write_log(f"Изменен объект. Модель {type(item).__name__}") 
+        error_proxy.write_log(f"Изменен объект. Модель {type(item).__name__}", "DEBUG") 
         return True
     
     def get(self) -> list:
