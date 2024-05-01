@@ -120,7 +120,7 @@ class error_proxy:
         
         # Формируем описание        
         json_text = json.dumps({"details" : message}, sort_keys = True, indent = 4,  ensure_ascii = False)  
-        error_proxy.write_log(f"Сформирован ответ от сервера. Содержание:\n{json_text}") 
+        error_proxy.write_log(f"Сформирован ответ от сервера. Содержание:\n{json_text}", "ERROR") 
         
         # Формируем результат
         result = app.response_class(

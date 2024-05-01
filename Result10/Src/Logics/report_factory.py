@@ -2,7 +2,7 @@ from Src.Logics.reporting import reporting
 from Src.Logics .markdown_reporting import markdown_reporting
 from Src.Logics.csv_reporting import csv_reporting
 from Src.Logics.json_reporting import json_reporting
-from Src.exceptions import exception_proxy, argument_exception, operation_exception
+from Src.exceptions import exception_proxy, argument_exception, operation_exception, error_proxy
 
 #
 # Фабрика для отчетов
@@ -78,7 +78,9 @@ class report_factory:
         # Получаем нужный отчет        
         report = self.create(format, data)
         # Формируем данные
-        info = report.create(storage_key)
+        data = report.create(storage_key)
+        error_proxy.write_log(f"Сформирован отчет. Формат {format}. Тип {storage_key}") 
+        
         
         # Подготовить ответ    
         result = app.response_class(
