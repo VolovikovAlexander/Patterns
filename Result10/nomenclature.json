@@ -2,22 +2,22 @@
     "description": "",
     "group": {
         "description": "",
-        "id": "f7cdc197eef0492385b02d4be7d3c6b6",
+        "id": "a239e9e538af405d8ed37adf4e26bb39",
         "name": "\u0418\u043d\u0433\u0440\u0435\u0434\u0438\u0435\u043d\u0442\u044b"
     },
-    "id": "b573bfae784e499c87c096b1fb507e70",
+    "id": "74398137112d45f196ec02cea5f48222",
     "name": "\u041c\u0443\u043a\u0430 \u043f\u0448\u0435\u043d\u0438\u0447\u043d\u0430\u044f",
     "unit": {
         "base_unit": {
             "base_unit": null,
             "coefficient": 1,
             "description": "",
-            "id": "99a44fdfd5a043d692c594150c427a38",
+            "id": "9a35742992444542b02b484d5c1aff8b",
             "name": "\u0433\u0440\u0430\u043c\u043c"
         },
         "coefficient": 1000,
         "description": "",
-        "id": "a9ea4a9ac4654f84a204f70e83d00e38",
+        "id": "f29e464cad084cc7aea8e46773d7ea8f",
         "name": "\u043a\u0438\u043b\u043b\u043e\u0433\u0440\u0430\u043c\u043c"
     }
 }

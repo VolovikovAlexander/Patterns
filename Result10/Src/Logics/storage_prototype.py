@@ -2,6 +2,7 @@ from Src.exceptions import argument_exception, exception_proxy
 from Src.errors import error_proxy
 from datetime import datetime
 from Src.Models.nomenclature_model import nomenclature_model
+import uuid
 
 #
 # Прототип для обработки складских транзакций
@@ -50,7 +51,6 @@ class storage_prototype(error_proxy):
                 
         return   storage_prototype( result )
     
-    
     def filter_by_nomenclature(self, nomenclature:  nomenclature_model):
         """
             Отфильтровать по номенклатуре
@@ -67,6 +67,27 @@ class storage_prototype(error_proxy):
         result = []
         for item in self.__data:
             if item.nomenclature.id == nomenclature.id:
+                result.append(item)
+                
+        return   storage_prototype( result )
+        
+    # Код взят https://github.com/jezvgg/PatternsHomework/blob/main/Src/Logics/prototypes/nomenculature_prototype.py    
+    def filter_by_id(self, id: str):
+        """
+            Отфильтровать по коду из любого списка на основе reference
+        Args:
+            id (str): _description_
+
+        Returns:
+            storage_prototype: _description_
+        """
+        self.clear()
+        
+        exception_proxy.validate(id, str)
+        
+        result = []
+        for item in self.__data:
+            if item.id == id:
                 result.append(item)
                 
         return   storage_prototype( result )

@@ -4,6 +4,7 @@ from Src.reference import reference
 from Src.Logics.storage_observer import storage_observer
 from Src.Models.event_type import event_type
 from Src.Logics.Services.post_processing_service import post_processing_service
+from Src.Logics.storage_prototype import storage_prototype
 
 #
 # Сервис для выполнения CRUD операций
@@ -21,8 +22,8 @@ class reference_service(service):
             Добавить новый элемент
         """
         exception_proxy.validate(item, reference)
-        found = list(filter(lambda x: x.id == item.id , self.data))     
-        if len(found) > 0:
+        found = storage_prototype(self.data).filter_by_id(item.id)
+        if len(found.data) > 0:
             return False
         
         self.data.append(item)
@@ -35,10 +36,10 @@ class reference_service(service):
             Удалить элемент
         """
         exception_proxy.validate(item, reference)
-        found = list(filter(lambda x: x.id == item.id , self.data))     
-        if len(found) == 0:
+        found = storage_prototype(self.data).filter_by_id(item.id)
+        if len(found.data) == 0:
             return False
-        item = found[0]
+        item = found.data[0]
        
         # Найти нужный наблюдатель и вызвать событие        
         observer_item = storage_observer.get( storage_observer.post_processing_service_key() )
@@ -56,11 +57,11 @@ class reference_service(service):
             Изменить элемент
         """
         exception_proxy.validate(item, reference)
-        found = list(filter(lambda x: x.id == item.id , self.data))     
-        if len(found) == 0:
+        found = storage_prototype(self.data).filter_by_id(item.id)
+        if len(found.data) == 0:
             return False
         
-        self.delete(found[0])
+        self.delete(found.data[0])
         self.add(item)
 
         error_proxy.write_log(f"Изменен объект. Модель {type(item).__name__}", "DEBUG") 
@@ -77,8 +78,8 @@ class reference_service(service):
             Вернуть элемент
         """
         exception_proxy.validate(id, str)
-        found = list(filter(lambda x: x.id == id , self.data))     
-        if len(found) == 0:
+        found = storage_prototype(self.data).filter_by_id(id)
+        if len(found.data) == 0:
             raise operation_exception(f"Не найден элемент с кодом {id}!")
         
         return found
