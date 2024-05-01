@@ -84,7 +84,7 @@ class report_factory:
         
         # Подготовить ответ    
         result = app.response_class(
-            response = f"{info}",
+            response = f"{data}",
             status = 200,
             mimetype = self.mimetype
         )
