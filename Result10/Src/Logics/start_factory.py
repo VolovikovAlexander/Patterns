@@ -19,7 +19,6 @@ from Src.Logics.Services.log_service import log_service
 class start_factory:
     __oprions: settings = None
     __storage: storage = None
-    __log_service: log_service = None
     
     def __init__(self, _options: settings,
                  _storage: storage = None) -> None:
@@ -27,7 +26,7 @@ class start_factory:
         exception_proxy.validate(_options, settings)
         self.__oprions = _options
         self.__storage = _storage
-        self.__log_service = log_service()
+        log_service()
 
         
     

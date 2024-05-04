@@ -2,6 +2,8 @@ from Src.exceptions import exception_proxy, argument_exception
 from Src.Logics.storage_observer import storage_observer
 from Src.Models.event_type import event_type
 from datetime import datetime
+import os
+
 
 #
 # Класс для описания настроек
@@ -12,8 +14,25 @@ class settings():
     _first_start = True
     _mode = "csv"
     _block_period = datetime.now
+    _current_path = str(os.path.split(__file__)[0])
     
+
+    @property
+    def current_path(self):
+        """
+            Каталог записи файлов (лог / хранилище)
+        """
+        return self._current_path
     
+    @current_path.setter
+    def current_path(self, value:str):
+        if value == "":
+            path = os.path.split(__file__)
+        else:
+            path = value
+
+        self._current_path = path
+
     @property
     def inn(self):
         """
@@ -39,8 +58,12 @@ class settings():
     
     @short_name.setter
     def short_name(self, value:str):
-        exception_proxy.validate(value, str)
-        self._short_name = value
+        if value == "":
+            path = os.path.split(__file__)
+        else:
+            path = value
+
+        self._short_name = path
         
         
     @property    

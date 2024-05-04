@@ -46,6 +46,7 @@ class settings_manager(object):
         settings_file = "%s/%s" % (file_path[0], self._settings_file_name)
         if not os.path.exists(settings_file):
             self._error.set_error( Exception("ERROR: Невозможно загрузить настройки! Не найден файл %s", settings_file))
+            return
 
         try:
             with open(settings_file, "r") as read_file:
@@ -74,6 +75,8 @@ class settings_manager(object):
         """
             Private: Загрузить словарь в объект
         """
+        if self._data == None:
+            return
         
         if len(self._data) == 0:
             return

@@ -4,28 +4,28 @@
     "consist": {
         "\u041c\u0443\u043a\u0430 \u043f\u0448\u0435\u043d\u0438\u0447\u043d\u0430\u044f": {
             "description": "",
-            "id": "e05fd4a32aee417e99a4bb90336fda5b",
+            "id": "51ac59d16ed64ea5bf8c67283e204e19",
             "name": "\u041c\u0443\u043a\u0430 \u043f\u0448\u0435\u043d\u0438\u0447\u043d\u0430\u044f",
             "nomenclature": {
                 "description": "",
                 "group": {
                     "description": "",
-                    "id": "e1673964c5ca4c839aa89d0b3a84ad96",
+                    "id": "b2e6419a996e47838cef4b9565bd13a7",
                     "name": "\u0418\u043d\u0433\u0440\u0435\u0434\u0438\u0435\u043d\u0442\u044b"
                 },
-                "id": "aec8b1444bde4bfcb7363ee06c1c0428",
+                "id": "b4f608222e074562a3ac27cf70be677c",
                 "name": "\u041c\u0443\u043a\u0430 \u043f\u0448\u0435\u043d\u0438\u0447\u043d\u0430\u044f",
                 "unit": {
                     "base_unit": {
                         "base_unit": null,
                         "coefficient": 1,
                         "description": "",
-                        "id": "9d723c7e739c46969e9ab6c5bbe392da",
+                        "id": "cd78c76b047d47af91210d5b601e3c68",
                         "name": "\u0433\u0440\u0430\u043c\u043c"
                     },
                     "coefficient": 1000,
                     "description": "",
-                    "id": "ed558cf61d41472fb0672e018346261b",
+                    "id": "21a4ffbc3b1a41349ba90a7d83324463",
                     "name": "\u043a\u0438\u043b\u043b\u043e\u0433\u0440\u0430\u043c\u043c"
                 }
             },
@@ -34,34 +34,34 @@
                 "base_unit": null,
                 "coefficient": 1,
                 "description": "",
-                "id": "9d723c7e739c46969e9ab6c5bbe392da",
+                "id": "cd78c76b047d47af91210d5b601e3c68",
                 "name": "\u0433\u0440\u0430\u043c\u043c"
             }
         },
         "\u0421\u0430\u0445\u0430\u0440": {
             "description": "",
-            "id": "2c42c9c90cb74253a5acf85cebf2c06c",
+            "id": "81528e68b96849d080a87ffa6f4d14ac",
             "name": "\u0421\u0430\u0445\u0430\u0440",
             "nomenclature": {
                 "description": "",
                 "group": {
                     "description": "",
-                    "id": "e1673964c5ca4c839aa89d0b3a84ad96",
+                    "id": "b2e6419a996e47838cef4b9565bd13a7",
                     "name": "\u0418\u043d\u0433\u0440\u0435\u0434\u0438\u0435\u043d\u0442\u044b"
                 },
-                "id": "19faed32d52541159da170fcb4ce3825",
+                "id": "9cf696403f3a44fb94fcb78f50ab9f71",
                 "name": "\u0421\u0430\u0445\u0430\u0440",
                 "unit": {
                     "base_unit": {
                         "base_unit": null,
                         "coefficient": 1,
                         "description": "",
-                        "id": "9d723c7e739c46969e9ab6c5bbe392da",
+                        "id": "cd78c76b047d47af91210d5b601e3c68",
                         "name": "\u0433\u0440\u0430\u043c\u043c"
                     },
                     "coefficient": 1000,
                     "description": "",
-                    "id": "ed558cf61d41472fb0672e018346261b",
+                    "id": "21a4ffbc3b1a41349ba90a7d83324463",
                     "name": "\u043a\u0438\u043b\u043b\u043e\u0433\u0440\u0430\u043c\u043c"
                 }
             },
@@ -70,34 +70,34 @@
                 "base_unit": null,
                 "coefficient": 1,
                 "description": "",
-                "id": "9d723c7e739c46969e9ab6c5bbe392da",
+                "id": "cd78c76b047d47af91210d5b601e3c68",
                 "name": "\u0433\u0440\u0430\u043c\u043c"
             }
         },
         "\u0421\u043b\u0438\u0432\u043e\u0447\u043d\u043e\u0435 \u043c\u0430\u0441\u043b\u043e": {
             "description": "",
-            "id": "9c89164b75c24eba9c3c63c26e27eaa3",
+            "id": "a47996f8234242edae6de23755c38d69",
             "name": "\u0421\u043b\u0438\u0432\u043e\u0447\u043d\u043e\u0435 \u043c\u0430\u0441\u043b\u043e",
             "nomenclature": {
                 "description": "",
                 "group": {
                     "description": "",
-                    "id": "e1673964c5ca4c839aa89d0b3a84ad96",
+                    "id": "b2e6419a996e47838cef4b9565bd13a7",
                     "name": "\u0418\u043d\u0433\u0440\u0435\u0434\u0438\u0435\u043d\u0442\u044b"
                 },
-                "id": "18bd9c36b10d46c085c9659d59d19116",
+                "id": "f3372ea7bfd84c88af9a82fa96b2ffb6",
                 "name": "\u0421\u043b\u0438\u0432\u043e\u0447\u043d\u043e\u0435 \u043c\u0430\u0441\u043b\u043e",
                 "unit": {
                     "base_unit": {
                         "base_unit": null,
                         "coefficient": 1,
                         "description": "",
-                        "id": "9d723c7e739c46969e9ab6c5bbe392da",
+                        "id": "cd78c76b047d47af91210d5b601e3c68",
                         "name": "\u0433\u0440\u0430\u043c\u043c"
                     },
                     "coefficient": 1000,
                     "description": "",
-                    "id": "ed558cf61d41472fb0672e018346261b",
+                    "id": "21a4ffbc3b1a41349ba90a7d83324463",
                     "name": "\u043a\u0438\u043b\u043b\u043e\u0433\u0440\u0430\u043c\u043c"
                 }
             },
@@ -106,28 +106,28 @@
                 "base_unit": null,
                 "coefficient": 1,
                 "description": "",
-                "id": "9d723c7e739c46969e9ab6c5bbe392da",
+                "id": "cd78c76b047d47af91210d5b601e3c68",
                 "name": "\u0433\u0440\u0430\u043c\u043c"
             }
         },
         "\u042f\u0439\u0446\u0430": {
             "description": "",
-            "id": "52820c11a9b24231a3cadb18a31612d7",
+            "id": "55f7d31c0004430cbf33c279bf6f13e4",
             "name": "\u042f\u0439\u0446\u0430",
             "nomenclature": {
                 "description": "",
                 "group": {
                     "description": "",
-                    "id": "e1673964c5ca4c839aa89d0b3a84ad96",
+                    "id": "b2e6419a996e47838cef4b9565bd13a7",
                     "name": "\u0418\u043d\u0433\u0440\u0435\u0434\u0438\u0435\u043d\u0442\u044b"
                 },
-                "id": "10d5badba75a452785c1df5294aa38e1",
+                "id": "7e05f8670f514f0d80bfce8ada7d7c87",
                 "name": "\u042f\u0439\u0446\u0430",
                 "unit": {
                     "base_unit": null,
                     "coefficient": 1,
                     "description": "",
-                    "id": "d91aea231ae142ceaa17bfc74f625184",
+                    "id": "e982a272201947958ef0c24b9588fb42",
                     "name": "\u0448\u0442\u0443\u043a\u0430"
                 }
             },
@@ -136,166 +136,46 @@
                 "base_unit": null,
                 "coefficient": 1,
                 "description": "",
-                "id": "d91aea231ae142ceaa17bfc74f625184",
+                "id": "e982a272201947958ef0c24b9588fb42",
                 "name": "\u0448\u0442\u0443\u043a\u0430"
             }
         }
     },
     "description": "",
-    "id": "49a03032556d4f4783cadbb72926c5b8",
+    "id": "6d1288e835cd45089e58098f644a1eae",
     "instructions": [
         {
             "instructions": {
                 "instructions": {
-                    "instructions": {
-                        "instructions": {
-                            "instructions": {
-                                "instructions": {
-                                    "instructions": {
-                                        "instructions": {
-                                            "instructions": {
-                                                "instructions": {
-                                                    "instructions": {
-                                                        "instructions": {
-                                                            "instructions": {
-                                                                "instructions": {
-                                                                    "instructions": "\u041c\u0430\u0441\u043b\u043e \u043f\u043e\u043b\u043e\u0436\u0438\u0442\u0435 \u0432 \u0441\u043e\u0442\u0435\u0439\u043d\u0438\u043a \u0441 \u0442\u043e\u043b\u0441\u0442\u044b\u043c \u0434\u043d\u043e\u043c. \u0420\u0430\u0441\u0442\u043e\u043f\u0438\u0442\u0435 \u0435\u0433\u043e \u043d\u0430 \u043c\u0430\u043b\u0435\u043d\u044c\u043a\u043e\u043c \u043e\u0433\u043d\u0435 \u043d\u0430 \u043f\u043b\u0438\u0442\u0435, \u043d\u0430 \u0432\u043e\u0434\u044f\u043d\u043e\u0439 \u0431\u0430\u043d\u0435 \u043b\u0438\u0431\u043e \u0432 \u043c\u0438\u043a\u0440\u043e\u0432\u043e\u043b\u043d\u043e\u0432\u043a\u0435."
-                                                                }
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
+                    "instructions": "\u041c\u0430\u0441\u043b\u043e \u043f\u043e\u043b\u043e\u0436\u0438\u0442\u0435 \u0432 \u0441\u043e\u0442\u0435\u0439\u043d\u0438\u043a \u0441 \u0442\u043e\u043b\u0441\u0442\u044b\u043c \u0434\u043d\u043e\u043c. \u0420\u0430\u0441\u0442\u043e\u043f\u0438\u0442\u0435 \u0435\u0433\u043e \u043d\u0430 \u043c\u0430\u043b\u0435\u043d\u044c\u043a\u043e\u043c \u043e\u0433\u043d\u0435 \u043d\u0430 \u043f\u043b\u0438\u0442\u0435, \u043d\u0430 \u0432\u043e\u0434\u044f\u043d\u043e\u0439 \u0431\u0430\u043d\u0435 \u043b\u0438\u0431\u043e \u0432 \u043c\u0438\u043a\u0440\u043e\u0432\u043e\u043b\u043d\u043e\u0432\u043a\u0435."
                 }
             }
         },
         {
             "instructions": {
                 "instructions": {
-                    "instructions": {
-                        "instructions": {
-                            "instructions": {
-                                "instructions": {
-                                    "instructions": {
-                                        "instructions": {
-                                            "instructions": {
-                                                "instructions": {
-                                                    "instructions": {
-                                                        "instructions": {
-                                                            "instructions": {
-                                                                "instructions": {
-                                                                    "instructions": "\u0414\u043e\u0431\u0430\u0432\u044c\u0442\u0435 \u0432 \u0442\u0435\u043f\u043b\u043e\u0435 \u043c\u0430\u0441\u043b\u043e \u0441\u0430\u0445\u0430\u0440. \u041f\u0435\u0440\u0435\u043c\u0435\u0448\u0430\u0439\u0442\u0435 \u0432\u0435\u043d\u0447\u0438\u043a\u043e\u043c \u0434\u043e \u043f\u043e\u043b\u043d\u043e\u0433\u043e \u0440\u0430\u0441\u0442\u0432\u043e\u0440\u0435\u043d\u0438\u044f \u0441\u0430\u0445\u0430\u0440\u0430. \u041e\u0442 \u0442\u0435\u043f\u043b\u0430 \u0441\u0430\u0445\u0430\u0440 \u0434\u043e\u0432\u043e\u043b\u044c\u043d\u043e \u0431\u044b\u0441\u0442\u0440\u043e \u0440\u0430\u0441\u0442\u0430\u0435\u0442."
-                                                                }
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
+                    "instructions": "\u0414\u043e\u0431\u0430\u0432\u044c\u0442\u0435 \u0432 \u0442\u0435\u043f\u043b\u043e\u0435 \u043c\u0430\u0441\u043b\u043e \u0441\u0430\u0445\u0430\u0440. \u041f\u0435\u0440\u0435\u043c\u0435\u0448\u0430\u0439\u0442\u0435 \u0432\u0435\u043d\u0447\u0438\u043a\u043e\u043c \u0434\u043e \u043f\u043e\u043b\u043d\u043e\u0433\u043e \u0440\u0430\u0441\u0442\u0432\u043e\u0440\u0435\u043d\u0438\u044f \u0441\u0430\u0445\u0430\u0440\u0430. \u041e\u0442 \u0442\u0435\u043f\u043b\u0430 \u0441\u0430\u0445\u0430\u0440 \u0434\u043e\u0432\u043e\u043b\u044c\u043d\u043e \u0431\u044b\u0441\u0442\u0440\u043e \u0440\u0430\u0441\u0442\u0430\u0435\u0442."
                 }
             }
         },
         {
             "instructions": {
                 "instructions": {
-                    "instructions": {
-                        "instructions": {
-                            "instructions": {
-                                "instructions": {
-                                    "instructions": {
-                                        "instructions": {
-                                            "instructions": {
-                                                "instructions": {
-                                                    "instructions": {
-                                                        "instructions": {
-                                                            "instructions": {
-                                                                "instructions": {
-                                                                    "instructions": "\u0414\u043e\u0431\u0430\u0432\u044c\u0442\u0435 \u0432 \u043c\u0430\u0441\u043b\u043e \u044f\u0439\u0446\u043e. \u041f\u0440\u0435\u0434\u0432\u0430\u0440\u0438\u0442\u0435\u043b\u044c\u043d\u043e \u0432\u0441\u0435-\u0442\u0430\u043a\u0438 \u043f\u0440\u043e\u0432\u0435\u0440\u044c\u0442\u0435 \u043c\u0430\u0441\u043b\u043e, \u043d\u0435 \u0433\u043e\u0440\u044f\u0447\u0435\u0435 \u043b\u0438 \u043e\u043d\u043e, \u0438\u043d\u0430\u0447\u0435 \u044f\u0439\u0446\u043e \u043c\u043e\u0436\u0435\u0442 \u0441\u0432\u0430\u0440\u0438\u0442\u044c\u0441\u044f. \u041f\u0435\u0440\u0435\u043c\u0435\u0448\u0430\u0439\u0442\u0435 \u044f\u0439\u0446\u043e \u0441 \u043c\u0430\u0441\u043b\u043e\u043c \u0434\u043e \u043e\u0434\u043d\u043e\u0440\u043e\u0434\u043d\u043e\u0441\u0442\u0438."
-                                                                }
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
+                    "instructions": "\u0414\u043e\u0431\u0430\u0432\u044c\u0442\u0435 \u0432 \u043c\u0430\u0441\u043b\u043e \u044f\u0439\u0446\u043e. \u041f\u0440\u0435\u0434\u0432\u0430\u0440\u0438\u0442\u0435\u043b\u044c\u043d\u043e \u0432\u0441\u0435-\u0442\u0430\u043a\u0438 \u043f\u0440\u043e\u0432\u0435\u0440\u044c\u0442\u0435 \u043c\u0430\u0441\u043b\u043e, \u043d\u0435 \u0433\u043e\u0440\u044f\u0447\u0435\u0435 \u043b\u0438 \u043e\u043d\u043e, \u0438\u043d\u0430\u0447\u0435 \u044f\u0439\u0446\u043e \u043c\u043e\u0436\u0435\u0442 \u0441\u0432\u0430\u0440\u0438\u0442\u044c\u0441\u044f. \u041f\u0435\u0440\u0435\u043c\u0435\u0448\u0430\u0439\u0442\u0435 \u044f\u0439\u0446\u043e \u0441 \u043c\u0430\u0441\u043b\u043e\u043c \u0434\u043e \u043e\u0434\u043d\u043e\u0440\u043e\u0434\u043d\u043e\u0441\u0442\u0438."
                 }
             }
         },
         {
             "instructions": {
                 "instructions": {
-                    "instructions": {
-                        "instructions": {
-                            "instructions": {
-                                "instructions": {
-                                    "instructions": {
-                                        "instructions": {
-                                            "instructions": {
-                                                "instructions": {
-                                                    "instructions": {
-                                                        "instructions": {
-                                                            "instructions": {
-                                                                "instructions": {
-                                                                    "instructions": "\u0412\u0441\u044b\u043f\u044c\u0442\u0435 \u043c\u0443\u043a\u0443, \u0434\u043e\u0431\u0430\u0432\u044c\u0442\u0435 \u0432\u0430\u043d\u0438\u043b\u0438\u043d."
-                                                                }
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
+                    "instructions": "\u0412\u0441\u044b\u043f\u044c\u0442\u0435 \u043c\u0443\u043a\u0443, \u0434\u043e\u0431\u0430\u0432\u044c\u0442\u0435 \u0432\u0430\u043d\u0438\u043b\u0438\u043d."
                 }
             }
         },
         {
             "instructions": {
                 "instructions": {
-                    "instructions": {
-                        "instructions": {
-                            "instructions": {
-                                "instructions": {
-                                    "instructions": {
-                                        "instructions": {
-                                            "instructions": {
-                                                "instructions": {
-                                                    "instructions": {
-                                                        "instructions": {
-                                                            "instructions": {
-                                                                "instructions": {
-                                                                    "instructions": "\u041f\u0435\u0440\u0435\u043c\u0435\u0448\u0430\u0439\u0442\u0435 \u043c\u0430\u0441\u0441\u0443 \u0432\u0435\u043d\u0447\u0438\u043a\u043e\u043c \u0434\u043e \u0441\u043e\u0441\u0442\u043e\u044f\u043d\u0438\u044f \u0433\u043b\u0430\u0434\u043a\u043e\u0433\u043e \u043e\u0434\u043d\u043e\u0440\u043e\u0434\u043d\u043e\u0433\u043e \u0442\u0435\u0441\u0442\u0430."
-                                                                }
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
+                    "instructions": "\u041f\u0435\u0440\u0435\u043c\u0435\u0448\u0430\u0439\u0442\u0435 \u043c\u0430\u0441\u0441\u0443 \u0432\u0435\u043d\u0447\u0438\u043a\u043e\u043c \u0434\u043e \u0441\u043e\u0441\u0442\u043e\u044f\u043d\u0438\u044f \u0433\u043b\u0430\u0434\u043a\u043e\u0433\u043e \u043e\u0434\u043d\u043e\u0440\u043e\u0434\u043d\u043e\u0433\u043e \u0442\u0435\u0441\u0442\u0430."
                 }
             }
         }

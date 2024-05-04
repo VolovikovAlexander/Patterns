@@ -7,6 +7,8 @@ from Src.reference import reference
 from Src.Logics.storage_observer import storage_observer
 from Src.Models.event_type import event_type
 from Src.errors import error_proxy
+from Src.settings import settings
+from Src.settings_manager import settings_manager
 
 
 #
@@ -16,6 +18,7 @@ class storage():
     __data = {}
     __storage_file = "storage.json"
     __mapping = {}
+    __options:settings = None
     
     def __new__(cls):
         if not hasattr(cls, 'instance'):
@@ -24,6 +27,8 @@ class storage():
         return cls.instance  
     
     def __init__(self) -> None:
+        self.__options = settings_manager().settings
+
         # Связка для всех моделей
         for  inheritor in reference.__subclasses__():
             self.__mapping[inheritor.__name__] = inheritor
@@ -54,10 +59,10 @@ class storage():
             operation_exception: _description_
         """
         try:
-            file_path = os.path.split(__file__)
-            data_file = "%s/%s" % (file_path[0], self.__storage_file)
+            data_file = "%s/%s" % (  self.__options.current_path, self.__storage_file)
             if not os.path.exists(data_file):
-                raise operation_exception(f"Невозможно загрузить данные! Не найден файл {data_file}")
+                self.save()
+                return self.load()
 
             error_proxy.write_log(f"Загружаем данные из файла {data_file}")
             with open(data_file, "r") as read_file:
@@ -84,8 +89,7 @@ class storage():
         Raises:
             operation_exception: _description_
         """
-        file_path = os.path.split(__file__)
-        data_file = "%s/%s" % (file_path[0], self.__storage_file)
+        data_file = "%s/%s" % (  self.__options.current_path, self.__storage_file)
         error_proxy.write_log(f"Записываем данные в файл {data_file}")
 
         try:

@@ -1,35 +1,35 @@
 {
     "description": "",
-    "id": "eb7222a9905c469895cd8beae9096609",
+    "id": "fc63afdce609453ab530c6264ee6da73",
     "name": "sample_credit_transaction",
     "nomenclature": {
         "description": "",
         "group": {
             "description": "",
-            "id": "e1673964c5ca4c839aa89d0b3a84ad96",
+            "id": "b2e6419a996e47838cef4b9565bd13a7",
             "name": "\u0418\u043d\u0433\u0440\u0435\u0434\u0438\u0435\u043d\u0442\u044b"
         },
-        "id": "aec8b1444bde4bfcb7363ee06c1c0428",
+        "id": "b4f608222e074562a3ac27cf70be677c",
         "name": "\u041c\u0443\u043a\u0430 \u043f\u0448\u0435\u043d\u0438\u0447\u043d\u0430\u044f",
         "unit": {
             "base_unit": {
                 "base_unit": null,
                 "coefficient": 1,
                 "description": "",
-                "id": "9d723c7e739c46969e9ab6c5bbe392da",
+                "id": "cd78c76b047d47af91210d5b601e3c68",
                 "name": "\u0433\u0440\u0430\u043c\u043c"
             },
             "coefficient": 1000,
             "description": "",
-            "id": "ed558cf61d41472fb0672e018346261b",
+            "id": "21a4ffbc3b1a41349ba90a7d83324463",
             "name": "\u043a\u0438\u043b\u043b\u043e\u0433\u0440\u0430\u043c\u043c"
         }
     },
-    "period": "2024-01-28",
+    "period": "2024-01-08",
     "storage": {
         "address": "\u0433. \u041c\u043e\u0441\u043a\u0432\u0430. \u0443\u043b. \u0410\u043a\u0430\u0434\u0435\u043c\u0438\u043a\u0430 \u041a\u043e\u0440\u043e\u043b\u0435\u0432\u0430, 10",
         "description": "",
-        "id": "febb797fbe354febbb5668d87f442d54",
+        "id": "44eca9bc68b74fcc8f5878151969c866",
         "name": "default"
     },
     "storage_type": true,
@@ -38,12 +38,12 @@
             "base_unit": null,
             "coefficient": 1,
             "description": "",
-            "id": "892de6bf957e46ebad7c814d20e05e78",
+            "id": "8d2fde4fe79e49508638f710ece1c20a",
             "name": "\u0433\u0440\u0430\u043c\u043c"
         },
         "coefficient": 1000,
         "description": "",
-        "id": "e6ca4215680d47dc948581e61f52382a",
+        "id": "c75e9d4987c241d4b8a0b0712dcce8c5",
         "name": "\u043a\u0438\u043b\u043b\u043e\u0433\u0440\u0430\u043c\u043c"
     },
     "value": 1
