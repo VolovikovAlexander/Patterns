@@ -1,0 +1,6 @@
+services:
+  patterns:
+    container_name: patterns
+    image: patterns
+    ports:
+      - "5000:5000"

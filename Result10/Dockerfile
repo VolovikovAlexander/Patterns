@@ -1,14 +1,20 @@
-FROM 3.10-bullseye as build
+FROM python:3.10.14 as build
 WORKDIR /app
+EXPOSE 5000
+
+# Готовим окружение
+RUN pip3 install --upgrade pip
+RUN pip3 install -U Flask
+RUN pip3 install -U flask-restplus
 
 # Копируем исходный код
 COPY Src /app/Src
-COPY errors.py /app/
-COPY exceptions.py /app/
-COPY reference.py /app/
-COPY settings.py /app/
+COPY main.py /app/
 
+# Что скопировалось?
+RUN echo $(ls -1)
 
-EXPOSE 8080
+# Запускаем
+CMD [ "python", "main.py" ]
 
 
