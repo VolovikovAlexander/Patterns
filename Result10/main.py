@@ -179,7 +179,7 @@ def accepted_nomenclature():
     """
     try:
         start.storage.save()
-        return service.create_response(app, "{result:'OK'}")
+        return service.create_response(app, {"result": True})
     except Exception as ex:
         return error_proxy.create_error_response(app,   f"Ошибка при сохранении данных!\n {ex}")
 
