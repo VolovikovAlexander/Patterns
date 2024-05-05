@@ -66,3 +66,15 @@ sudo docker run -d -p 8000:8000 -p 9443:9443 --name portainer --restart=always -
 Запуск:
 https://localhost:9443
 
+### Проверка
+1. Запускаем команду
+```
+curl http://127.0.0.1:5001/api/nomenclature
+```
+2. Создаем файл `delete.json` и включаем в него Json текст любого элемента номенклатуры
+
+3. Формируем запрос
+```
+curl -X DELETE  -H "Content-Type: application/json" -d @delete.json http://127.0.0.1:5002/api/nomenclature
+```
+

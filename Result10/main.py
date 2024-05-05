@@ -132,7 +132,7 @@ def delete_nomenclature():
         item = nomenclature_model().load(data)
         source_data = start.storage.data[  storage.nomenclature_key() ]
         result = reference_service( source_data ).delete( item )
-        return service.create_response( {"result": result} )
+        return service.create_response( app, {"result": result} )
     except Exception as ex:
         return error_proxy.create_error_response(app,   f"Ошибка при удалении данных!\n {ex}")
 
@@ -147,7 +147,7 @@ def change_nomenclature():
         item = nomenclature_model().load(data)
         source_data = start.storage.data[  storage.nomenclature_key() ]
         result = reference_service( source_data ).change( item )
-        return service.create_response( {"result": result} )
+        return service.create_response( app, {"result": result} )
     except Exception as ex:
         return error_proxy.create_error_response(app,   f"Ошибка при изменении данных!\n {ex}")
     
