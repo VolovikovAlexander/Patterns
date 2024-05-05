@@ -117,7 +117,7 @@ def add_nomenclature():
         item = nomenclature_model().load(data)
         source_data = start.storage.data[  storage.nomenclature_key() ]
         result = reference_service( source_data ).add( item )
-        return service.create_response( {"result": result} )
+        return service.create_response( app, {"result": result} )
     except Exception as ex:
         return error_proxy.create_error_response(app,   f"Ошибка при добавлении данных!\n {ex}")
 
@@ -170,6 +170,19 @@ def get_nomenclature():
             return service.create_response(app, result)
         except Exception as ex:
             return error_proxy.create_error_response(app,   f"Ошибка при получении данных!\n {ex}")
+
+
+@app.route("/api/nomenclature/accepted", methods = ["GET"])
+def accepted_nomenclature():
+    """
+        Применить изменения. Сохранить в файл
+    """
+    try:
+        start.storage.save()
+        return service.create_response(app, "{result:'OK'}")
+    except Exception as ex:
+        return error_proxy.create_error_response(app,   f"Ошибка при сохранении данных!\n {ex}")
+
 
 
 # Номенклатура

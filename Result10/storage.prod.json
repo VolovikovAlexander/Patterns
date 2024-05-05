@@ -37,29 +37,6 @@
                 "id": "b2e6419a996e47838cef4b9565bd13a7",
                 "name": "Ингредиенты"
             },
-            "id": "9cf696403f3a44fb94fcb78f50ab9f71",
-            "name": "Сахар",
-            "unit": {
-                "base_unit": {
-                    "base_unit": null,
-                    "coefficient": 1,
-                    "description": "",
-                    "id": "cd78c76b047d47af91210d5b601e3c68",
-                    "name": "грамм"
-                },
-                "coefficient": 1000,
-                "description": "",
-                "id": "21a4ffbc3b1a41349ba90a7d83324463",
-                "name": "киллограмм"
-            }
-        },
-        {
-            "description": "",
-            "group": {
-                "description": "",
-                "id": "b2e6419a996e47838cef4b9565bd13a7",
-                "name": "Ингредиенты"
-            },
             "id": "f3372ea7bfd84c88af9a82fa96b2ffb6",
             "name": "Сливочное масло",
             "unit": {
@@ -399,7 +376,7 @@
     ],
     "receipe_model": [
         {
-            "brutto": 251,
+            "brutto": 171,
             "comments": "",
             "consist": {
                 "Мука пшеничная": {
@@ -430,42 +407,6 @@
                         }
                     },
                     "size": 100,
-                    "unit": {
-                        "base_unit": null,
-                        "coefficient": 1,
-                        "description": "",
-                        "id": "cd78c76b047d47af91210d5b601e3c68",
-                        "name": "грамм"
-                    }
-                },
-                "Сахар": {
-                    "description": "",
-                    "id": "81528e68b96849d080a87ffa6f4d14ac",
-                    "name": "Сахар",
-                    "nomenclature": {
-                        "description": "",
-                        "group": {
-                            "description": "",
-                            "id": "b2e6419a996e47838cef4b9565bd13a7",
-                            "name": "Ингредиенты"
-                        },
-                        "id": "9cf696403f3a44fb94fcb78f50ab9f71",
-                        "name": "Сахар",
-                        "unit": {
-                            "base_unit": {
-                                "base_unit": null,
-                                "coefficient": 1,
-                                "description": "",
-                                "id": "cd78c76b047d47af91210d5b601e3c68",
-                                "name": "грамм"
-                            },
-                            "coefficient": 1000,
-                            "description": "",
-                            "id": "21a4ffbc3b1a41349ba90a7d83324463",
-                            "name": "киллограмм"
-                        }
-                    },
-                    "size": 80,
                     "unit": {
                         "base_unit": null,
                         "coefficient": 1,
@@ -549,7 +490,11 @@
                         "instructions": {
                             "instructions": {
                                 "instructions": {
-                                    "instructions": "Масло положите в сотейник с толстым дном. Растопите его на маленьком огне на плите, на водяной бане либо в микроволновке."
+                                    "instructions": {
+                                        "instructions": {
+                                            "instructions": "Масло положите в сотейник с толстым дном. Растопите его на маленьком огне на плите, на водяной бане либо в микроволновке."
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -560,7 +505,11 @@
                         "instructions": {
                             "instructions": {
                                 "instructions": {
-                                    "instructions": "Добавьте в теплое масло сахар. Перемешайте венчиком до полного растворения сахара. От тепла сахар довольно быстро растает."
+                                    "instructions": {
+                                        "instructions": {
+                                            "instructions": "Добавьте в теплое масло сахар. Перемешайте венчиком до полного растворения сахара. От тепла сахар довольно быстро растает."
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -571,7 +520,11 @@
                         "instructions": {
                             "instructions": {
                                 "instructions": {
-                                    "instructions": "Добавьте в масло яйцо. Предварительно все-таки проверьте масло, не горячее ли оно, иначе яйцо может свариться. Перемешайте яйцо с маслом до однородности."
+                                    "instructions": {
+                                        "instructions": {
+                                            "instructions": "Добавьте в масло яйцо. Предварительно все-таки проверьте масло, не горячее ли оно, иначе яйцо может свариться. Перемешайте яйцо с маслом до однородности."
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -582,7 +535,11 @@
                         "instructions": {
                             "instructions": {
                                 "instructions": {
-                                    "instructions": "Всыпьте муку, добавьте ванилин."
+                                    "instructions": {
+                                        "instructions": {
+                                            "instructions": "Всыпьте муку, добавьте ванилин."
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -593,7 +550,11 @@
                         "instructions": {
                             "instructions": {
                                 "instructions": {
-                                    "instructions": "Перемешайте массу венчиком до состояния гладкого однородного теста."
+                                    "instructions": {
+                                        "instructions": {
+                                            "instructions": "Перемешайте массу венчиком до состояния гладкого однородного теста."
+                                        }
+                                    }
                                 }
                             }
                         }

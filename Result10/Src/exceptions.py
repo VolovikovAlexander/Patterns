@@ -41,18 +41,18 @@ class exception_proxy(Exception):
         """
         
         if value is None:
-            raise argument_exception("Пустой аргумент")
+            raise argument_exception(f"Пустой аргумент")
 
         # Проверка типа
         if not isinstance(value, type_):
-            raise argument_exception("Некорректный тип")
+            raise argument_exception(f"Некорректный тип данных. Тип данных {type(value).__name__}. Ожидается: {type_}")
 
         # Проверка аргумента
         if len(str(value).strip()) == 0:
             raise argument_exception("Пустой аргумент")
 
         if len_ is not None and len(str(value).strip()) >= len_:
-            raise argument_exception("Некорректная длина аргумента")
+            raise argument_exception(f"Некорректная длина аргумента. Ожидается {len_}")
 
         return True
      

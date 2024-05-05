@@ -59,14 +59,12 @@ class service(ABC):
         return service.create_response(app, inner_data)
 
     @staticmethod
-    def create_response( app, data:list):
+    def create_response( app, data):
         """
             Сформировать структуру ответа для Web сервера
         """        
         if app is None:
             raise argument_exception("Некорректно переданы параметры!")
-        
-        exception_proxy.validate(data, list)
         
         # Преоброзование
         dest_data = convert_factory().serialize( data )

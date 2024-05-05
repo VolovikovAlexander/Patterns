@@ -77,4 +77,14 @@ curl http://127.0.0.1:5001/api/nomenclature
 ```
 curl -X DELETE  -H "Content-Type: application/json" -d @delete.json http://127.0.0.1:5002/api/nomenclature
 ```
+4. Зафиксируем изменения
+```
+curl http://127.0.0.1:5002/api/nomenclature/accepted
+```
+
+5. Получим новый список
+```
+curl http://127.0.0.1:5001/api/nomenclature
+```
+
 
