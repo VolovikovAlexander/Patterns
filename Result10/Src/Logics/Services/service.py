@@ -66,7 +66,7 @@ class service(ABC):
         if app is None:
             raise argument_exception("Некорректно переданы параметры!")
         
-        # Преоброзование
+        # Преобразование
         dest_data = convert_factory().serialize( data )
         json_text = json.dumps( dest_data, sort_keys = True, indent = 4,  ensure_ascii = False)  
         error_proxy.write_log(f"Сформирован ответ от сервера. Содержание:\n{json_text}") 
