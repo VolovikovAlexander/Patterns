@@ -1,0 +1,23 @@
+{
+    "description": "",
+    "group": {
+        "description": "",
+        "id": "b2e6419a996e47838cef4b9565bd13a7",
+        "name": "Ингредиенты"
+    },
+    "id": "9cf696403f3a44fb94fcb78f50ab9f71",
+    "name": "Сахар",
+    "unit": {
+        "base_unit": {
+            "base_unit": null,
+            "coefficient": 1,
+            "description": "",
+            "id": "cd78c76b047d47af91210d5b601e3c68",
+            "name": "грамм"
+        },
+        "coefficient": 1000,
+        "description": "",
+        "id": "21a4ffbc3b1a41349ba90a7d83324463",
+        "name": "киллограмм"
+    }
+}

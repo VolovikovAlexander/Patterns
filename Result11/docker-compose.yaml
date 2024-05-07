@@ -1,0 +1,21 @@
+services:
+  patterns-read:
+    container_name: patterns-read
+    image: patterns
+    ports:
+      - "5001:5000"
+    volumes:
+      - ./settings.prod.json:/app/Src/settings.json  
+      - ./storage.prod.json:/app/Src/storage.json
+
+  patterns-command:
+    container_name: patterns-command
+    image: patterns
+    ports:
+      - "5002:5000"
+    volumes:
+      - ./settings.prod.json:/app/Src/settings.json  
+      - ./storage.prod.json:/app/Src/storage.json    
+
+
+    
