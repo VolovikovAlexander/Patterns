@@ -32,7 +32,6 @@
   * Построена базовая реализация шаблона
   * Разработан `постобработчик`
   * Добавлена система логирования
-- Архитектурный шаблон: [CQRS](https://tproger.ru/articles/cqrs-dlya-chajnikov)  
 
 
 ## Структура
@@ -49,43 +48,4 @@
 | .\Src\Logics                 | Набор классов для инкапсуляции бизнес логики |
 | .\Src\Data                   | Наборы классов для хранения данных |
 | .\Src\Storage                | Каталог для хранения данных |
-
-## Разворачивание
-1. Отредактировать файл `settings.prod.json`
-2. Запустить сборку образа
-```
-sudo docker build -t patterns . 
-```
-3. Запустить образ
-```
-sudo docker-compose up -d
-```
-4. Установить Portainer
-```
-sudo docker run -d -p 8000:8000 -p 9443:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest
-```
-Запуск:
-https://localhost:9443
-
-### Проверка
-1. Запускаем команду
-```
-curl http://127.0.0.1:5001/api/nomenclature
-```
-2. Создаем файл `delete.json` и включаем в него Json текст любого элемента номенклатуры
-
-3. Формируем запрос
-```
-curl -X DELETE  -H "Content-Type: application/json" -d @delete.json http://127.0.0.1:5002/api/nomenclature
-```
-4. Зафиксируем изменения
-```
-curl http://127.0.0.1:5002/api/nomenclature/accepted
-```
-
-5. Получим новый список
-```
-curl http://127.0.0.1:5001/api/nomenclature
-```
-
 
