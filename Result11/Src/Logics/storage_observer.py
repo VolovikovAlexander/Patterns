@@ -86,4 +86,4 @@ class storage_observer:
         Returns:
             std: Ключ stdout_log_service
         """
-        return "console_log_service"
+        return "stdout_log_service"
