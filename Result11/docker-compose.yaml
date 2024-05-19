@@ -5,7 +5,7 @@ services:
     ports:
       - "5001:5000"
     volumes:
-      - ./settings.prod.json:/app/Src/settings.json  
+      - ./settings.prod.json:/app/Src/settings.json
       - ./storage.prod.json:/app/Src/storage.json
 
   patterns-command:
@@ -14,8 +14,17 @@ services:
     ports:
       - "5002:5000"
     volumes:
-      - ./settings.prod.json:/app/Src/settings.json  
-      - ./storage.prod.json:/app/Src/storage.json    
+      - ./settings.prod.json:/app/Src/settings.json
+      - ./storage.prod.json:/app/Src/storage.json
 
-
-    
+  portainer:
+    container_name: patterns-portainer
+    image: portainer/portainer-ce:latest
+    ports:
+      - "8000:8000"
+      - "9443:9443"
+    restart: always
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "./portainer-data:/data"
+      - "/var/lib/docker/volumes:/var/lib/docker/volumes"
