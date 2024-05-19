@@ -1,10 +1,9 @@
-
 #
 # Наблюдатель для складских операций
 #
 class storage_observer:
     observers = []
-    
+
     @staticmethod
     def raise_event(handle_event: str):
         """
@@ -15,24 +14,22 @@ class storage_observer:
 
         if handle_event.strip() == "":
             return
-        
+
         for object in storage_observer.observers:
-            
             if object is not None:
                 object.handle_event(handle_event)
 
     @staticmethod
     def append(item):
         """
-            Добавить наблюдателя
+        Добавить наблюдателя
         """
         if item is not None:
-            found = storage_observer.get( type(item).__name__ )
+            found = storage_observer.get(type(item).__name__)
             if found is None:
                 storage_observer.observers.append(item)
 
-
-    @staticmethod    
+    @staticmethod
     def keys() -> list:
         """
             Получить список ключей наблюдателей
@@ -41,11 +38,11 @@ class storage_observer:
         """
         result = []
         for item in storage_observer.observers:
-            result.append (  type(item).__name__  )
-            
-        return result    
-            
-    @staticmethod        
+            result.append(type(item).__name__)
+
+        return result
+
+    @staticmethod
     def get(observer_name: str):
         """
             Получить наблюдателя
@@ -55,25 +52,25 @@ class storage_observer:
         Returns:
             _type_: _description_
         """
-        
+
         result = None
-        for item in  storage_observer.observers:
+        for item in storage_observer.observers:
             if type(item).__name__ == observer_name:
-                result =  item
+                result = item
                 break
-            
-        return result    
-                
-    @staticmethod            
+
+        return result
+
+    @staticmethod
     def post_processing_service_key() -> str:
         """
             Ключ post_processing_service
         Returns:
             str: _description_
         """
-        return "post_processing_service"    
+        return "post_processing_service"
 
-    @staticmethod     
+    @staticmethod
     def log_service_key() -> str:
         """
             Ключ log_service
@@ -82,4 +79,11 @@ class storage_observer:
         """
         return "log_service"
 
-   
+    @staticmethod
+    def stdout_log_service_key() -> str:
+        """
+            Ключ stdout_log_service
+        Returns:
+            std: Ключ stdout_log_service
+        """
+        return "console_log_service"
