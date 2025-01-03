@@ -1,0 +1,152 @@
+swagger: '2.0'
+info:
+  description: Набор сервисов для работы с системой учета /ООО Ромашка/
+  version: "1.0.0"
+  title: RestAPI
+consumes:
+  - application/json
+  - application/xml
+  - application/text
+produces:
+  - application/json  
+  - application/xml
+  - application/text  
+basePath: "/api"   
+
+tags:
+  - name: Reports
+    description: Набор методов для работы с отчетностью
+  - name: Dictionary
+    description: Справочники  
+
+paths:
+  /dictionary/formats:
+    get:
+      tags:
+        - Dictionary
+      summary: Получить список форматов
+      operationId: main.formats
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+          schema:
+            type: object
+        500:
+          description: Ошибка на сервере    
+        default:
+          description: Неизвестная ошибка      
+           
+  /dictionary/entities:
+    get:
+      tags:
+        - Dictionary
+      summary: Получить список моделей данных
+      operationId: main.entities
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+          schema:
+            type: object
+        500:
+          description: Ошибка на сервере    
+        default:
+          description: Неизвестная ошибка     
+
+  /dictionary/conditions:
+    get:
+      tags:
+        - Dictionary
+      summary: Получить список вариантов сравнения для создания фильтров
+      operationId: main.conditions
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+          schema:
+            type: object
+        500:
+          description: Ошибка на сервере    
+        default:
+          description: Неизвестная ошибка      
+
+  /reports/{entity}/{format}:
+    get:
+      tags:
+        - Reports
+      summary: Получить данные
+      operationId: main.get_report
+      produces:
+        - application/text
+      responses:
+        200:
+          description: OK
+          schema:
+            type: object
+        500:
+          description: Ошибка на сервере    
+        default:
+          description: Неизвестная ошибка   
+    parameters:
+    - name: entity
+      in: path
+      description: Уникальное наименование модели данных (/dictionary/entities)
+      required: true
+      type: string
+    - name: format
+      in: path
+      description: Уникальный код формата (/dictionary/formats)
+      required: true
+      type: integer
+
+  /reports/{entity}:
+    post:
+      tags:
+          - Reports
+      summary: Получить данные с применением фильтрации
+      operationId: main.get_filtered_report
+      produces:
+        - application/text
+      responses:
+        200:
+          description: OK
+          schema:
+            type: object
+        500:
+          description: Ошибка на сервере    
+        default:
+            description: Неизвестная ошибка   
+    parameters:
+    - name: entity
+      in: path
+      description: Уникальное наименование модели данных (/dictionary/entities)
+      required: true
+      type: string
+    - name: data  
+      in: body
+      description: Структура для выполнения фильтрации данных
+      schema:
+        properties:
+          items:
+            $ref: '#/definitions/filter'
+        
+           
+definitions:
+    filter:
+        type: array
+        example: [
+                    {
+                    "field": "name",
+                    "condition": 2,
+                    "value": "м"
+                    },
+                    {
+                    "field": "name",
+                    "condition": 2,
+                    "value": "мука"
+                    }
+                 ]         
