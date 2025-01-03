@@ -14,10 +14,10 @@
 ## Задание
 1. Доработать класс `settings_model`
   Добавить поле `ReportFormat` Следующие значения
-	- CSV
-	- Markdown
-	- Json
-	- XML
+	- `CSV`
+	- `Markdown`
+	- `Json`
+	- `XML`
 2. Доработать класс `settings_model` 
 Добавить связку между `ReportFormat` и классом который формирует отчет. 
 Пример :
