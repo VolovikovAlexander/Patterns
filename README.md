@@ -2,6 +2,9 @@
 ### Курс: `Шаблоны проектирования`
 Редакция: 2023-11-27
 
+#### News
+https://fbki.isu.ru/index.php/news/zanyatiya-dlya-budushih-razrabotchikov-provel-inzhener-programmist-kompanii-itone
+
 #### Программа
 | Этап      |   Описание                                                   | Результаты                     |
 |-----------|--------------------------------------------------------------|--------------------------------|
